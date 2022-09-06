@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1869315837
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 2
-  m_Sprite: {fileID: 109204501, guid: 137bd12b8bf7de042a3317e182b2a5f8, type: 3}
+  m_Sprite: {fileID: -1286410008, guid: 137bd12b8bf7de042a3317e182b2a5f8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!60 &5374421783613545534
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -101,7 +101,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.22}
     oldSize: {x: 0.9, y: 0.77}
     newSize: {x: 0.9, y: 0.77}
     adaptiveTilingThreshold: 0.5
@@ -110,10 +110,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.44793248, y: -0.2933129}
-      - {x: 0.13776407, y: -0.29010123}
-      - {x: 0.13577907, y: -0.380865}
-      - {x: 0.45, y: -0.385}
-      - {x: 0.44586506, y: -0.1298033}
-      - {x: -0.22244787, y: -0.13600576}
-      - {x: -0.45, y: -0.13604876}
+    - - {x: -0.44970447, y: -0.07781225}
+      - {x: 0.12803988, y: -0.07821919}
+      - {x: 0.13246457, y: -0.16776845}
+      - {x: 0.44922408, y: -0.16659856}
+      - {x: 0.4481844, y: 0.017096257}
+      - {x: -0.20706838, y: 0.020939473}
+      - {x: -0.44922307, y: 0.020987693}
