@@ -12,6 +12,8 @@ public class LoadingScreen : MonoBehaviour
 
     public Slider bar;
 
+    public GameObject textPressAnnyKey;
+
     void Start()
     {
         
@@ -26,7 +28,7 @@ public class LoadingScreen : MonoBehaviour
     {
         loadingScreen.SetActive(true);
 
-        //SceneManager.LoadScene(loadLevel);
+        textPressAnnyKey.SetActive(false);
 
         StartCoroutine(LoadScreenAsync());
     }
@@ -43,6 +45,8 @@ public class LoadingScreen : MonoBehaviour
 
             if (operation.progress >= .9f && !operation.allowSceneActivation)
             {
+                textPressAnnyKey.SetActive(true);
+
                 if (Input.anyKeyDown)
                 {
                     operation.allowSceneActivation = true;
