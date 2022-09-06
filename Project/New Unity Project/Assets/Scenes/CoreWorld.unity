@@ -7430,6 +7430,7 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1909692222}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 --- !u!1 &1352476472
 GameObject:
   m_ObjectHideFlags: 0
@@ -11583,6 +11584,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1856224800}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> parent of d86cd7f (добавил нпс и анимацию к нему)
 --- !u!4 &1689327590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7947911505737750448, guid: c5bdca1933fde624698bb8c6d6daa44b,
@@ -11779,7 +11782,11 @@ PrefabInstance:
     - target: {fileID: 5628018141983903106, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD
       value: 0.36
+=======
+      value: -0.69
+>>>>>>> parent of d86cd7f (добавил нпс и анимацию к нему)
       objectReference: {fileID: 0}
     - target: {fileID: 5628018141983903106, guid: ef67ba864d1ecc042b5f4cf48455c0a6,
         type: 3}
