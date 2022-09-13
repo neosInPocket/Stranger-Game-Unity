@@ -6,12 +6,6 @@ public class Player : Character
 {
     protected override void Update()
     {
-        GetInput();
-
-        base.Update();
-    }
-    private void GetInput()
-    {
         direction = Vector2.zero;
 
         if (Input.GetKey(KeyCode.W))
@@ -32,6 +26,7 @@ public class Player : Character
         }
 
         direction.Normalize();
-        GetComponent<Rigidbody2D>().velocity =  speed * direction;
+        GetComponent<Rigidbody2D>().velocity = speed * direction;
+        base.Animate();
     }
 }

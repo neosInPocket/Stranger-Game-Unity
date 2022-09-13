@@ -18,23 +18,15 @@ public abstract class Character : MonoBehaviour
 
     protected virtual void Update()
     {
-        Move();
+        Animate();
     }
 
-    public void Move()
+    public void Animate()
     {
-        transform.Translate(direction * speed * Time.deltaTime);
-
         if (direction.x != 0 || direction.y != 0)
         {
-            AnimateMovement(direction);
+            animator.SetFloat("x", direction.x);
+            animator.SetFloat("y", direction.y);
         }
-    }
-
-    public void AnimateMovement(Vector2 direction)
-    {
-        animator.SetFloat("x", direction.x);
-        animator.SetFloat("y", direction.y);
-
     }
 }
