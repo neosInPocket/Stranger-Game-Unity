@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 71af83f11efb4a44380ef125e1c22c6e
+guid: fce4f7b60ac19db4ebc90c28b9b934e7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,7 +116,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Finalstranger__1_0
+      name: Finalstranger__1 1_0
       rect:
         serializedVersion: 2
         x: 2760
@@ -130,14 +130,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 73d9d4b530c22e84ba5649f9b0feb70a
-      internalID: 1414713260
+      spriteID: 7934312e8153bf742923f698be5aed73
+      internalID: -83341654
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_1
+      name: Finalstranger__1 1_1
       rect:
         serializedVersion: 2
         x: 2713
@@ -151,14 +151,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f339ccbe0aad8c04682b8461fd40abe2
-      internalID: 697578082
+      spriteID: 603a3a9477bc8634e9085b9283537054
+      internalID: -685873913
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_2
+      name: Finalstranger__1 1_2
       rect:
         serializedVersion: 2
         x: 3268
@@ -172,14 +172,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8151c7aed7fff714b85fd0ad409f94c7
-      internalID: 904683014
+      spriteID: efa106ec900c92d46a55500de155fecb
+      internalID: -560763169
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_3
+      name: Finalstranger__1 1_3
       rect:
         serializedVersion: 2
         x: 3764
@@ -193,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1cf0ef5accecc0c47b2d63afe166fcaa
-      internalID: 183530604
+      spriteID: e5163356042857a4aaba324eb6cd117c
+      internalID: -1745725569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_4
+      name: Finalstranger__1 1_4
       rect:
         serializedVersion: 2
         x: 4268
@@ -214,14 +214,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c25c98ae6585d8e4e9c03f612a066724
-      internalID: -1604484242
+      spriteID: e08e7ab1e0f8f4d4a91b2583f4595bac
+      internalID: 904413077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_5
+      name: Finalstranger__1 1_5
       rect:
         serializedVersion: 2
         x: 4776
@@ -235,14 +235,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad6076202193f3449be5eb5f2f16856d
-      internalID: -317744105
+      spriteID: 90462d57a24999e419b3e00961a93766
+      internalID: -1199048372
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_6
+      name: Finalstranger__1 1_6
       rect:
         serializedVersion: 2
         x: 2740
@@ -256,14 +256,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0b2e499b928f3e46a23aa3932ca8db7
-      internalID: -2093075200
+      spriteID: 28631ec7ccc0bb649aacdfce18e9dd39
+      internalID: 456743818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_7
+      name: Finalstranger__1 1_7
       rect:
         serializedVersion: 2
         x: 3264
@@ -277,14 +277,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b51b61ac2f6366409827be43c56f415
-      internalID: -2041091678
+      spriteID: 27aa462d458ef5540bb0d31ec8f87bbc
+      internalID: -999417422
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_8
+      name: Finalstranger__1 1_8
       rect:
         serializedVersion: 2
         x: 3779
@@ -298,14 +298,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 934dbd82aa7cebe48b987a7371f96510
-      internalID: 1029859816
+      spriteID: 6e1f9f602aad2034d887044e781452ac
+      internalID: 623636186
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_9
+      name: Finalstranger__1 1_9
       rect:
         serializedVersion: 2
         x: 4250
@@ -319,14 +319,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4357fd8b0e064a2429ad4b34c35e06c9
-      internalID: 347547026
+      spriteID: b4bd87d13f0da814383fa0ec3f065c44
+      internalID: 1122229424
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_10
+      name: Finalstranger__1 1_10
       rect:
         serializedVersion: 2
         x: 4313
@@ -340,14 +340,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 690860c81a0667043ad2978021a8b306
-      internalID: 259532482
+      spriteID: f6c1546eb564cd94e9d99932477523fb
+      internalID: -1841717318
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_11
+      name: Finalstranger__1 1_11
       rect:
         serializedVersion: 2
         x: 4830
@@ -361,14 +361,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 21e1335c3b44fd84c891ea4193f650f3
-      internalID: 1115074892
+      spriteID: 8af2c99740ae34f44b6ed64b65466c52
+      internalID: -2045838114
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_12
+      name: Finalstranger__1 1_12
       rect:
         serializedVersion: 2
         x: 4705
@@ -382,14 +382,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e813e41544358de46ad3063136ae91e5
-      internalID: 1159692319
+      spriteID: 0bca7963958d6c94db5433ac9bbbe469
+      internalID: -1236517839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Finalstranger__1_13
+      name: Finalstranger__1 1_13
       rect:
         serializedVersion: 2
         x: 3803
@@ -403,8 +403,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e3c072f98454d4142ae7403f31aadb23
-      internalID: 2124982199
+      spriteID: 4025047899cd38c45b55671d236227f8
+      internalID: 919116286
       vertices: []
       indices: 
       edges: []
@@ -420,20 +420,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Finalstranger__1_13: 2124982199
-      Finalstranger__1_8: 1029859816
-      Finalstranger__1_1: 697578082
-      Finalstranger__1_3: 183530604
-      Finalstranger__1_5: -317744105
-      Finalstranger__1_4: -1604484242
-      Finalstranger__1_12: 1159692319
-      Finalstranger__1_6: -2093075200
-      Finalstranger__1_9: 347547026
-      Finalstranger__1_11: 1115074892
-      Finalstranger__1_10: 259532482
-      Finalstranger__1_7: -2041091678
-      Finalstranger__1_0: 1414713260
-      Finalstranger__1_2: 904683014
+      Finalstranger__1 1_2: -560763169
+      Finalstranger__1 1_3: -1745725569
+      Finalstranger__1 1_10: -1841717318
+      Finalstranger__1 1_6: 456743818
+      Finalstranger__1 1_0: -83341654
+      Finalstranger__1 1_12: -1236517839
+      Finalstranger__1 1_13: 919116286
+      Finalstranger__1 1_8: 623636186
+      Finalstranger__1 1_1: -685873913
+      Finalstranger__1 1_9: 1122229424
+      Finalstranger__1 1_11: -2045838114
+      Finalstranger__1 1_5: -1199048372
+      Finalstranger__1 1_4: 904413077
+      Finalstranger__1 1_7: -999417422
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
