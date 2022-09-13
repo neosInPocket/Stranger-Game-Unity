@@ -16,19 +16,22 @@ public class Player : Character
 
         if (Input.GetKey(KeyCode.W))
         {
-            direction += Vector2.up;
+            direction.y = 1;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            direction += Vector2.left;
+            direction.x = -1;
         }
         if (Input.GetKey(KeyCode.S))
         {
-            direction += Vector2.down;
+            direction.y = -1;
         }
         if (Input.GetKey(KeyCode.D))
         {
-            direction += Vector2.right;
+            direction.x = 1;
         }
+
+        direction.Normalize();
+        GetComponent<Rigidbody2D>().velocity =  speed * direction;
     }
 }

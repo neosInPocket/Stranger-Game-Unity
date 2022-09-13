@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
-    [SerializeField]
-    private float speed;
+    [SerializeField] 
+    public float speed;
 
     private Animator animator;
 
