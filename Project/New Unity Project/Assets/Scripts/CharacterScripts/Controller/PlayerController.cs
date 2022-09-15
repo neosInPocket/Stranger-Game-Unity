@@ -44,21 +44,23 @@ public class PlayerController : MonoBehaviour, ICharacterController
 
         direction.Normalize();
         GetComponent<Rigidbody2D>().velocity = direction * speed;
-        Animate(direction);
-    }
 
-    public void Animate(Vector2 direction)
-    {
         if (direction.x != 0 || direction.y != 0)
         {
-            animator.SetFloat("x", direction.x);
-            animator.SetFloat("y", direction.y);
+            AnimateMovement(direction);
         }
         else
         {
-            animator.SetFloat("x", 0);
-            animator.SetFloat("y", 0);
+            animator.SetLayerWeight(1, 0);
         }
+    }
+
+    public void AnimateMovement(Vector2 direction)
+    {
+        animator.SetLayerWeight(1, 1);
+
+        animator.SetFloat("x", direction.x);
+        animator.SetFloat("y", direction.y);
 
     }
 
