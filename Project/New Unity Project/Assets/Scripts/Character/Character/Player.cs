@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour, ICharacter
 {
-
     public float MaxHealth { get; set; } = 100;
     public float MaxMana { get; set; } = 100;
     public float Health { get; set; }

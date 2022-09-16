@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour, ICharacterController
         if (Input.GetKey(KeyCode.D))
         {
             direction.x += 1;
+            
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -53,6 +54,7 @@ public class PlayerController : MonoBehaviour, ICharacterController
         {
             animator.SetLayerWeight(1, 0);
         }
+
     }
 
     public void AnimateMovement(Vector2 direction)
@@ -61,7 +63,6 @@ public class PlayerController : MonoBehaviour, ICharacterController
 
         animator.SetFloat("x", direction.x);
         animator.SetFloat("y", direction.y);
-
     }
 
     void Start()
