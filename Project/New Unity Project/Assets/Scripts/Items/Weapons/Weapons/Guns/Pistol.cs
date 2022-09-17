@@ -35,7 +35,9 @@ public class Pistol : MonoBehaviour, IWeapon
 
     public void Fire()
     {
-        Instantiate(bullet, firePoint.position, firePoint.rotation);
+        var boolet = Instantiate(bullet, firePoint.position, firePoint.rotation);
+
+        Destroy(boolet,1);
     }
 
     void Update()
