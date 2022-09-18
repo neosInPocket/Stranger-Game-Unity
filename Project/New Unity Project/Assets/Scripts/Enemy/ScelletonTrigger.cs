@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ScelletonTrigger : MonoBehaviour
 {
+    public SpriteRenderer spriteRenderer;
+
     public float speed;
 
     public int positionOfPatrol;
@@ -17,6 +19,7 @@ public class ScelletonTrigger : MonoBehaviour
 
     bool chill = false;
     bool angry = false;
+    bool goBack = false;
 
     void Start()
     {
@@ -25,14 +28,22 @@ public class ScelletonTrigger : MonoBehaviour
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, point.position) < positionOfPatrol)
+        if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && angry == false)
         {
-            Chill();
+            chill = true;
         }
 
         if (Vector2.Distance(transform.position, player.position) < stoppingDistance)
         {
-            Angry();
+            angry = true;
+            chill = false;
+            goBack = false;
+        }
+
+        if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
+        {
+            goBack = true;
+            angry = false;
         }
 
         if (chill == true)
@@ -43,25 +54,34 @@ public class ScelletonTrigger : MonoBehaviour
         {
             Angry();
         }
+        else if(goBack == true)
+        {
+            GoBack();
+        }
     }
 
     void Chill()
     {
-        //if (transform.position.x > point.position.x + positionOfPatrol)
-        //{
-        //    moovingRight = false;
-        //}
+        if (transform.position.x > point.position.x + positionOfPatrol)
+        {
+            moovingRight = false;
+            //spriteRenderer.flipX = true;
+
+        }
         if (transform.position.x < point.position.x - positionOfPatrol)
         {
             moovingRight = true;
+            //spriteRenderer.flipX = false;
         }
 
-        //if (moovingRight)
-        //{
-        //    transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
-        //}
-        if (moovingRight == false)
+        if (moovingRight)
         {
+            
+            transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
+        }
+        else
+        {
+            
             transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
         }
     }
@@ -69,5 +89,10 @@ public class ScelletonTrigger : MonoBehaviour
     void Angry()
     {
         transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+    }
+
+    void GoBack()
+    {
+        transform.position = Vector2.MoveTowards(transform.position, point.position, speed * Time.deltaTime);
     }
 }
