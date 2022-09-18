@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CoreWorld.unity
     guid: def29fc7fe136714dafabf1ace645cfc
+  - enabled: 1
+    path: Assets/Scenes/Scelleton.unity
+    guid: 7cd9ed972a3fe0a4aac365a277a2139f
   m_configObjects: {}
