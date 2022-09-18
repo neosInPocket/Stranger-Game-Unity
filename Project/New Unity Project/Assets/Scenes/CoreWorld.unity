@@ -20586,7 +20586,7 @@ MonoBehaviour:
   speed: 3
   positionOfPatrol: 5
   point: {fileID: 1360036411}
-  stoppingDistance: 10
+  stoppingDistance: 8
 --- !u!61 &981117480
 BoxCollider2D:
   m_ObjectHideFlags: 0

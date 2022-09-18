@@ -38,6 +38,8 @@ public class ScelletonTrigger : MonoBehaviour
             angry = true;
             chill = false;
             goBack = false;
+
+            speed = 6;
         }
 
         if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
@@ -65,13 +67,13 @@ public class ScelletonTrigger : MonoBehaviour
         if (transform.position.x > point.position.x + positionOfPatrol)
         {
             moovingRight = false;
-            //spriteRenderer.flipX = true;
+            spriteRenderer.flipX = true;
 
         }
         if (transform.position.x < point.position.x - positionOfPatrol)
         {
             moovingRight = true;
-            //spriteRenderer.flipX = false;
+            spriteRenderer.flipX = false;
         }
 
         if (moovingRight)
