@@ -9,9 +9,9 @@ public class LoadSceneTwoTrigger : MonoBehaviour
     [Header("Индекс сцены")]
     public int sceneIndex;
 
-    void OnTriggerEnter2D(Collider myCollider)
+    private void OnCollisionEnter2D(Collision2D myCollider)
     {
-        if (myCollider.tag == ("EnemyScelleton"))
+        if (myCollider.gameObject.name == "Player")
         {
             SceneManager.LoadScene(sceneIndex);
         }

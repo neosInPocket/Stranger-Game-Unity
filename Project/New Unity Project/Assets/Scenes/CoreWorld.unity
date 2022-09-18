@@ -20561,8 +20561,8 @@ GameObject:
   - component: {fileID: 981117482}
   - component: {fileID: 981117481}
   - component: {fileID: 981117480}
+  - component: {fileID: 981117484}
   - component: {fileID: 981117479}
-  - component: {fileID: 981117485}
   m_Layer: 0
   m_Name: EnemyTrigger_1
   m_TagString: EnemyScelleton
@@ -20700,27 +20700,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &981117485
-Rigidbody2D:
-  serializedVersion: 4
+--- !u!114 &981117484
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 981117478}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e47717d4352c47f4ea4248abfc90134e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneIndex: 2
 --- !u!1001 &986317700
 PrefabInstance:
   m_ObjectHideFlags: 0
