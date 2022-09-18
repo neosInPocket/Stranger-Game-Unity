@@ -7064,7 +7064,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1159563891}
-  bullet: {fileID: 6337368540584731677, guid: 2a0d1d0034f349a4bbcb8a3aac577146, type: 3}
+  bulletPref: {fileID: 6337368540584731677, guid: 2a0d1d0034f349a4bbcb8a3aac577146,
+    type: 3}
   firePoint: {fileID: 1076583431}
 --- !u!1 &561540670
 GameObject:

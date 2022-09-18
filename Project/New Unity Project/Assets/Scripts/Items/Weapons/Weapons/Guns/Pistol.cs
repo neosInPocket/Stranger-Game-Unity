@@ -12,34 +12,66 @@ public class Pistol : MonoBehaviour, IWeapon
     public float FireRate { get; set; } = 2;
     public int MagazineCapacity { get; set; } = 7;
     public float ReloadTime { get; set; } = 1.5f;
-    public float AmmoAmount { get; set; } = 50;
+    public int AmmoAmount { get; set; } = 50;
+
     public Camera cam;
 
+    
+    [SerializeField] private GameObject bulletPref;
+    [SerializeField] private Transform firePoint;
     private int magazine;
-    public GameObject bullet;
-    public Transform firePoint;
-    public void Reload()
+    private bool isReloading;
+    public IEnumerator Reload()
     {
-        if (magazine != MagazineCapacity)
+        if (isReloading)
         {
-            AnimateReload();
-            AmmoAmount = MagazineCapacity - magazine;
-            magazine = MagazineCapacity;
+            yield break;
         }
-    }
-
-    public IEnumerator AnimateReload()
-    {
-        yield return new WaitForSeconds(ReloadTime);    
+        isReloading = true;
+        if (magazine != MagazineCapacity && AmmoAmount != 0)
+        {
+            yield return new WaitForSeconds(ReloadTime);
+            if (AmmoAmount - MagazineCapacity < 0)
+            {
+                magazine = AmmoAmount;
+                AmmoAmount = 0;
+            }
+            else
+            {
+                AmmoAmount -= MagazineCapacity - magazine;
+                magazine = MagazineCapacity;
+            }
+            Debug.Log("Reloaded");
+            isReloading = false;
+        }
     }
 
     public void Fire()
     {
-        var boolet = Instantiate(bullet, firePoint.position, firePoint.rotation);
-
-        Destroy(boolet,1);
+        if (magazine != 0)
+        {
+            var bullet = Instantiate(bulletPref, firePoint.position, firePoint.rotation);
+            Destroy(bullet, 1);
+            magazine--;
+        }
+        else
+        {
+            StartCoroutine(Reload());
+        }
     }
 
+    private void RotateGun()
+    {
+        Vector2 lookDir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle, UnityEngine.Vector3.forward);
+        transform.rotation = rotation;
+    }
+
+    void Start()
+    {
+        magazine = 7;
+    }
     void Update()
     {
         if (Input.GetButtonDown("Fire1"))
@@ -47,10 +79,12 @@ public class Pistol : MonoBehaviour, IWeapon
             Fire();
         }
 
-        Vector2 lookDir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, UnityEngine.Vector3.forward);
-        transform.rotation = rotation;
+        if (Input.GetKey(KeyCode.R))
+        {
+            StartCoroutine(Reload());
+        }
+
+        RotateGun();
 
     }
 }
