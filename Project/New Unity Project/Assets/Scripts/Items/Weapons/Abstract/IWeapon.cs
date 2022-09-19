@@ -8,5 +8,5 @@ public interface IWeapon
     public int AmmoAmount { get; set; }
 
     public IEnumerator Reload();
-    public void Fire();
+    public IEnumerator Fire();
 }

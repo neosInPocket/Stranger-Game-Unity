@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Numerics;
+using System.Security.Cryptography;
 using Unity.VisualScripting;
 using UnityEngine;
 using Quaternion = UnityEngine.Quaternion;
@@ -14,13 +15,13 @@ public class Pistol : MonoBehaviour, IWeapon
     public float ReloadTime { get; set; } = 1.5f;
     public int AmmoAmount { get; set; } = 50;
 
-    public Camera cam;
-
     
     [SerializeField] private GameObject bulletPref;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject gunshotEffect;
     private int magazine;
     private bool isReloading;
+    private bool isFiring;
     public IEnumerator Reload()
     {
         if (isReloading)
@@ -46,26 +47,28 @@ public class Pistol : MonoBehaviour, IWeapon
         }
     }
 
-    public void Fire()
+    public IEnumerator Fire()
     {
+        if (isFiring)
+        {
+            yield break;
+        }
+        
         if (magazine != 0)
         {
+            isFiring = true;
             var bullet = Instantiate(bulletPref, firePoint.position, firePoint.rotation);
+            var effect = Instantiate(gunshotEffect, firePoint.position, firePoint.rotation);
+            Destroy(effect, 0.4f);
             Destroy(bullet, 1);
             magazine--;
+            yield return new WaitForSeconds(1 / FireRate);
+            isFiring = false;
         }
         else
         {
             StartCoroutine(Reload());
         }
-    }
-
-    private void RotateGun()
-    {
-        Vector2 lookDir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, UnityEngine.Vector3.forward);
-        transform.rotation = rotation;
     }
 
     void Start()
@@ -76,15 +79,12 @@ public class Pistol : MonoBehaviour, IWeapon
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            Fire();
+            StartCoroutine(Fire());
         }
 
         if (Input.GetKey(KeyCode.R))
         {
             StartCoroutine(Reload());
         }
-
-        RotateGun();
-
     }
 }
