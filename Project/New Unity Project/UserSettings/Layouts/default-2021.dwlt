@@ -67,7 +67,7 @@ MonoBehaviour:
     width: 1920
     height: 997
   m_ShowMode: 4
-  m_Title: Project
+  m_Title: Game
   m_RootView: {fileID: 12}
   m_MinSize: {x: 875, y: 421}
   m_MaxSize: {x: 10000, y: 10000}
@@ -91,8 +91,8 @@ MonoBehaviour:
     y: 0
     width: 670
     height: 931
-  m_MinSize: {x: 360, y: 221}
-  m_MaxSize: {x: 4000, y: 4021}
+  m_MinSize: {x: 360, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 17}
   m_Panes:
   - {fileID: 17}
@@ -122,7 +122,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 100}
   m_MaxSize: {x: 8096, y: 8096}
   vertical: 0
-  controlID: 103
+  controlID: 47
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -172,7 +172,7 @@ MonoBehaviour:
   m_MinSize: {x: 275, y: 71}
   m_MaxSize: {x: 4000, y: 4021}
   vertical: 0
-  controlID: 24
+  controlID: 79
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 33
+  controlID: 58
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -245,8 +245,8 @@ MonoBehaviour:
     y: 0
     width: 317
     height: 690
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 221}
+  m_MaxSize: {x: 4001, y: 4021}
   m_ActualView: {fileID: 21}
   m_Panes:
   - {fileID: 21}
@@ -374,7 +374,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 34
+  controlID: 59
 --- !u!114 &16
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -472,10 +472,10 @@ MonoBehaviour:
     m_SaveData: []
   m_ShowAlpha: 0
   m_MipLevel: 0
-  m_Zoom: 0.61084515
-  m_ScrollPosition: {x: 9.126304, y: 37.126877}
+  m_Zoom: 2.2992187
+  m_ScrollPosition: {x: 0, y: 0}
   m_SelectedObject: {fileID: 0}
-  m_SelectedSpriteRectGUID: 5e97eb03825dee720800000000000000
+  m_SelectedSpriteRectGUID: 00000000000000000000000000000000
   m_LastUsedModuleTypeName: UnityEditor.U2D.Sprites.SpriteFrameModule
 --- !u!114 &18
 MonoBehaviour:
@@ -555,22 +555,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Sprites/UI/Inventory
+    - Assets/Sprites/Items/Weapons/Attachments
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Sprites/UI/Inventory
+  - Assets/Sprites/Items/Weapons/Attachments
   m_LastFoldersGridSize: -1
   m_LastProjectPath: E:\repos\Project-of-the-year\Project\New Unity Project
   m_LockTracker:
     m_IsLocked: 1
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 268}
-    m_SelectedIDs: f6650000
-    m_LastClickedID: 26102
-    m_ExpandedIDs: 00000000786500007a6500007c6500007e65000080650000826500008465000086650000886500008a6500008c6500008e650000906500009265000094650000966500009865000000ca9a3b
+    scrollPos: {x: 0, y: 572}
+    m_SelectedIDs: e2b20000
+    m_LastClickedID: 45794
+    m_ExpandedIDs: 00000000886500008a6500008c6500008e65000090650000926500009465000096650000986500009a6500009c6500009e650000a2650000a4650000a8650000ee65000002660000288300003284000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -598,7 +598,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000786500007a6500007c6500007e65000080650000826500008465000086650000886500008a6500008c6500008e6500009065000092650000946500009665000098650000
+    m_ExpandedIDs: 00000000886500008a6500008c6500008e65000090650000926500009465000096650000986500009a6500009c6500009e650000a0650000a2650000a4650000a6650000a8650000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -728,9 +728,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 865b0000
-      m_LastClickedID: 23430
-      m_ExpandedIDs: 66e2ffff2afbffff865b0000
+      m_SelectedIDs: 
+      m_LastClickedID: 0
+      m_ExpandedIDs: 6c39ffff2e57ffff6696ffff249dffff1ac6ffff78c6ffff3ae1ffff12e2ffff2afbffff825b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1002,9 +1002,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 746.1822, y: 619.29004, z: -6.071219}
+    m_Target: {x: 1244.15, y: 538.26355, z: -4.560449}
     speed: 2
-    m_Value: {x: 750.70667, y: 619.5888, z: -5.7967587}
+    m_Value: {x: 1236.7201, y: 541.4245, z: -4.3509116}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -1055,9 +1055,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 637.35284
+    m_Target: 486.59174
     speed: 2
-    m_Value: 609.90704
+    m_Value: 465.63803
   m_Ortho:
     m_Target: 1
     speed: 2
