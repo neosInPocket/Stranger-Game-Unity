@@ -9,7 +9,7 @@ public class Player : MonoBehaviour, ICharacter
     public float Health { get; set; } = 100;
     public float Defence { get; set; }
     public float Mana { get; set; } = 100;
-    public IWeapon Weapon { get; set; }
+    public GunWeapon Weapon { get; set; }
 
     public void GetDamage(float damage)
     {

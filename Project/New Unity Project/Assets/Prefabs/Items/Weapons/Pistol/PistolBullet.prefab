@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5494056232396023515}
   - component: {fileID: 2807440429599295278}
   - component: {fileID: 4101991682593752462}
-  - component: {fileID: 8139556161241679803}
+  - component: {fileID: 7800620314483769430}
   m_Layer: 0
   m_Name: PistolBullet
   m_TagString: Untagged
@@ -124,7 +124,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &8139556161241679803
+--- !u!114 &7800620314483769430
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
