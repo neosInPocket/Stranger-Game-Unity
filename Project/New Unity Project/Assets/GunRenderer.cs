@@ -18,21 +18,17 @@ public class GunRenderer : MonoBehaviour
     {
         Vector2 lookDir = cam.ScreenToWorldPoint(Input.mousePosition) - parent.transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.AngleAxis(angle, UnityEngine.Vector3.forward);
+        Vector3 localScale = Vector3.one;
         if (angle > 90f || angle < -90f)
         {
-            rotation.y = 180f;
+            localScale.y = -1f;
         }
-        //else
-        //{
-        //    rotation.y = 0f;
-        //}
-        counter = rotation;
-        parent.transform.rotation = rotation;
-    }
+        else
+        {
+            localScale.y = 1f;
+        }
 
-    private void FlipGun()
-    {
-        parent.transform.Rotate(0f, 180f, 0f);
+        parent.transform.eulerAngles = new Vector3(0f, 0f, angle);
+        parent.transform.localScale = localScale;
     }
 }
