@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Numerics;
+using UnityEngine.EventSystems;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
 
@@ -32,7 +30,7 @@ public class PlayerController : MonoBehaviour, ICharacterController
         if (Input.GetKey(KeyCode.D))
         {
             direction.x += 1;
-            
+
         }
         if (Input.GetKey(KeyCode.S))
         {
@@ -72,6 +70,10 @@ public class PlayerController : MonoBehaviour, ICharacterController
 
     void Update()
     {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
         Move();
     }
 }
