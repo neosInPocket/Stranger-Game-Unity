@@ -110,7 +110,7 @@ TextureImporter:
         x: 6
         y: 52
         width: 235
-        height: 341
+        height: 419
       alignment: 9
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,9 +128,9 @@ TextureImporter:
       name: trashCan_sprite_1
       rect:
         serializedVersion: 2
-        x: 250
+        x: 251
         y: 52
-        width: 225
+        width: 235
         height: 419
       alignment: 9
       pivot: {x: 0.5, y: 0}
