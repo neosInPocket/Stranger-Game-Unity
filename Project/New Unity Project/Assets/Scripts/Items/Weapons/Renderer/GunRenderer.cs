@@ -10,6 +10,7 @@ public class GunRenderer : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject fireEffect;
     [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform rotatePoint;
     private bool isFlipped;
 
     void Awake()
@@ -40,7 +41,7 @@ public class GunRenderer : MonoBehaviour
 
     private void RotateGun()
     {
-        Vector2 lookDir = cam.ScreenToWorldPoint(Input.mousePosition) - parent.transform.position;
+        Vector2 lookDir = cam.ScreenToWorldPoint(Input.mousePosition) - rotatePoint.transform.position;
         float angle = Mathf.Atan2(lookDir.y, lookDir.x) * Mathf.Rad2Deg;
         Vector3 localScale = Vector3.one;
         if (angle > 90f || angle < -90f)
@@ -52,7 +53,7 @@ public class GunRenderer : MonoBehaviour
             localScale.y = 1f;
         }
 
-        parent.transform.eulerAngles = new Vector3(0f, 0f, angle);
-        parent.transform.localScale = localScale;
+        rotatePoint.transform.eulerAngles = new Vector3(0f, 0f, angle);
+        rotatePoint.transform.localScale = localScale;
     }
 }
