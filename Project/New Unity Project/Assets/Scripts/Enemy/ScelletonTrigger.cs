@@ -23,7 +23,7 @@ public class ScelletonTrigger : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        player = GameObject.FindObjectOfType<Player>().transform;
     }
 
     void Update()

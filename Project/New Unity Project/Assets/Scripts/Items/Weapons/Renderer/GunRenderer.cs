@@ -30,7 +30,7 @@ public class GunRenderer : MonoBehaviour
         var bulletInst = Instantiate(bullet, firePoint.position, firePoint.rotation);
         var effectInst = Instantiate(fireEffect, firePoint.position, firePoint.rotation);
 
-        Destroy(bulletInst, 3f);
+        Destroy(bulletInst, 1f);
         Destroy(effectInst, .4f);
     }
 
@@ -52,7 +52,6 @@ public class GunRenderer : MonoBehaviour
         {
             localScale.y = 1f;
         }
-
         rotatePoint.transform.eulerAngles = new Vector3(0f, 0f, angle);
         rotatePoint.transform.localScale = localScale;
     }
