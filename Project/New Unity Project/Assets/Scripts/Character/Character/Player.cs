@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Assets.Scripts.Inventory;
+using Assets.Scripts.Inventory.Abstract;
 using UnityEngine;
 
 public class Player : MonoBehaviour, ICharacter
@@ -10,7 +12,12 @@ public class Player : MonoBehaviour, ICharacter
     public float Defence { get; set; }
     public float Mana { get; set; } = 100;
     public GunWeapon Weapon { get; set; }
+    private Inventory inventory;
 
+    void Start()
+    {
+        inventory = new Inventory(12);
+    }
     public void GetDamage(float damage)
     {
         if (Health - damage <= 0)

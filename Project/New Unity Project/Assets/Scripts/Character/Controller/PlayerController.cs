@@ -1,3 +1,4 @@
+using TMPro.EditorUtilities;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
@@ -7,6 +8,9 @@ public class PlayerController : MonoBehaviour, ICharacterController
     [SerializeField]
     private float speed = 5;
     private Animator animator;
+
+    [SerializeField]
+    private GameObject _inventory;
 
     public float Speed
     {
@@ -70,6 +74,17 @@ public class PlayerController : MonoBehaviour, ICharacterController
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (_inventory.activeSelf)
+            {
+                _inventory.SetActive(false);
+            }
+            else
+            {
+                _inventory.SetActive(true);
+            }
+        }
         if (EventSystem.current.IsPointerOverGameObject())
         {
             return;

@@ -6,8 +6,6 @@ namespace Assets.Scripts.Inventory.Abstract
     {
         bool isEquiped { get; set; }
         Type type { get; }
-        int maxItemsPerSlot { get; }
-        int amount { get; set; }
 
         IInventoryItem Clone();
     }

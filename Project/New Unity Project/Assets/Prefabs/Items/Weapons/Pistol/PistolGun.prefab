@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 7868309407791836983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.228, y: 0.381, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7246084, y: 0.7246084, z: 0.7246084}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7868309406194484325}
@@ -159,7 +159,7 @@ SpriteRenderer:
   m_SortingLayerID: -1869315837
   m_SortingLayer: 2
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: ee58f2954ace48d4da5dd9f3edcb6722, type: 3}
+  m_Sprite: {fileID: -1084411564, guid: 2d880a454bb7f6d4fab5e262ed420212, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -182,9 +182,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ceda57c20ed20548ae62729c8a2c1ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
-  bulletPref: {fileID: 6337368540584731677, guid: 2a0d1d0034f349a4bbcb8a3aac577146,
-    type: 3}
-  firePoint: {fileID: 7868309406194484325}
-  gunshotEffect: {fileID: 3806968522396846925, guid: ee75f6206c710ac4bbb15328593eea88,
-    type: 3}
+  gunsInfo: {fileID: 0}

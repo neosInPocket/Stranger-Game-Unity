@@ -6,6 +6,6 @@ public class HealthPotion : HealthPotionAbstract
 {
     void Awake()
     {
-        healthAmount = 30;
+        healthAmount = _potionInfo.healthAmount;
     }
 }

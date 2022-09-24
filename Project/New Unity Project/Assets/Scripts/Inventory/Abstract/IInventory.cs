@@ -8,13 +8,10 @@ namespace Assets.Scripts.Inventory.Abstract
         bool isFull { get; }
 
         IInventoryItem GetItem(Type itemType);
-        IInventoryItem[] GetAllItems();
-        IInventoryItem[] GetAllItems(Type itemType);
         IInventoryItem[] GetEquipedItems();
-        int GetItemsAmount(Type itemType);
 
         bool TryToAdd(object sender, IInventoryItem item);
-        void Remove(object sender, Type itemType, int amount = 1);
+        void Remove(object sender, Type itemType);
         bool HasItem(Type itemType, out IInventoryItem item);
     }
 }
