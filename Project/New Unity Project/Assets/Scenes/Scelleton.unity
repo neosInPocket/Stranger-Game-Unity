@@ -1081,12 +1081,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752133586}
   m_CullTransparentMesh: 1
---- !u!1 &761295554 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 390680822064443667, guid: 28c2d8684db4c274995a7ba68d796484,
-    type: 3}
-  m_PrefabInstance: {fileID: 1714629639}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &773521017
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1570,7 +1564,6 @@ MonoBehaviour:
     collectObjectives:
     - amount: 5
       type: SmallHealthPoiton_item
-      go: {fileID: 761295554}
   questLog: {fileID: 1117953693}
 --- !u!1 &961906442
 GameObject:

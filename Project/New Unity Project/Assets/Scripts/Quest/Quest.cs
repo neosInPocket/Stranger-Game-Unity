@@ -66,7 +66,7 @@ public class Quest
 }
 
 [Serializable]
-public abstract class Objective 
+public abstract class Objective : MonoBehaviour
 {
     [SerializeField] private int amount;
     [SerializeField] private string type;
