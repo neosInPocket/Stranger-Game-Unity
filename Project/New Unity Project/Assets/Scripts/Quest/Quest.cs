@@ -102,7 +102,7 @@ public abstract class Objective
 [Serializable]
 public class CollectObjective : Objective
 {
-    public void UpdateItemCount(Item item)
+    public void UpdateItemCount()
     {
         
     }
