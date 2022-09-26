@@ -2,79 +2,103 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Threading;
-using Unity.VisualScripting.ReorderableList;
-using UnityEngine;
 
-namespace Assets.Scripts.Inventory
+public class Inventory : IInventory
 {
-    public class Inventory : IInventory
+    public int capacity { get; set; }
+    public bool isFull => _slots.All(slot => isFull);
+
+    private List<IInventorySlot> _slots;
+    public Action OnInventoryChanged;
+
+    public Inventory(int capacity)
     {
-        public int capacity { get; set; }
-        public bool isFull => _slots.All(slot => isFull);
+        this.capacity = capacity;
 
-        private List<IInventorySlot> _slots;
-
-        public Inventory(int capacity)
+        _slots = new List<IInventorySlot>(capacity);
+        for (int i = 0; i < capacity; i++)
         {
-            this.capacity = capacity;
+            _slots.Add(new InventorySlot());
+        }
+    }
 
-            _slots = new List<IInventorySlot>(capacity);
-            for (int i = 0; i < capacity; i++)
+    public IInventoryItem[] GetEquipedItems()
+    {
+        var equipedItems = new List<IInventoryItem>();
+        var requiredSlots = _slots.FindAll(slot => !slot.isEmpty && slot.item.isEquiped);
+
+        foreach (var slot in requiredSlots)
+        {
+            equipedItems.Add(slot.item);
+        }
+
+        return equipedItems.ToArray();
+    }
+
+    public IInventoryItem GetItem(Type itemType)
+    {
+        return _slots.Find(slot => slot.itemType == itemType).item;
+    }
+
+    public bool HasItem(Type itemType, out IInventoryItem item)
+    {
+        item = GetItem(itemType);
+        return item != null;
+    }
+
+    public void Remove(object sender, Type itemType)
+    {
+        foreach (var slot in _slots)
+        {
+            if (slot.itemType == itemType)
             {
-                _slots.Add(new InventorySlot());
+                slot.SetItem(null);
             }
         }
+        OnInventoryChanged?.Invoke();
+    }
 
-        public IInventoryItem[] GetEquipedItems()
+    public bool TryToAdd(object sender, IInventoryItem item)
+    {
+        IInventorySlot emptySlot = _slots.Find(i => i.isEmpty);
+
+        if (emptySlot != null)
         {
-            var equipedItems = new List<IInventoryItem>();
-            var requiredSlots = _slots.FindAll(slot => !slot.isEmpty && slot.item.isEquiped);
+            emptySlot.SetItem(item);
+            OnInventoryChanged?.Invoke();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 
-            foreach (var slot in requiredSlots)
-            {
-                equipedItems.Add(slot.item);
-            }
-
-            return equipedItems.ToArray();
+    public void TransitFromSlotToSlot(IInventorySlot fromSlot, IInventorySlot toSlot)
+    {
+        if (fromSlot.isEmpty)
+        {
+            return;
         }
 
-        public IInventoryItem GetItem(Type itemType)
+        if (!toSlot.isEmpty)
         {
-            return _slots.Find(slot => slot.itemType == itemType).item;
+            return;
         }
 
-        public bool HasItem(Type itemType, out IInventoryItem item)
-        {
-            item = GetItem(itemType);
-            return item != null;
-        }
+        var item = fromSlot.item;
+        fromSlot.SetItem(null);
+        toSlot.SetItem(item);
+        OnInventoryChanged?.Invoke();
+    }
 
-        public void Remove(object sender, Type itemType)
+    public IInventorySlot[] GetAllSlots()
+    {
+        var slots = new List<IInventorySlot>();
+        foreach (var slot in _slots)
         {
-            foreach (var slot in _slots)
-            {
-                if (slot.itemType == itemType)
-                {
-                    slot.SetItem(null);
-                }
-            }
+            slots.Add(slot);
         }
-
-        public bool TryToAdd(object sender, IInventoryItem item)
-        {
-            IInventorySlot emptySlot = _slots.Find(i => i.isEmpty);
-
-            if (emptySlot != null)
-            {
-                emptySlot.SetItem(item);
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        return slots.ToArray();
     }
 }

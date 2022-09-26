@@ -1,8 +1,6 @@
 ﻿using Assets.Scripts.Inventory.Abstract;
 using System;
 
-namespace Assets.Scripts.Inventory
-{
     public class InventorySlot : IInventorySlot
     {
         public bool isEmpty => item == null;
@@ -25,4 +23,4 @@ namespace Assets.Scripts.Inventory
             this.item = item;
         }
     }
-}
+

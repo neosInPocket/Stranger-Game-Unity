@@ -1,13 +1,10 @@
 using System;
+using UnityEngine;
 
-namespace Assets.Scripts.Inventory.Abstract
+public interface IInventoryItem
 {
-    public interface IInventoryItem
-    {
-        bool isEquiped { get; set; }
-        Type type { get; }
-
-        IInventoryItem Clone();
-    }
+    bool isEquiped { get; set; }
+    Type type { get; }
+    InventoryItemInfo info { get; }
 }
 
