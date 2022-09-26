@@ -9329,6 +9329,11 @@ PrefabInstance:
       propertyPath: runes.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5997224648939805555, guid: c5bdca1933fde624698bb8c6d6daa44b,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7947911505737750448, guid: c5bdca1933fde624698bb8c6d6daa44b,
         type: 3}
       propertyPath: m_RootOrder
@@ -90330,24 +90335,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1080981070}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1336759461 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 390680822064443667, guid: 2686111ff7e16474fbc51e6122f67aee,
-    type: 3}
-  m_PrefabInstance: {fileID: 390680821295580182}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1336759466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336759461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b4dcb62de4a1f4c99dfec9033dc8d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1340611511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: f681a54372d73d74785b9c9d4ac477e8,
@@ -99250,6 +99237,11 @@ PrefabInstance:
       propertyPath: m_ConstraintCount
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 8425852906329360874, guid: 09bfe512afc7a2b4392da9ca4059a2ea,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8425852906856680976, guid: 09bfe512afc7a2b4392da9ca4059a2ea,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -99393,7 +99385,7 @@ PrefabInstance:
     - target: {fileID: 8425852907690725727, guid: 09bfe512afc7a2b4392da9ca4059a2ea,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8425852908399570338, guid: 09bfe512afc7a2b4392da9ca4059a2ea, type: 3}

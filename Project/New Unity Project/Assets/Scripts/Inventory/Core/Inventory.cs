@@ -40,6 +40,20 @@ public class Inventory : IInventory
         return _slots.Find(slot => slot.itemType == itemType).item;
     }
 
+    public IInventoryItem[] GetAllItems(string id)
+    {
+        List<IInventoryItem> items = new List<IInventoryItem>();
+        foreach (var slot in _slots)
+        {
+            if (slot.item.info.id == id)
+            {
+                items.Add(slot.item);
+            }
+        }
+
+        return items.ToArray();
+    }
+
     public bool HasItem(Type itemType, out IInventoryItem item)
     {
         item = GetItem(itemType);

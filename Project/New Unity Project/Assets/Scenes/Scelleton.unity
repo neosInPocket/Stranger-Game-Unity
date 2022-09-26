@@ -1306,6 +1306,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallHealthPoiton_item (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 390680822064443678, guid: 28c2d8684db4c274995a7ba68d796484,
+        type: 3}
+      propertyPath: _info
+      value: 
+      objectReference: {fileID: 11400000, guid: cdd288f092ea6c743a76704841fed9b6,
+        type: 2}
+    - target: {fileID: 390680822064443678, guid: 28c2d8684db4c274995a7ba68d796484,
+        type: 3}
+      propertyPath: potionInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: ce13297d2922cae4c9551f71bc5cc0f7,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28c2d8684db4c274995a7ba68d796484, type: 3}
 --- !u!1 &902356449

@@ -2,6 +2,10 @@ using Assets.Scripts.Inventory;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using Assets.Scripts.Inventory.Abstract;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [Serializable]
@@ -62,7 +66,7 @@ public class Quest
 }
 
 [Serializable]
-public abstract class Objective
+public abstract class Objective : MonoBehaviour
 {
     [SerializeField] private int amount;
     [SerializeField] private string type;
@@ -102,9 +106,34 @@ public abstract class Objective
 [Serializable]
 public class CollectObjective : Objective
 {
-    public void UpdateItemCount()
+    [SerializeField] private GameObject go;
+    private UIInventory inv;
+    private int objectiveAmount;
+    private string type;
+
+    void Awake()
     {
-        
+        inv = go.GetComponent<UIInventory>();
+        inv.inventory.OnInventoryChanged += OnInventoryChanged;
+    }
+    public void UpdateItemCount(IInventoryItem item)
+    {
+        var info = item.info.id;
+        var inv = new Inventory(12);
+        inv.OnInventoryChanged += OnInventoryChanged;
+    }
+
+    private void OnInventoryChanged()
+    {
+        if (objectiveAmount == inv.inventory.GetAllItems(type).Length)
+        {
+            QuestEnd();
+        }
+    }
+
+    void QuestEnd()
+    {
+        var slots = inv.inventory.GetAllSlots();
     }
 }
 

@@ -58,7 +58,14 @@ public class PlayerController : MonoBehaviour, ICharacterController
         }
 
     }
-
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        IInventoryItem item = collider.gameObject.GetComponent<HealthPotion>();
+        if (item != null)
+        {
+            Debug.Log("ok");
+        }
+    }
     public void AnimateMovement(Vector2 direction)
     {
         animator.SetLayerWeight(1, 1);
