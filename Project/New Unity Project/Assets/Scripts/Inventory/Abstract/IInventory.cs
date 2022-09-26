@@ -1,15 +1,18 @@
 ﻿using System;
 
-public interface IInventory
+namespace Assets.Scripts.Inventory.Abstract
 {
-    int capacity { get; set; }
-    bool isFull { get; }
+    public interface IInventory
+    {
+        int capacity { get; set; }
+        bool isFull { get; }
 
-    IInventoryItem GetItem(Type itemType);
-    IInventoryItem[] GetEquipedItems();
+        IInventoryItem GetItem(Type itemType);
+        IInventoryItem[] GetEquipedItems();
 
-    bool TryToAdd(object sender, IInventoryItem item);
-    void Remove(object sender, Type itemType);
-    bool HasItem(Type itemType, out IInventoryItem item);
+        bool TryToAdd(object sender, IInventoryItem item);
+        void Remove(object sender, Type itemType);
+        bool HasItem(Type itemType, out IInventoryItem item);
+    }
 }
 
