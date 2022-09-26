@@ -10,8 +10,8 @@ namespace Assets.Scripts.Inventory.Abstract
         IInventoryItem GetItem(Type itemType);
         IInventoryItem[] GetEquipedItems();
 
-        bool TryToAdd(object sender, IInventoryItem item);
-        void Remove(object sender, Type itemType);
+        bool TryToAdd(IInventoryItem item);
+        void Remove(Type itemType);
         bool HasItem(Type itemType, out IInventoryItem item);
     }
 }

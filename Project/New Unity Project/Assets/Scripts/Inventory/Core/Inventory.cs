@@ -60,7 +60,7 @@ public class Inventory : IInventory
         return item != null;
     }
 
-    public void Remove(object sender, Type itemType)
+    public void Remove(Type itemType)
     {
         foreach (var slot in _slots)
         {
@@ -72,7 +72,7 @@ public class Inventory : IInventory
         OnInventoryChanged?.Invoke();
     }
 
-    public bool TryToAdd(object sender, IInventoryItem item)
+    public bool TryToAdd(IInventoryItem item)
     {
         IInventorySlot emptySlot = _slots.Find(i => i.isEmpty);
 
@@ -101,7 +101,7 @@ public class Inventory : IInventory
         }
 
         var item = fromSlot.item;
-        fromSlot.SetItem(null);
+        fromSlot.Clear();
         toSlot.SetItem(item);
         OnInventoryChanged?.Invoke();
     }

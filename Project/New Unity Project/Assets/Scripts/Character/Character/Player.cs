@@ -12,11 +12,12 @@ public class Player : MonoBehaviour, ICharacter
     public float Defence { get; set; }
     public float Mana { get; set; } = 100;
     public GunWeapon Weapon { get; set; }
-    private Inventory inventory;
+    public Inventory inventory { get; private set; }
+    [SerializeField] private GameObject uiInventory;
 
     void Start()
     {
-        inventory = new Inventory(12);
+        inventory = uiInventory.GetComponent<UIInventory>().inventory;
     }
     public void GetDamage(float damage)
     {

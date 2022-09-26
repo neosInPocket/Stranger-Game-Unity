@@ -5,13 +5,10 @@ using Vector2 = UnityEngine.Vector2;
 
 public class PlayerController : MonoBehaviour, ICharacterController
 {
-    [SerializeField]
-    private float speed = 5;
+    [SerializeField]  private float speed = 5;
     private Animator animator;
 
-    [SerializeField]
-    private GameObject _inventory;
-
+    [SerializeField] private GameObject _inventory;
     public float Speed
     {
         get
@@ -57,14 +54,6 @@ public class PlayerController : MonoBehaviour, ICharacterController
             animator.SetLayerWeight(1, 0);
         }
 
-    }
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        IInventoryItem item = collider.gameObject.GetComponent<HealthPotion>();
-        if (item != null)
-        {
-            Debug.Log("ok");
-        }
     }
     public void AnimateMovement(Vector2 direction)
     {
