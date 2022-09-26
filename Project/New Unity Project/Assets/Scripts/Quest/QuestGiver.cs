@@ -10,6 +10,5 @@ public class QuestGiver : MonoBehaviour
     private void Awake()
     {
         questLog.AcceptQuest(quests[0]);
-        //questLog.AcceptQuest(quests[1]);
     }
 }

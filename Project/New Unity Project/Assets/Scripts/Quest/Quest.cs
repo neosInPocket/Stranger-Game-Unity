@@ -1,3 +1,4 @@
+using Assets.Scripts.Inventory;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -101,5 +102,10 @@ public abstract class Objective
 [Serializable]
 public class CollectObjective : Objective
 {
-
+    public void UpdateItemCount(Item item)
+    {
+        
+    }
 }
+
+
