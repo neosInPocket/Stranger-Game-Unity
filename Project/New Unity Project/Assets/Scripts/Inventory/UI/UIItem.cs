@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using Debug = UnityEngine.Debug;
 
-public class Item : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
+public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
 {
     private RectTransform _rectTransform;
     private Canvas _mainCanvas;

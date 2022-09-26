@@ -90348,10 +90348,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10b4dcb62de4a1f4c99dfec9033dc8d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickUpPref: {fileID: 2710277631676013724, guid: 4eb5bea3b6d009145bc90dd18a4b065f,
-    type: 3}
-  ui: {fileID: 342606400}
-  item: {fileID: 1336759461}
 --- !u!4 &1340611511 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2055102311959635375, guid: f681a54372d73d74785b9c9d4ac477e8,
