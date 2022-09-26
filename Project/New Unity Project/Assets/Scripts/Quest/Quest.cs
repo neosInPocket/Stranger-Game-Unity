@@ -107,7 +107,7 @@ public abstract class Objective
 [Serializable]
 public class CollectObjective : Objective
 {
-<<<<<<< Updated upstream
+
     [SerializeField] private GameObject go;
     private UIInventory inv;
     private int objectiveAmount;
@@ -136,11 +136,6 @@ public class CollectObjective : Objective
     void QuestEnd()
     {
         var slots = inv.inventory.GetAllSlots();
-=======
-    public void UpdateItemCount(IInventoryItem item)
-    {
-        item.info.
->>>>>>> Stashed changes
     }
 }
 
