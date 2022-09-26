@@ -1,5 +1,4 @@
 using Assets.Scripts.Inventory;
-using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -67,7 +66,7 @@ public class Quest
 }
 
 [Serializable]
-public abstract class Objective 
+public abstract class Objective : MonoBehaviour
 {
     [SerializeField] private int amount;
     [SerializeField] private string type;
@@ -107,7 +106,6 @@ public abstract class Objective
 [Serializable]
 public class CollectObjective : Objective
 {
-
     [SerializeField] private GameObject go;
     private UIInventory inv;
     private int objectiveAmount;
