@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PistolBullet : MonoBehaviour
 {
+    public float dem;
+
     public float speed;
     void Start()
     {

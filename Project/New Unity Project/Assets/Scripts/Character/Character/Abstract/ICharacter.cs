@@ -1,5 +1,6 @@
 public interface ICharacter
 {
+    public float MaxHealth { get; set; }
     public float Health { get; set; }
     public float Defence { get; set; }
     public float Mana { get; set; }

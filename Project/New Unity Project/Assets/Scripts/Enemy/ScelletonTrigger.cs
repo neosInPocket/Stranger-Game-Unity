@@ -39,7 +39,7 @@ public class ScelletonTrigger : MonoBehaviour
             chill = false;
             goBack = false;
 
-            speed = 6;
+            speed = 4;
         }
 
         if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
