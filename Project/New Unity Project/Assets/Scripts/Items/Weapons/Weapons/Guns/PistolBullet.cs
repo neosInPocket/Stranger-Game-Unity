@@ -4,14 +4,26 @@ using UnityEngine;
 
 public class PistolBullet : MonoBehaviour
 {
-    public float damage;
+    private float _damage;
+    public float Damage 
+    {
+        get
+        { 
+            return _damage;
+        }
+
+        set
+        {
+            _damage = value;
+        }
+    }
 
     public float speed;
     void Start()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
-        damage = 25;
+        Damage = 25;
     }
 
 
@@ -27,9 +39,7 @@ public class PistolBullet : MonoBehaviour
         if (hitInfo.transform.gameObject.GetComponent<Enemy>() != null)
         {
             enemy = hitInfo.transform.gameObject.GetComponent<Enemy>();
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(Damage);
         }
-        
-        
     }
 }

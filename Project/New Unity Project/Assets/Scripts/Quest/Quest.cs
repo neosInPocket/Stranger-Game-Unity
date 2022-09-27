@@ -66,7 +66,7 @@ public class Quest
 }
 
 [Serializable]
-public abstract class Objective
+public abstract class Objective : MonoBehaviour
 {
     [SerializeField] private int amount;
     [SerializeField] private string type;
@@ -119,8 +119,7 @@ public class CollectObjective : Objective
     public void UpdateItemCount(IInventoryItem item)
     {
         var info = item.info.id;
-        var inv = new Inventory(12);
-        inv.OnInventoryChanged += OnInventoryChanged;
+        
     }
 
     private void OnInventoryChanged()
@@ -134,6 +133,7 @@ public class CollectObjective : Objective
     void QuestEnd()
     {
         var slots = inv.inventory.GetAllSlots();
+        Debug.Log("sfvadbvv");
     }
 }
 
