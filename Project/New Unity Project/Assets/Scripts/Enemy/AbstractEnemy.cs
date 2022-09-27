@@ -5,10 +5,10 @@ using UnityEngine;
 public abstract class AbstractEnemy : MonoBehaviour
 {
     [Header("Çהמנמגüו גנאדא")]
-    public int MaxHealth = 3;
-    protected int _currentHealth;
+    public float MaxHealth = 100;
+    protected float _currentHealth;
 
-    public abstract void TakeDamage(int damage);
+    public abstract void TakeDamage(float damage);
 
     protected virtual void Start()
     {

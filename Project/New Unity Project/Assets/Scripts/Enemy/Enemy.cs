@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : AbstractEnemy
 {
     [SerializeField] private GameObject _drop;
-
+    [SerializeField] private float defence;
     private bool _isHitting = false;
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -33,9 +33,9 @@ public class Enemy : AbstractEnemy
         Destroy(gameObject);
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(float damage)
     {
-        _currentHealth -= damage;
+        _currentHealth -= damage - defence;
 
         if (_currentHealth <= 0)
         {
