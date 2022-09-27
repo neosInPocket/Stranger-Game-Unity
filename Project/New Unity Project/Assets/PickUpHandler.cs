@@ -29,7 +29,7 @@ public class PickUpHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && itemInRange != null)
         {
-            parent.inventory.TryToAdd(itemInRange);
+                parent.inventory.TryToAdd(itemInRange);
         }
     }
 }
