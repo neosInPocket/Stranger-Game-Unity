@@ -2,34 +2,80 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using UnityEngine;
+using UnityEngine.Video;
+using Vector2 = UnityEngine.Vector2;
 
 public class PickUpHandler : MonoBehaviour
 {
     private Type itemType;
     private IInventoryItem itemInRange;
+    private List<IInventoryItem> itemsInRange;
+    private List<Collider2D> colliders;
+    [SerializeField] private GameObject pickUpPref;
     private Player parent;
 
     void Awake()
     {
         parent = GetComponentInParent<Player>();
+        itemsInRange = new List<IInventoryItem>();
+        colliders = new List<Collider2D>();
     }
     void OnTriggerEnter2D(Collider2D collider)
     {
-        itemInRange = collider.GetComponents<MonoBehaviour>()
-            .Where((x) => x.GetType().GetInterface("IInventoryItem") != null).FirstOrDefault() as IInventoryItem;
+        itemInRange = collider.GetComponent<IInventoryItem>();
+
+        if (itemInRange != null)
+        {
+            colliders.Add(collider);
+            itemsInRange.Add(itemInRange);
+            pickUpPref.SetActive(true);
+        }
     }
 
-    void OnTriggerExit2D()
+    void OnTriggerStay2D()
     {
-        itemInRange = null;
+        Dictionary<Collider2D, float> distances = new Dictionary<Collider2D, float>();
+        foreach (var collider in colliders)
+        {
+            distances.Add(collider, Vector2.Distance(parent.transform.position, collider.transform.position));
+        }
+
+        var closestCollider = distances
+            .Aggregate((l, r) => l.Value < r.Value ? l : r);
+        foreach (var collider in colliders)
+        {
+            collider.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, .5f);
+        }
+
+        closestCollider.Key.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+        itemInRange = closestCollider.Key.gameObject.GetComponent<IInventoryItem>();
+    }
+
+    void OnTriggerExit2D(Collider2D collider)
+    {
+        var itemExited = collider.GetComponent<IInventoryItem>();
+
+        if (itemExited != null)
+        {
+            colliders.Remove(collider);
+            itemsInRange.Remove(itemExited);
+        }
+
+        if (itemsInRange.Count == 0)
+        {
+            pickUpPref.SetActive(false);
+        }
+        collider.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && itemInRange != null)
         {
-                parent.inventory.TryToAdd(itemInRange);
+            parent.inventory.TryToAdd(itemInRange);
         }
     }
 }

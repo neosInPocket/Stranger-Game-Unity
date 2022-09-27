@@ -8,15 +8,15 @@ using UnityEngine;
 
 public class UIInventory : MonoBehaviour
 {
-    public Inventory inventory { get; private set; }
+    public Inventory inventory { get; private set; } = new Inventory(12);
     private UIInventorySlot[] uiSlots;
 
-    void Awake()
+    public void Awake()
     {
-        inventory = new Inventory(12);
         inventory.OnInventoryChanged += OnInventoryChanged;
         uiSlots = GetComponentsInChildren<UIInventorySlot>();
         SetupInventory();
+        gameObject.SetActive(false);
     }
 
     private void OnInventoryChanged()

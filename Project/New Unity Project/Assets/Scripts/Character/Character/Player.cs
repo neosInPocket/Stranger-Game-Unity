@@ -17,6 +17,7 @@ public class Player : MonoBehaviour, ICharacter
 
     void Start()
     {
+        uiInventory.GetComponent<UIInventory>().Awake();
         inventory = uiInventory.GetComponent<UIInventory>().inventory;
     }
     public void GetDamage(float damage)
