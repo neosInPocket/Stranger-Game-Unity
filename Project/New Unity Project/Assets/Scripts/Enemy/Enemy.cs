@@ -4,39 +4,36 @@ using UnityEngine;
 
 public class Enemy : AbstractEnemy
 {
-    [SerializeField] private GameObject _drop;
-    [SerializeField] private float defence;
+    [SerializeField] private HealthBar _healthBar;
+    [SerializeField] private float defence = 0;
     private bool _isHitting = false;
+
+    protected override void Start()
+    {
+        base.Start();
+        _healthBar.SetHealthValue(_currentHealth, MaxHealth);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.GetComponent<Player>() != null)
+        if (collision.gameObject.GetComponent<AbstractEnemy>() != null)
         {
-            collision.gameObject.GetComponent<Player>().GetDamage(1);
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(transform.up * 8f, ForceMode2D.Impulse);
-        }
-        else if (collision.gameObject.GetComponent<AbstractEnemy>() != null)
-        {
-            TakeDamage(1);
+            TakeDamage(GetComponent<PistolBullet>().Damage);
         }
     }
 
     private IEnumerator Die()
     {
-        if (_drop != null)
-        {
-            Instantiate(_drop, transform.position, Quaternion.identity);
-        }
         _isHitting = true;
         GetComponent<Collider2D>().enabled = false;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0f);
         Destroy(gameObject);
     }
 
     public override void TakeDamage(float damage)
     {
         _currentHealth -= damage - defence;
-
+        _healthBar.SetHealthValue(_currentHealth, MaxHealth);
         if (_currentHealth <= 0)
         {
             StartCoroutine(Die());
