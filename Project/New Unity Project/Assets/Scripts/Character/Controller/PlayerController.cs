@@ -1,3 +1,5 @@
+using System;
+using Mono.CompilerServices.SymbolWriter;
 using TMPro.EditorUtilities;
 using UnityEngine.EventSystems;
 using UnityEngine;
@@ -7,8 +9,10 @@ public class PlayerController : MonoBehaviour, ICharacterController
 {
     [SerializeField]  private float speed = 5;
     private Animator animator;
+    private bool isInInventory;
 
-    [SerializeField] private GameObject _inventory;
+    [SerializeField] private GameObject _uiInventory;
+    private Inventory inventory;
     public float Speed
     {
         get
@@ -66,23 +70,34 @@ public class PlayerController : MonoBehaviour, ICharacterController
     void Start()
     {
         animator = GetComponent<Animator>();
+        inventory = _uiInventory.GetComponent<UIInventory>().inventory;
+        inventory.OnDrop += OnDrop;
+    }
+
+    private void OnDrop(IInventoryItem obj)
+    {
+        Instantiate(obj.prefab, transform.position, Quaternion.identity);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Tab))
         {
-            if (_inventory.activeSelf)
+            if (_uiInventory.activeSelf)
             {
-                _inventory.SetActive(false);
+                _uiInventory.SetActive(false);
+                isInInventory = false;
             }
             else
             {
-                _inventory.SetActive(true);
+                _uiInventory.SetActive(true);
+                isInInventory = true;
             }
         }
-        if (EventSystem.current.IsPointerOverGameObject())
+
+        if (isInInventory)
         {
+            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             return;
         }
         Move();

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Video;
 using Vector2 = UnityEngine.Vector2;
@@ -13,6 +14,7 @@ public class PickUpHandler : MonoBehaviour
     private IInventoryItem itemInRange;
     private List<IInventoryItem> itemsInRange;
     private List<Collider2D> colliders;
+    private Collider2D activeCollider;
     [SerializeField] private GameObject pickUpPref;
     private Player parent;
 
@@ -25,6 +27,8 @@ public class PickUpHandler : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         itemInRange = collider.GetComponent<IInventoryItem>();
+        activeCollider = collider;
+
 
         if (itemInRange != null)
         {
@@ -51,6 +55,7 @@ public class PickUpHandler : MonoBehaviour
 
         closestCollider.Key.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
         itemInRange = closestCollider.Key.gameObject.GetComponent<IInventoryItem>();
+        activeCollider = closestCollider.Key;
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -66,6 +71,8 @@ public class PickUpHandler : MonoBehaviour
         if (itemsInRange.Count == 0)
         {
             pickUpPref.SetActive(false);
+            itemInRange = null;
+            activeCollider = null;
         }
         collider.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
 
@@ -75,7 +82,14 @@ public class PickUpHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && itemInRange != null)
         {
-            parent.inventory.TryToAdd(itemInRange);
+            Debug.Log("Clicked E");
+
+            bool result = parent.inventory.TryToAdd(itemInRange);
+            if (result)
+            {
+                var item = activeCollider.gameObject;
+                Destroy(activeCollider.gameObject);
+            }
         }
     }
 }

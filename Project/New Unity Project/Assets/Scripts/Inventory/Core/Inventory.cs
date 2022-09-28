@@ -2,14 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 public class Inventory : IInventory
 {
     public int capacity { get; set; }
-    public bool isFull => _slots.All(slot => isFull);
 
     private List<IInventorySlot> _slots;
     public Action OnInventoryChanged;
+    public Action<IInventoryItem> OnDrop;
 
     public Inventory(int capacity)
     {
@@ -70,6 +71,7 @@ public class Inventory : IInventory
             }
         }
         OnInventoryChanged?.Invoke();
+        Debug.Log("Remove event");
     }
 
     public bool TryToAdd(IInventoryItem item)
@@ -80,6 +82,7 @@ public class Inventory : IInventory
         {
             emptySlot.SetItem(item);
             OnInventoryChanged?.Invoke();
+            Debug.Log("Add event");
             return true;
         }
         else
@@ -94,16 +97,22 @@ public class Inventory : IInventory
         {
             return;
         }
+        
+        var fromItem = fromSlot.item;
 
         if (!toSlot.isEmpty)
         {
+            var toItem = toSlot.item;
+            fromSlot.SetItem(toItem);
+            toSlot.SetItem(fromItem);
+            OnInventoryChanged?.Invoke();
             return;
         }
 
-        var item = fromSlot.item;
         fromSlot.Clear();
-        toSlot.SetItem(item);
+        toSlot.SetItem(fromItem);
         OnInventoryChanged?.Invoke();
+        Debug.Log("Transit event");
     }
 
     public IInventorySlot[] GetAllSlots()
@@ -114,5 +123,13 @@ public class Inventory : IInventory
             slots.Add(slot);
         }
         return slots.ToArray();
+    }
+
+    public void Drop(IInventorySlot slot)
+    {
+        var item = slot.item;
+        slot.Clear();
+        OnInventoryChanged?.Invoke();
+        OnDrop?.Invoke(item);
     }
 }

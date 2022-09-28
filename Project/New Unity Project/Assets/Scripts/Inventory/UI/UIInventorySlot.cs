@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Inventory.Abstract;
@@ -27,6 +28,7 @@ public class UIInventorySlot : UISlot
         var otherSlotUI = otherItemUI.GetComponentInParent<UIInventorySlot>();
         var otherSlot = otherSlotUI.slot;
         var inventory = _uiInventory.inventory;
+        otherItemUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         inventory.TransitFromSlotToSlot(otherSlot, slot);
         Refresh();
@@ -35,9 +37,10 @@ public class UIInventorySlot : UISlot
 
     public void Refresh()
     {
-        if (slot != null && _uiItem != null)
+        if (slot != null)
         {
             _uiItem.Refresh(slot);
+            _uiItem.transform.localPosition = Vector2.zero;
         }
     }
 }

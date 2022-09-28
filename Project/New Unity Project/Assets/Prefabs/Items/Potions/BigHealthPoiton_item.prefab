@@ -116,9 +116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ddcded5fed3e44d99df11142474608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pickUpPref: {fileID: 2710277631676013724, guid: 4eb5bea3b6d009145bc90dd18a4b065f,
-    type: 3}
-  _potionInfo: {fileID: 11400000, guid: 9084c67029a2aad429050635f2dea8c6, type: 2}
+  _itemInfo: {fileID: 0}
+  _info: {fileID: 0}
+  _prefab: {fileID: 390680822064443667}
 --- !u!1 &390680822309008463
 GameObject:
   m_ObjectHideFlags: 0

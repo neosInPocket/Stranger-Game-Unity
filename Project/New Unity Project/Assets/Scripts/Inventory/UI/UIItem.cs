@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -18,10 +19,7 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     public void OnDrag(PointerEventData eventData)
     {
         _rectTransform.anchoredPosition += eventData.delta / _mainCanvas.scaleFactor;
-        if (!EventSystem.current.IsPointerOverGameObject())
-        {
-            Debug.Log("!");
-        }
+        
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -33,13 +31,12 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (eventData.pointerCurrentRaycast.gameObject is null)
-        {
-            Debug.Log("Item dropped out of inventory");
-            return;
-        }
         transform.localPosition = Vector3.zero;
         _canvasGroup.blocksRaycasts = true;
-        Debug.Log(eventData.pointerCurrentRaycast);
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            var slot = eventData.pointerDrag.GetComponentInParent<UIInventorySlot>().slot;
+            eventData.pointerDrag.GetComponentInParent<UIInventory>().inventory.Drop(slot);
+        }
     }
 }

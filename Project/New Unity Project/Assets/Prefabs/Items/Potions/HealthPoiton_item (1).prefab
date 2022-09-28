@@ -200,8 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39ddcded5fed3e44d99df11142474608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potionInfo: {fileID: 11400000, guid: 9084c67029a2aad429050635f2dea8c6, type: 2}
+  _itemInfo: {fileID: 0}
   _info: {fileID: 11400000, guid: 917e28e3ddaf5134792aab31870bb26c, type: 2}
+  _prefab: {fileID: 8336547194471095540}
 --- !u!1 &8336547194715167144
 GameObject:
   m_ObjectHideFlags: 0

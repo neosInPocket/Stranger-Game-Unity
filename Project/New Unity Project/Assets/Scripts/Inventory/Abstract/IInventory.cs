@@ -5,7 +5,6 @@ namespace Assets.Scripts.Inventory.Abstract
     public interface IInventory
     {
         int capacity { get; set; }
-        bool isFull { get; }
 
         IInventoryItem GetItem(Type itemType);
         IInventoryItem[] GetEquipedItems();

@@ -20,7 +20,7 @@ public class UIInventoryItem : UIItem
 
         gameObject.SetActive(true);
         item = slot.item;
-        gameObject.GetComponent<Image>().sprite = item.info.spriteIcon;
+        gameObject.GetComponentInChildren<Image>().sprite = item.info.spriteIcon;
 
     }
 
