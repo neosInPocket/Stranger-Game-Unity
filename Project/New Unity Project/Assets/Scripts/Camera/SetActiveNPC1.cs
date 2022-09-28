@@ -13,7 +13,7 @@ public class SetActiveNPC1 : MonoBehaviour
     {
         if (_sceleton == false)
         {
-            _nps1.SetActive(false);
+            GameObject.Destroy(_nps1);
 
             _nps1_1.SetActive(true);
         }
