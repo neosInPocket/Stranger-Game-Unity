@@ -5,12 +5,15 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
+    [SerializeField] private Image _imageText;
     [SerializeField] private Slider _slider;
     [SerializeField] private Vector3 _offSet;
+    [SerializeField] private Vector3 _offSetImageText;
 
     private void Update()
     {
         _slider.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + _offSet);
+        _imageText.transform.position = Camera.main.WorldToScreenPoint(transform.parent.position + _offSetImageText);
     }
 
     public void SetHealthValue(float currentHealth, float maxHealth)
