@@ -9,6 +9,7 @@ public class Inventory : IInventory
     public int capacity { get; set; }
 
     private List<IInventorySlot> _slots;
+    private List<IInventorySlot> _charSlots;
     public Action OnInventoryChanged;
     public Action<IInventoryItem> OnDrop;
 
@@ -17,23 +18,11 @@ public class Inventory : IInventory
         this.capacity = capacity;
 
         _slots = new List<IInventorySlot>(capacity);
+        _charSlots = new List<IInventorySlot>(7);
         for (int i = 0; i < capacity; i++)
         {
             _slots.Add(new InventorySlot());
         }
-    }
-
-    public IInventoryItem[] GetEquipedItems()
-    {
-        var equipedItems = new List<IInventoryItem>();
-        var requiredSlots = _slots.FindAll(slot => !slot.isEmpty && slot.item.isEquiped);
-
-        foreach (var slot in requiredSlots)
-        {
-            equipedItems.Add(slot.item);
-        }
-
-        return equipedItems.ToArray();
     }
 
     public IInventoryItem GetItem(Type itemType)
@@ -76,6 +65,10 @@ public class Inventory : IInventory
 
     public bool TryToAdd(IInventoryItem item)
     {
+        if (item == null)
+        {
+            return false;
+        }
         IInventorySlot emptySlot = _slots.Find(i => i.isEmpty);
 
         if (emptySlot != null)

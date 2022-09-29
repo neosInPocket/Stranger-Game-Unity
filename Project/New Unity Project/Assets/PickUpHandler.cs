@@ -40,6 +40,10 @@ public class PickUpHandler : MonoBehaviour
 
     void OnTriggerStay2D()
     {
+        if (itemInRange is null)
+        {
+            return;
+        }
         Dictionary<Collider2D, float> distances = new Dictionary<Collider2D, float>();
         foreach (var collider in colliders)
         {
@@ -60,6 +64,10 @@ public class PickUpHandler : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider)
     {
+        if (itemsInRange == null)
+        {
+            return;
+        }
         var itemExited = collider.GetComponent<IInventoryItem>();
 
         if (itemExited != null)
@@ -87,8 +95,7 @@ public class PickUpHandler : MonoBehaviour
             bool result = parent.inventory.TryToAdd(itemInRange);
             if (result)
             {
-                var item = activeCollider.gameObject;
-                Destroy(activeCollider.gameObject);
+                activeCollider.gameObject.SetActive(false);
             }
         }
     }

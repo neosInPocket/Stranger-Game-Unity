@@ -76,7 +76,11 @@ public class PlayerController : MonoBehaviour, ICharacterController
 
     private void OnDrop(IInventoryItem obj)
     {
-        Instantiate(obj.prefab, transform.position, Quaternion.identity);
+        if (obj != null)
+        {
+            obj.prefab.gameObject.SetActive(true);
+            obj.prefab.transform.position = transform.position;
+        }
     }
 
     void Update()

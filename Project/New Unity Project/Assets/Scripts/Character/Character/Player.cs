@@ -65,4 +65,9 @@ public class Player : MonoBehaviour, ICharacter
     {
         throw new System.NotImplementedException();
     }
+
+    public bool TryToEquipItem(IInventoryItem item)
+    {
+
+    }
 }

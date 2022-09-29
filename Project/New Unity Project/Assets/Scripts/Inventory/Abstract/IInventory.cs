@@ -7,7 +7,6 @@ namespace Assets.Scripts.Inventory.Abstract
         int capacity { get; set; }
 
         IInventoryItem GetItem(Type itemType);
-        IInventoryItem[] GetEquipedItems();
 
         bool TryToAdd(IInventoryItem item);
         void Remove(Type itemType);
