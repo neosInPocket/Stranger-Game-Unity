@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class UIInventoryItem : UIItem
 {
-
     public IInventoryItem item { get; private set; }
     public void Refresh(IInventorySlot slot)
     {

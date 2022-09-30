@@ -6,11 +6,11 @@ namespace Assets.Scripts.Inventory.Abstract
     {
         int capacity { get; set; }
 
-        IInventoryItem GetItem(Type itemType);
+        IInventoryItem GetItem(InventoryItemType itemType);
 
         bool TryToAdd(IInventoryItem item);
-        void Remove(Type itemType);
-        bool HasItem(Type itemType, out IInventoryItem item);
+        void Remove(InventoryItemType itemType);
+        bool HasItem(InventoryItemType itemType, out IInventoryItem item);
     }
 }
 

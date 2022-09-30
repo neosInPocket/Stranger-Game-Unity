@@ -7,9 +7,11 @@ public class InventoryItemInfo : ScriptableObject
     [SerializeField] private string _title;
     [SerializeField] private string _description;
     [SerializeField] private Sprite _spriteIcon;
+    [SerializeField] private InventoryItemType _type;
 
     public string id => _id;
     public string title => _title;
     public string description => _description;
     public Sprite spriteIcon => _spriteIcon;
+    public InventoryItemType type => _type;
 }

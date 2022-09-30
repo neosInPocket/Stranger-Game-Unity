@@ -5,7 +5,7 @@ using System;
     {
         public bool isEmpty => item == null;
         public IInventoryItem item { get; private set; }
-        public Type itemType => item.type;
+        public InventoryItemType itemType { get; set; }
 
         public void Clear()
         {

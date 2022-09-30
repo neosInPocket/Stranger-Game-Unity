@@ -19,7 +19,6 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     public void OnDrag(PointerEventData eventData)
     {
         _rectTransform.anchoredPosition += eventData.delta / _mainCanvas.scaleFactor;
-        
     }
 
     public void OnBeginDrag(PointerEventData eventData)

@@ -18,14 +18,13 @@ public class Inventory : IInventory
         this.capacity = capacity;
 
         _slots = new List<IInventorySlot>(capacity);
-        _charSlots = new List<IInventorySlot>(7);
         for (int i = 0; i < capacity; i++)
         {
             _slots.Add(new InventorySlot());
         }
     }
 
-    public IInventoryItem GetItem(Type itemType)
+    public IInventoryItem GetItem(InventoryItemType itemType)
     {
         return _slots.Find(slot => slot.itemType == itemType).item;
     }
@@ -44,19 +43,19 @@ public class Inventory : IInventory
         return items.ToArray();
     }
 
-    public bool HasItem(Type itemType, out IInventoryItem item)
+    public bool HasItem(InventoryItemType itemType, out IInventoryItem item)
     {
         item = GetItem(itemType);
         return item != null;
     }
 
-    public void Remove(Type itemType)
+    public void Remove(InventoryItemType itemType)
     {
         foreach (var slot in _slots)
         {
             if (slot.itemType == itemType)
             {
-                slot.SetItem(null);
+                slot.Clear();
             }
         }
         OnInventoryChanged?.Invoke();
@@ -69,7 +68,13 @@ public class Inventory : IInventory
         {
             return false;
         }
-        IInventorySlot emptySlot = _slots.Find(i => i.isEmpty);
+
+        var emptyItemSlot = GetEmptySlot(item.type);
+        if (emptyItemSlot != null && !emptyItemSlot.isEmpty)
+        {
+            return false;
+        }
+        IInventorySlot emptySlot = _slots.Find(i => i.isEmpty && i.itemType == item.type);
 
         if (emptySlot != null)
         {
@@ -125,4 +130,9 @@ public class Inventory : IInventory
         OnInventoryChanged?.Invoke();
         OnDrop?.Invoke(item);
     }
+
+    public IInventorySlot GetEmptySlot(InventoryItemType itemType)
+    {
+        return _slots.Find(slot => slot.itemType == itemType && slot.isEmpty);
+    } 
 }

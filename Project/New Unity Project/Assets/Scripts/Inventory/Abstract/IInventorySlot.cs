@@ -7,7 +7,7 @@ namespace Assets.Scripts.Inventory.Abstract
         bool isEmpty { get; }
 
         IInventoryItem item { get; }
-        Type itemType { get; }
+        InventoryItemType itemType { get; set; }
 
         void SetItem(IInventoryItem item);
         void Clear();

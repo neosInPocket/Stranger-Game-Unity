@@ -8,9 +8,10 @@ using UnityEngine.EventSystems;
 public class UIInventorySlot : UISlot
 {
     [SerializeField] private UIInventoryItem _uiItem;
-
+    [SerializeField] private InventoryItemType _type;
     public IInventorySlot slot { get; private set; }
-    private UIInventory _uiInventory;
+    public UIInventory _uiInventory { get; private set; }
+    public InventoryItemType type => _type;
 
     void Start()
     {
@@ -27,6 +28,11 @@ public class UIInventorySlot : UISlot
         var otherItemUI = eventData.pointerDrag.GetComponent<UIInventoryItem>();
         var otherSlotUI = otherItemUI.GetComponentInParent<UIInventorySlot>();
         var otherSlot = otherSlotUI.slot;
+
+        if (otherSlotUI._type != _type)
+        {
+            return;
+        }
         var inventory = _uiInventory.inventory;
         otherItemUI.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
