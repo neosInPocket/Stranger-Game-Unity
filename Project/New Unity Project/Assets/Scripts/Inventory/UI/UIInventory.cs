@@ -8,7 +8,7 @@ using UnityEngine;
 
 public class UIInventory : MonoBehaviour
 {
-    public Inventory inventory { get; private set; } = new Inventory(18);
+    public Inventory inventory { get; private set; } = new Inventory(19);
     private UIInventorySlot[] uiSlots;
 
     public void AwakeInventory()

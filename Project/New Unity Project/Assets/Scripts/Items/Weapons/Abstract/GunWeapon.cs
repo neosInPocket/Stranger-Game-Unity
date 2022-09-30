@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public abstract class GunWeapon : InventoryItem
 {
@@ -65,6 +66,23 @@ public abstract class GunWeapon : InventoryItem
             isFiring = false;
         }
         else
+        {
+            StartCoroutine(Reload());
+        }
+    }
+
+    void Update()
+    {
+        if (EventSystem.current.IsPointerOverGameObject())
+        {
+            return;
+        }
+        if (Input.GetButtonDown("Fire1"))
+        {
+            StartCoroutine(Fire());
+        }
+
+        if (Input.GetKey(KeyCode.R))
         {
             StartCoroutine(Reload());
         }
