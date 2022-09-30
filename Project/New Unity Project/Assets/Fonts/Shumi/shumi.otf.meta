@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: f933b33f396fe4084b2e58e145f2c050
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Shumi
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6087e5be500022f4d951f980f9af73ee, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
