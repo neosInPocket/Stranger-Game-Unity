@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651d1df6f52a4c5459f17512009d2dfd, type: 3}
   m_Name: Pistol_inventory_info
   m_EditorClassIdentifier: 
-  _id: pistol_gun
+  _id: gun_pistol
   _title: "\u0420\u0435\u0432\u043E\u043B\u044C\u0432\u0435\u0440"
   _description: "\u0421\u0442\u0440\u0435\u043B\u044F\u0435\u0442 \u043D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E"
   _spriteIcon: {fileID: 21300000, guid: ee58f2954ace48d4da5dd9f3edcb6722, type: 3}

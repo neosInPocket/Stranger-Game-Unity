@@ -49,8 +49,12 @@ public class UIInventory : MonoBehaviour
         Debug.Log("Refreshed");
     }
 
-    public void ShowItemInfo(IInventoryItem item)
+    public void ShowItemInfo(IInventoryItem item, GameObject uiSlot)
     {
+        foreach (var slot in uiSlots)
+        {
+            slot.gameObject.GetComponent<Image>().color = new Color(255, 255, 255);
+        }
         tmpText.text = item.info.description;
     }
     

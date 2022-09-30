@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Assets.Scripts.Inventory.Abstract;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIInventorySlot : UISlot, IPointerClickHandler
 {
@@ -55,7 +56,8 @@ public class UIInventorySlot : UISlot, IPointerClickHandler
     {
         if (_uiItem.item != null)
         {
-            _uiInventory.ShowItemInfo(_uiItem.item);
+            _uiInventory.ShowItemInfo(_uiItem.item, eventData.pointerClick.gameObject);
+            eventData.pointerClick.GetComponent<Image>().color = new Color(0, 255, 255);
         }
     }
 }
