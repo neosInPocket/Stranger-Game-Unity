@@ -2,14 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using Mono.Cecil.Cil;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
     public Inventory inventory { get; private set; } = new Inventory(19);
     private UIInventorySlot[] uiSlots;
+    [SerializeField] private GameObject textHolder;
+    private TMP_Text tmpText;
 
     public void AwakeInventory()
     {
@@ -17,6 +23,7 @@ public class UIInventory : MonoBehaviour
         uiSlots = GetComponentsInChildren<UIInventorySlot>();
         SetupInventory();
         gameObject.SetActive(false);
+        tmpText = textHolder.GetComponent<TMP_Text>();
     }
 
     private void OnInventoryChanged()
@@ -24,6 +31,7 @@ public class UIInventory : MonoBehaviour
         for (int i = 0; i < uiSlots.Length; i++)
         {
             uiSlots[i].Refresh();
+            uiSlots[i].gameObject.GetComponent<Image>().color = new Color(255, 255, 255);
         }
     }
 
@@ -40,6 +48,12 @@ public class UIInventory : MonoBehaviour
         }
         Debug.Log("Refreshed");
     }
+
+    public void ShowItemInfo(IInventoryItem item)
+    {
+        tmpText.text = item.info.description;
+    }
+    
 }
 
 

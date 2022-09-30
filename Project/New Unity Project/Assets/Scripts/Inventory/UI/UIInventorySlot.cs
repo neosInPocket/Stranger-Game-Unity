@@ -5,7 +5,7 @@ using Assets.Scripts.Inventory.Abstract;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UIInventorySlot : UISlot
+public class UIInventorySlot : UISlot, IPointerClickHandler
 {
     [SerializeField] private UIInventoryItem _uiItem;
     [SerializeField] private InventoryItemType _type;
@@ -48,6 +48,14 @@ public class UIInventorySlot : UISlot
         {
             _uiItem.Refresh(slot);
             _uiItem.transform.localPosition = Vector2.zero;
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (_uiItem.item != null)
+        {
+            _uiInventory.ShowItemInfo(_uiItem.item);
         }
     }
 }

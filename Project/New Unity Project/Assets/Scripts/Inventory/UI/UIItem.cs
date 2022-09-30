@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using Debug = UnityEngine.Debug;
 
 public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler
@@ -25,6 +26,7 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
     {
         var slotTransform = _rectTransform.parent;
         slotTransform.SetAsLastSibling();
+        slotTransform.gameObject.GetComponent<Image>().color = new Color(0, 255, 0);
         _canvasGroup.blocksRaycasts = false;
     }
 
@@ -37,5 +39,6 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
             var slot = eventData.pointerDrag.GetComponentInParent<UIInventorySlot>().slot;
             eventData.pointerDrag.GetComponentInParent<UIInventory>().inventory.Drop(slot);
         }
+        _rectTransform.parent.gameObject.GetComponent<Image>().color = new Color(255,255,255);
     }
 }
