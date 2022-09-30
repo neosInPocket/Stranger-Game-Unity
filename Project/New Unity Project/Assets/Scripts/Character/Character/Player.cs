@@ -66,7 +66,15 @@ public class Player : MonoBehaviour, ICharacter
         throw new System.NotImplementedException();
     }
 
-    public bool TryToEquipItem(IInventoryItem item)
+    public void EquipHemlet(InventoryItem item)
+    {
+        var helmet = item as ArmourItem;
+    }
+    public void EquipChestPlate()
+    {
+
+    }
+    public void EquipBoots()
     {
 
     }

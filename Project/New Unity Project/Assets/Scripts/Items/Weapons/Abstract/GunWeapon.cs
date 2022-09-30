@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public abstract class GunWeapon : MonoBehaviour
+public abstract class GunWeapon : InventoryItem
 {
     public float FireRate { get; private set; }
     public int MagazineCapacity { get; private set; }
@@ -10,7 +10,6 @@ public abstract class GunWeapon : MonoBehaviour
     public int AmmoAmount { get; private set; }
     public float Damage { get; private set; }
     
-    [SerializeField] private GunInfo gunsInfo;
     private int magazine;
     private bool isReloading;
     private bool isFiring;
@@ -19,11 +18,12 @@ public abstract class GunWeapon : MonoBehaviour
     public event Action<object> OnReload;
     void Awake()
     {
-        AmmoAmount = gunsInfo.ammoAmount;
-        MagazineCapacity = gunsInfo.magazineCapacity;
-        ReloadTime = gunsInfo.reloadTime;
-        FireRate = gunsInfo.fireRate;
-        Damage = gunsInfo.damage;
+        var gunInfo = itemInfo as GunInfo;
+        AmmoAmount = gunInfo.ammoAmount;
+        MagazineCapacity = gunInfo.magazineCapacity;
+        ReloadTime = gunInfo.reloadTime;
+        FireRate = gunInfo.fireRate;
+        Damage = gunInfo.damage;
         magazine = MagazineCapacity;
     }
     public IEnumerator Reload()

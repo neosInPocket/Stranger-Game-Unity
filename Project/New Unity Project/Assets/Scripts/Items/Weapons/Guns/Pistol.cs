@@ -19,4 +19,9 @@ public class Pistol : GunWeapon
             StartCoroutine(Reload());
         }
     }
+
+    public override void Use()
+    {
+        throw new System.NotImplementedException();
+    }
 }
