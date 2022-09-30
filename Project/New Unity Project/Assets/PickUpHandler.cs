@@ -93,6 +93,7 @@ public class PickUpHandler : MonoBehaviour
             Debug.Log("Clicked E");
 
             bool result = parent.inventory.TryToAdd(itemInRange);
+            Debug.Log(result.ToString());
             if (result)
             {
                 activeCollider.gameObject.SetActive(false);

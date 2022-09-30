@@ -12,6 +12,7 @@ public class UIInventorySlot : UISlot
     public IInventorySlot slot { get; private set; }
     public UIInventory _uiInventory { get; private set; }
     public InventoryItemType type => _type;
+    public UIInventoryItem uiItem { get; private set; }
 
     void Start()
     {

@@ -62,6 +62,13 @@ public class Inventory : IInventory
         Debug.Log("Remove event");
     }
 
+    public void Remove(IInventoryItem item)
+    {
+        var slot = _slots.Find(slot => slot.item == item);
+        slot.Clear();
+        OnInventoryChanged?.Invoke();
+    }
+
     public bool TryToAdd(IInventoryItem item)
     {
         if (item == null)
@@ -134,5 +141,5 @@ public class Inventory : IInventory
     public IInventorySlot GetEmptySlot(InventoryItemType itemType)
     {
         return _slots.Find(slot => slot.itemType == itemType && slot.isEmpty);
-    } 
+    }
 }
