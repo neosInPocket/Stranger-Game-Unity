@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20dac5989e318c649a101718469de9e2, type: 3}
+  m_Name: Kill the Sceleton
+  m_EditorClassIdentifier: 
+  questName: Kill the Sceleton !
+  questDiscription: "\u0423\u0431\u0435\u0439 \u0442\u0440\u0435\u0445 \u0441\u043A\u0435\u043B\u0435\u0442\u043E\u0432
+    ! \u041E\u043D\u0438 \u043C\u0435\u0448\u0430\u044E\u0442 \u043C\u043D\u0435
+    \u0443\u0431\u0438\u0442\u044C \u044D\u0442\u043E\u0433\u043E \u0437\u0434\u043E\u0440\u043E\u0432\u044F\u043A\u0430
+    !"
+  objectives:
+  - requiredEnemy: {fileID: 11400000, guid: d84a40f8687589e4ba34a5d3265a1809, type: 2}
+    requiredAmount: 3
+  - requiredEnemy: {fileID: 11400000, guid: 84719a969f1157a418d7a602b123c11e, type: 2}
+    requiredAmount: 1

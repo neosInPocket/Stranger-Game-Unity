@@ -5,8 +5,10 @@ using UnityEngine;
 public abstract class AbstractEnemy : MonoBehaviour
 {
     [Header("Çהמנמגüו גנאדא")]
-    public float MaxHealth = 100;
+    public float MaxHealth;
     protected float _currentHealth;
+
+    public EnemyProfile enemyProfile;
 
     public abstract void TakeDamage(float damage);
 
