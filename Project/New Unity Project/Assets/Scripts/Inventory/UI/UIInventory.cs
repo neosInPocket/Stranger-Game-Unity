@@ -14,8 +14,10 @@ public class UIInventory : MonoBehaviour
 {
     public Inventory inventory { get; private set; } = new Inventory(19);
     private UIInventorySlot[] uiSlots;
-    [SerializeField] private GameObject textHolder;
-    private TMP_Text tmpText;
+    [SerializeField] private GameObject textInfoHolder;
+    [SerializeField] private GameObject textNameHolder;
+    private TMP_Text tmpTextInfo;
+    private TMP_Text tmpTextName;
 
     public void AwakeInventory()
     {
@@ -23,7 +25,8 @@ public class UIInventory : MonoBehaviour
         uiSlots = GetComponentsInChildren<UIInventorySlot>();
         SetupInventory();
         gameObject.SetActive(false);
-        tmpText = textHolder.GetComponent<TMP_Text>();
+        tmpTextInfo = textInfoHolder.GetComponentInChildren<TMP_Text>();
+        tmpTextName = textNameHolder.GetComponentInChildren<TMP_Text>();
     }
 
     private void OnInventoryChanged()
@@ -55,7 +58,8 @@ public class UIInventory : MonoBehaviour
         {
             slot.gameObject.GetComponent<Image>().color = new Color(255, 255, 255);
         }
-        tmpText.text = item.info.description;
+        tmpTextInfo.text = item.info.description;
+        tmpTextName.text = item.info.title;
     }
     
 }
