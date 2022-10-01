@@ -18,6 +18,7 @@ public class UIInventory : MonoBehaviour
     [SerializeField] private GameObject textNameHolder;
     private TMP_Text tmpTextInfo;
     private TMP_Text tmpTextName;
+    private GameObject _activeSlot;
 
     public void AwakeInventory()
     {
@@ -60,6 +61,19 @@ public class UIInventory : MonoBehaviour
         }
         tmpTextInfo.text = item.info.description;
         tmpTextName.text = item.info.title;
+        _activeSlot = uiSlot;
+    }
+
+    void OnDisable()
+    {
+        if (_activeSlot == null)
+        {
+            return;
+        }
+        _activeSlot.GetComponent<Image>().color = new Color(255, 255, 255);
+        tmpTextInfo.text = "свойства";
+        tmpTextName.text = "название";
+        _activeSlot = null;
     }
     
 }

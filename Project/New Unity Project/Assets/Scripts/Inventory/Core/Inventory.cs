@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Inventory : IInventory
@@ -59,7 +60,6 @@ public class Inventory : IInventory
             }
         }
         OnInventoryChanged?.Invoke();
-        Debug.Log("Remove event");
     }
 
     public void Remove(IInventoryItem item)
@@ -76,18 +76,28 @@ public class Inventory : IInventory
             return false;
         }
 
-        var emptyItemSlot = GetEmptySlot(item.type);
-        if (emptyItemSlot != null && !emptyItemSlot.isEmpty)
+        var itemSlot = GetSlot(item.type);
+        if (itemSlot != null)
+        {
+            if (!itemSlot.isEmpty && item.type != InventoryItemType.Default && item.info.value > itemSlot.item.info.value)
+            {
+                Drop(itemSlot);
+                itemSlot.SetItem(item);
+                OnInventoryChanged?.Invoke();
+                return true;
+            }
+        }
+        else
         {
             return false;
         }
+
         IInventorySlot emptySlot = _slots.Find(i => i.isEmpty && i.itemType == item.type);
 
         if (emptySlot != null)
         {
             emptySlot.SetItem(item);
             OnInventoryChanged?.Invoke();
-            Debug.Log("Add event");
             return true;
         }
         else
@@ -98,26 +108,15 @@ public class Inventory : IInventory
 
     public void TransitFromSlotToSlot(IInventorySlot fromSlot, IInventorySlot toSlot)
     {
-        if (fromSlot.isEmpty)
+        if (fromSlot.isEmpty || !toSlot.isEmpty)
         {
             return;
         }
-        
+
         var fromItem = fromSlot.item;
-
-        if (!toSlot.isEmpty)
-        {
-            var toItem = toSlot.item;
-            fromSlot.SetItem(toItem);
-            toSlot.SetItem(fromItem);
-            OnInventoryChanged?.Invoke();
-            return;
-        }
-
         fromSlot.Clear();
         toSlot.SetItem(fromItem);
         OnInventoryChanged?.Invoke();
-        Debug.Log("Transit event");
     }
 
     public IInventorySlot[] GetAllSlots()
@@ -138,8 +137,8 @@ public class Inventory : IInventory
         OnDrop?.Invoke(item);
     }
 
-    public IInventorySlot GetEmptySlot(InventoryItemType itemType)
+    public IInventorySlot GetSlot(InventoryItemType itemType)
     {
-        return _slots.Find(slot => slot.itemType == itemType && slot.isEmpty);
+        return _slots.Find(slot => slot.itemType == itemType);
     }
 }
