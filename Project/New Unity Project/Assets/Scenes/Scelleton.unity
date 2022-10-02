@@ -325,6 +325,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176044484}
   m_CullTransparentMesh: 1
+--- !u!1 &189653094
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 189653095}
+  m_Layer: 0
+  m_Name: OllSceleton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &189653095
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189653094}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1444545777}
+  - {fileID: 358184857}
+  - {fileID: 1334450405}
+  m_Father: {fileID: 1638715844}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &208779849
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +390,7 @@ Transform:
   - {fileID: 131924057}
   - {fileID: 395005969}
   - {fileID: 1170397596}
+  - {fileID: 1756995603}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -418,7 +453,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: f933b33f396fe4084b2e58e145f2c050, type: 3}
     m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
@@ -561,7 +596,7 @@ Transform:
   - {fileID: 40082056}
   - {fileID: 1492611743}
   m_Father: {fileID: 1638715844}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &301393617
 GameObject:
@@ -903,7 +938,7 @@ GameObject:
   - component: {fileID: 663826519}
   - component: {fileID: 663826518}
   m_Layer: 5
-  m_Name: Button (Legacy)
+  m_Name: 'QuestAccept '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -973,7 +1008,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 663826519}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377303130}
+        m_TargetAssemblyTypeName: QuestButtons, Assembly-CSharp
+        m_MethodName: QuestAccept
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &663826519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,7 +1408,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1638715844}
+    m_TransformParent: {fileID: 189653095}
     m_Modifications:
     - target: {fileID: 5732598655207934126, guid: a1712eeef67146948a122cec25bded18,
         type: 3}
@@ -1443,6 +1490,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sceleton (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 5732598655207934133, guid: a1712eeef67146948a122cec25bded18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1712eeef67146948a122cec25bded18, type: 3}
 --- !u!1 &902356449
@@ -1457,7 +1509,6 @@ GameObject:
   - component: {fileID: 902356451}
   - component: {fileID: 902356450}
   - component: {fileID: 902356453}
-  - component: {fileID: 902356454}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1545,21 +1596,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerTransform: {fileID: 1480140174}
   moovingSpeed: 5
---- !u!114 &902356454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 902356449}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0792dcc4a0682b4fa8a3bc29f643b7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _nps1: {fileID: 924044181}
-  _nps1_1: {fileID: 1372499611}
-  _sceleton: {fileID: 2059093872}
 --- !u!1 &916286169
 GameObject:
   m_ObjectHideFlags: 0
@@ -1653,6 +1689,7 @@ GameObject:
   - component: {fileID: 924044182}
   - component: {fileID: 924044186}
   - component: {fileID: 924044187}
+  - component: {fileID: 924044188}
   m_Layer: 0
   m_Name: NPC1
   m_TagString: Untagged
@@ -1762,7 +1799,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08999947, y: -0.25105157}
+  m_Offset: {x: -0.08999947, y: -0.24021518}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1773,7 +1810,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.80737275, y: 0.8489495}
+  m_Size: {x: 0.80737275, y: 0.8706224}
   m_EdgeRadius: 0
 --- !u!50 &924044187
 Rigidbody2D:
@@ -1796,6 +1833,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &924044188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924044181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3402f591a0b4d04f923c575dcd4ca3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBase:
+  - {fileID: 11400000, guid: 7fcec940e1956b64da7ca91cce17bddb, type: 2}
+  index: 0
+  hasActiveQuest: 1
+  dialogueQuests:
+  - {fileID: 11400000, guid: 3b76e224209e0a245b2fb99da9027266, type: 2}
 --- !u!1 &935280049
 GameObject:
   m_ObjectHideFlags: 0
@@ -2079,7 +2134,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: f933b33f396fe4084b2e58e145f2c050, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
@@ -2150,6 +2205,7 @@ MonoBehaviour:
   diallogueName: {fileID: 916286172}
   diallogueText: {fileID: 935280052}
   dialoguePortrait: {fileID: 833023945}
+  inDialogue: 0
   delay: 0.01
 --- !u!1 &1199835282
 GameObject:
@@ -2497,7 +2553,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1325561415
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2674,6 +2730,7 @@ GameObject:
   - component: {fileID: 1372499612}
   - component: {fileID: 1372499616}
   - component: {fileID: 1372499615}
+  - component: {fileID: 1372499617}
   m_Layer: 0
   m_Name: NPC1_1
   m_TagString: Untagged
@@ -2800,10 +2857,10 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.15473248, y: -0.15095878}
+  m_Offset: {x: -0.13100794, y: -0.21196437}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2814,8 +2871,26 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.44363216, y: 0.8265488}
+  m_Size: {x: 0.8977843, y: 1.2196953}
   m_EdgeRadius: 0
+--- !u!114 &1372499617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372499611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3402f591a0b4d04f923c575dcd4ca3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueBase:
+  - {fileID: 11400000, guid: cd245209d7145aa43b449c7758193345, type: 2}
+  index: 0
+  hasActiveQuest: 1
+  dialogueQuests:
+  - {fileID: 11400000, guid: 97734931d1905a8428c10a98dad16da3, type: 2}
 --- !u!1 &1377303128
 GameObject:
   m_ObjectHideFlags: 0
@@ -2825,6 +2900,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1377303129}
+  - component: {fileID: 1377303130}
   m_Layer: 5
   m_Name: QuestUI
   m_TagString: Untagged
@@ -2857,6 +2933,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1377303130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377303128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14b0aae04cf9d1c4f8b309dcc6acd390, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1444545777 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5732598655207934126, guid: a1712eeef67146948a122cec25bded18,
@@ -3394,9 +3482,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1444545777}
-  - {fileID: 358184857}
-  - {fileID: 1334450405}
+  - {fileID: 189653095}
   - {fileID: 2059093875}
   - {fileID: 221639395}
   m_Father: {fileID: 0}
@@ -3657,6 +3743,53 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 773521017}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1756995602
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1756995603}
+  - component: {fileID: 1756995604}
+  m_Layer: 0
+  m_Name: NPCManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1756995603
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756995602}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 208779850}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1756995604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756995602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0792dcc4a0682b4fa8a3bc29f643b7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nps1: {fileID: 924044181}
+  _nps1_1: {fileID: 1372499611}
+  _sceleton: {fileID: 2059093872}
 --- !u!1 &1771415661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3823,7 +3956,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1638715844}
+    m_TransformParent: {fileID: 189653095}
     m_Modifications:
     - target: {fileID: 5732598655207934126, guid: a1712eeef67146948a122cec25bded18,
         type: 3}
@@ -3905,6 +4038,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sceleton (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5732598655207934133, guid: a1712eeef67146948a122cec25bded18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1712eeef67146948a122cec25bded18, type: 3}
 --- !u!1 &1895294783
@@ -3920,7 +4058,7 @@ GameObject:
   - component: {fileID: 1895294786}
   - component: {fileID: 1895294785}
   m_Layer: 5
-  m_Name: Button (Legacy) (1)
+  m_Name: QuestDecline
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3990,7 +4128,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1895294786}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1377303130}
+        m_TargetAssemblyTypeName: QuestButtons, Assembly-CSharp
+        m_MethodName: QuestDecline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1895294786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4266,7 +4416,7 @@ Transform:
   - {fileID: 537243404}
   - {fileID: 2073067012}
   m_Father: {fileID: 1638715844}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2059093876
 MonoBehaviour:
@@ -4682,7 +4832,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1638715844}
+    m_TransformParent: {fileID: 189653095}
     m_Modifications:
     - target: {fileID: 5732598655207934126, guid: a1712eeef67146948a122cec25bded18,
         type: 3}
@@ -4753,6 +4903,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sceleton
+      objectReference: {fileID: 0}
+    - target: {fileID: 5732598655207934133, guid: a1712eeef67146948a122cec25bded18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1712eeef67146948a122cec25bded18, type: 3}
