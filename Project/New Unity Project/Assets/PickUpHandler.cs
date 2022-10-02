@@ -90,12 +90,15 @@ public class PickUpHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && itemInRange != null)
         {
-            Debug.Log("Clicked E");
-
             bool result = parent.inventory.TryToAdd(itemInRange);
-            Debug.Log(result.ToString());
+            
             if (result)
             {
+                var armorItem = activeCollider.GetComponent<ArmourItem>();
+                if (armorItem)
+                {
+                    parent.SetArmour(armorItem);
+                }
                 activeCollider.gameObject.SetActive(false);
             }
         }

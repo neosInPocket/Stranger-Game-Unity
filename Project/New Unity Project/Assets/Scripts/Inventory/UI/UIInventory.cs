@@ -51,7 +51,6 @@ public class UIInventory : MonoBehaviour
             uiSlot.SetSlot(slot);
             uiSlot.Refresh();
         }
-        Debug.Log("Refreshed");
     }
 
     public void ShowItemInfo(IInventoryItem item, GameObject uiSlot)

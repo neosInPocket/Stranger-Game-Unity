@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Inventory.Abstract;
+using TMPro.EditorUtilities;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -50,25 +51,49 @@ public class Player : MonoBehaviour, ICharacter
     {
         uiInventory.GetComponent<UIInventory>().AwakeInventory();
         inventory = uiInventory.GetComponent<UIInventory>().inventory;
+        inventory.OnRemove += OnInventoryRemove;
+        inventory.OnDrop += OnInventoryDrop;
         _maxHealth = 100;
         _maxMana = 100;
         _health = 100;
         _mana = 100;
         _armour = new List<ArmourItem>(3);
     }
+
+    private void OnInventoryDrop(IInventoryItem obj)
+    {
+        if (obj.GetType() == typeof(ArmourItem))
+        {
+            _armour.Remove(obj as ArmourItem);
+            _defence = maxDefence;
+        }
+    }
+
+    private void OnInventoryRemove(IInventoryItem obj)
+    {
+        if (obj.GetType() == typeof(ArmourItem))
+        {
+            _armour.Remove(obj as ArmourItem);
+            _defence = maxDefence;
+        }
+    }
+
     public void GetDamage(float damage)
     {
-        if (defence != 0)
+        if (_defence != 0)
         {
+            _defence -= 1;
+            StartCoroutine(RegenerateArmor());
+            return;
         }
         
-        if (_health - damage / defence <= 0)
+        if (_health - damage <= 0)
         {
             Die();
         }
         else
         {
-            _health -= damage / defence;
+            _health -= damage;
         }
     }
 
@@ -97,12 +122,31 @@ public class Player : MonoBehaviour, ICharacter
     }
     public void SetArmour(ArmourItem armor)
     {
-        
+        var existingItem = _armour.Find(x => x.info.type == armor.type);
+        if (!existingItem)
+        {
+            _armour.Add(armor);
+            _defence = maxDefence;
+        }
+        else
+        {
+            if (existingItem.info.value < armor.info.value)
+            {
+                _armour.Remove(existingItem);
+                _armour.Add(armor);
+                _defence = maxDefence;
+            }
+        }
     }
 
     private IEnumerator RegenerateArmor()
     {
         yield return new WaitForSeconds(3);
+        while (_defence < maxDefence)
+        {
+            _defence += 1;
+            yield return new WaitForSeconds(1);
+        }
     }
 
     public void Die()

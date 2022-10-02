@@ -13,6 +13,7 @@ public class Inventory : IInventory
     private List<IInventorySlot> _charSlots;
     public Action OnInventoryChanged;
     public Action<IInventoryItem> OnDrop;
+    public Action<IInventoryItem> OnRemove;
 
     public Inventory(int capacity)
     {
@@ -67,6 +68,10 @@ public class Inventory : IInventory
         var slot = _slots.Find(slot => slot.item == item);
         slot.Clear();
         OnInventoryChanged?.Invoke();
+        if (item.info.type != InventoryItemType.Default)
+        {
+            OnRemove?.Invoke(item);
+        }
     }
 
     public bool TryToAdd(IInventoryItem item)
