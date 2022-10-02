@@ -6,7 +6,7 @@ using UnityEngine;
 public class ArmourInfo : ScriptableObject
 {
     [SerializeField]
-    private float _defence;
+    private int _armorPoints;
 
-    public float defence => this._defence;
+    public int armorPoints => this._armorPoints;
 }

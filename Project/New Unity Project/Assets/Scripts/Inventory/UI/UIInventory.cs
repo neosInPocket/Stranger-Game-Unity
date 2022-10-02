@@ -12,7 +12,7 @@ using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
 {
-    public Inventory inventory { get; private set; } = new Inventory(19);
+    public Inventory inventory { get; private set; }
     private UIInventorySlot[] uiSlots;
     [SerializeField] private GameObject textInfoHolder;
     [SerializeField] private GameObject textNameHolder;
@@ -22,6 +22,7 @@ public class UIInventory : MonoBehaviour
 
     public void AwakeInventory()
     {
+        inventory = new Inventory(20);
         inventory.OnInventoryChanged += OnInventoryChanged;
         uiSlots = GetComponentsInChildren<UIInventorySlot>();
         SetupInventory();
