@@ -19,3 +19,5 @@ MonoBehaviour:
     \u043F\u0440\u0438\u0446\u0435\u043B\u0438\u0432\u0430\u043D\u0438\u044F"
   _spriteIcon: {fileID: 21300000, guid: a027029192607244e8dbe86dc4f49345, type: 3}
   _type: 7
+  _genericType: 3
+  _value: 0

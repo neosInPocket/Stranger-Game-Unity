@@ -8,6 +8,7 @@ public class InventoryItemInfo : ScriptableObject
     [SerializeField] private string _description;
     [SerializeField] private Sprite _spriteIcon;
     [SerializeField] private InventoryItemType _type;
+    [SerializeField] private ItemGenericType _genericType;
     [SerializeField] private int _value;
 
     public string id => _id;
@@ -15,5 +16,6 @@ public class InventoryItemInfo : ScriptableObject
     public string description => _description;
     public Sprite spriteIcon => _spriteIcon;
     public InventoryItemType type => _type;
+    public ItemGenericType genericType => _genericType;
     public int value => _value;
 }

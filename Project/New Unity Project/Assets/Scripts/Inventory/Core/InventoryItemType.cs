@@ -1,5 +1,4 @@
-﻿using Unity.VisualScripting;
-public enum InventoryItemType
+﻿public enum InventoryItemType
 {
     Default,
     Helmet,
@@ -11,3 +10,5 @@ public enum InventoryItemType
     LaserSight,
     Popup
 }
+
+

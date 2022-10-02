@@ -5,6 +5,7 @@ public interface IInventoryItem
 {
     bool isEquiped { get; set; }
     InventoryItemType type { get; }
+    ItemGenericType genericType { get; }
     ScriptableObject itemInfo { get; }
     InventoryItemInfo info { get; }
     GameObject prefab { get; }
