@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf77831b5c4bf746a64fd6f61ad3b55, type: 3}
+  m_Name: MyName
+  m_EditorClassIdentifier: 
+  dialogueInfo:
+  - myCharacterName: "\u0412\u043E\u0438\u043D \u0412\u0430\u0441\u044F"
+    myName: "\u0412\u0441\u0435 \u041E\u041A !"
+    portrait: {fileID: 4723107735738678597, guid: 77ba605bbd83f4448bc8683510c3155e,
+      type: 3}
+    myText: "\u041F\u0440\u0438\u0432\u0435\u0442 ! "
+  quest: {fileID: 11400000, guid: 4873b1c130bf0214f92d0f9d3e2df8a5, type: 2}
