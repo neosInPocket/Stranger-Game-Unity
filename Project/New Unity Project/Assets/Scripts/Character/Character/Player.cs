@@ -47,7 +47,7 @@ public class Player : MonoBehaviour, ICharacter
     public Inventory inventory { get; private set; }
     [SerializeField] private GameObject uiInventory;
 
-    void Start()
+    void Awake()
     {
         uiInventory.GetComponent<UIInventory>().AwakeInventory();
         inventory = uiInventory.GetComponent<UIInventory>().inventory;
