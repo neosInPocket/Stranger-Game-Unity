@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public Transform player;
+    //public Transform player;
 
     public delegate void OnEnemyDeathCollBack(EnemyProfile enemyProfile);
     public OnEnemyDeathCollBack onEnemyDeathCollBack;
