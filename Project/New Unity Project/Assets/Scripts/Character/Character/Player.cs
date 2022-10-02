@@ -2,16 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts.Inventory;
 using Assets.Scripts.Inventory.Abstract;
+using TMPro.EditorUtilities;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour, ICharacter
 {
-    public float MaxHealth { get; set; } = 100;
-    public float MaxMana { get; set; } = 100;
-    public float Health { get; set; } = 100;
-    public float Defence { get; set; }
-    public float Mana { get; set; } = 100;
-    public GunWeapon Weapon { get; set; }
+    public float maxHealth => _maxHealth;
+    public float maxMana => _maxMana;
+    public float health => _health;
+    public int defence => _defence;
+    public int maxDefence
+    {
+        get
+        {
+            int amount = 0;
+            foreach (var armour in _armour)
+            {
+                if (armour != null)
+                {
+                    amount += armour.armourInfo.armorPoints;
+                }
+            }
+
+            return amount;
+        }
+
+        private set
+        {
+            maxDefence = value;
+        }
+    }
+
+    public float mana => _mana;
+    public GunWeapon weapon { get; set; }
+    public List<ArmourItem> armour => _armour;
+
+    private int _defence;
+    private float _maxHealth;
+    private float _maxMana;
+    private float _health;
+    private float _mana;
+    private List<ArmourItem> _armour;
     public Inventory inventory { get; private set; }
     [SerializeField] private GameObject uiInventory;
 
@@ -19,40 +51,101 @@ public class Player : MonoBehaviour, ICharacter
     {
         uiInventory.GetComponent<UIInventory>().AwakeInventory();
         inventory = uiInventory.GetComponent<UIInventory>().inventory;
+        inventory.OnRemove += OnInventoryRemove;
+        inventory.OnDrop += OnInventoryDrop;
+        _maxHealth = 100;
+        _maxMana = 100;
+        _health = 100;
+        _mana = 100;
+        _armour = new List<ArmourItem>(3);
     }
+
+    private void OnInventoryDrop(IInventoryItem obj)
+    {
+        if (obj.GetType() == typeof(ArmourItem))
+        {
+            _armour.Remove(obj as ArmourItem);
+            _defence = maxDefence;
+        }
+    }
+
+    private void OnInventoryRemove(IInventoryItem obj)
+    {
+        if (obj.GetType() == typeof(ArmourItem))
+        {
+            _armour.Remove(obj as ArmourItem);
+            _defence = maxDefence;
+        }
+    }
+
     public void GetDamage(float damage)
     {
-        if (Health - damage <= 0)
+        if (_defence != 0)
+        {
+            _defence -= 1;
+            StartCoroutine(RegenerateArmor());
+            return;
+        }
+        
+        if (_health - damage <= 0)
         {
             Die();
         }
         else
         {
-            Health -= damage;
+            _health -= damage;
         }
     }
 
     public void GetHealth(float health)
     {
-        if (Health + health >= MaxHealth)
+        if (_health + health >= maxHealth)
         {
-            Health = 100;
+            _health = 100;
         }
         else
         {
-            Health += health;
+            _health += health;
         }
     }
 
     public void GetMana(float mana)
     {
-        if (Mana + mana >= MaxMana)
+        if (_mana + mana >= _maxMana)
         {
-            Mana = 100;
+            mana = 100;
         }
         else
         {
-            Mana += mana;
+            this._mana += mana;
+        }
+    }
+    public void SetArmour(ArmourItem armor)
+    {
+        var existingItem = _armour.Find(x => x.info.type == armor.type);
+        if (!existingItem)
+        {
+            _armour.Add(armor);
+            _defence = maxDefence;
+        }
+        else
+        {
+            if (existingItem.info.value < armor.info.value)
+            {
+                _armour.Remove(existingItem);
+                _armour.Add(armor);
+                _defence = maxDefence;
+            }
+        }
+    }
+
+    private IEnumerator RegenerateArmor()
+    {
+        yield return new WaitForSeconds(3);
+        while (_defence < maxDefence)
+        {
+            _defence += 1;
+            yield return new WaitForSeconds(1);
         }
     }
 
@@ -64,18 +157,5 @@ public class Player : MonoBehaviour, ICharacter
     public void Resurrect()
     {
         throw new System.NotImplementedException();
-    }
-
-    public void EquipHemlet(InventoryItem item)
-    {
-        var helmet = item as ArmourItem;
-    }
-    public void EquipChestPlate()
-    {
-
-    }
-    public void EquipBoots()
-    {
-
     }
 }

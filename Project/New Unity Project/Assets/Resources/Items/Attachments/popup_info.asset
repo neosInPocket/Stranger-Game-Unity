@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27b6971bce4aa024f832d1af6e9aa733, type: 3}
-  m_Name: LightChestplate_info
+  m_Script: {fileID: 11500000, guid: 1945cc1c453ab844ebebf4195bdd165d, type: 3}
+  m_Name: popup_info
   m_EditorClassIdentifier: 
-  _armorPoints: 2
+  _traceAccuracy: 0

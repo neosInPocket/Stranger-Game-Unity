@@ -1,10 +1,10 @@
 public interface ICharacter
 {
-    public float MaxHealth { get; set; }
-    public float Health { get; set; }
-    public float Defence { get; set; }
-    public float Mana { get; set; }
-    public GunWeapon Weapon { get; set; } 
+    public float maxHealth { get; }
+    public float health { get; }
+    public int defence { get; }
+    public float mana { get; }
+    public GunWeapon weapon { get; } 
     public void GetDamage(float damage);
     public void GetHealth(float health);
     public void GetMana(float mana);

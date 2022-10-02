@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -10,7 +11,15 @@ public abstract class GunWeapon : InventoryItem
     public float ReloadTime { get; private set; }
     public int AmmoAmount { get; private set; }
     public float Damage { get; private set; }
-    
+    private List<AttachmentItem> attachments;
+    public GunInfo gunInfo
+    {
+        get
+        {
+            return itemInfo as GunInfo;
+        }
+    }
+
     private int magazine;
     private bool isReloading;
     private bool isFiring;
@@ -19,7 +28,6 @@ public abstract class GunWeapon : InventoryItem
     public event Action<object> OnReload;
     void Awake()
     {
-        var gunInfo = itemInfo as GunInfo;
         AmmoAmount = gunInfo.ammoAmount;
         MagazineCapacity = gunInfo.magazineCapacity;
         ReloadTime = gunInfo.reloadTime;
