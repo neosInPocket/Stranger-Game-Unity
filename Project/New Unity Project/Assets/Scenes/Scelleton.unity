@@ -1351,6 +1351,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Inventory
       objectReference: {fileID: 0}
+    - target: {fileID: 7233798634797242270, guid: 34a988bf8e7207d40815205e5f718688,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7233798634797242271, guid: 34a988bf8e7207d40815205e5f718688,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3973,7 +3978,7 @@ PrefabInstance:
     - target: {fileID: 5732598655207934126, guid: a1712eeef67146948a122cec25bded18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.4689438
+      value: 7.4
       objectReference: {fileID: 0}
     - target: {fileID: 5732598655207934126, guid: a1712eeef67146948a122cec25bded18,
         type: 3}
@@ -4827,12 +4832,12 @@ PrefabInstance:
     - target: {fileID: 5732598655207934126, guid: a1712eeef67146948a122cec25bded18,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6528673
+      value: 6.9
       objectReference: {fileID: 0}
     - target: {fileID: 5732598655207934126, guid: a1712eeef67146948a122cec25bded18,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.6899242
+      value: 7.6
       objectReference: {fileID: 0}
     - target: {fileID: 5732598655207934126, guid: a1712eeef67146948a122cec25bded18,
         type: 3}

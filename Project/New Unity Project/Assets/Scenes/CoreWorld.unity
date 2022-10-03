@@ -10542,7 +10542,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &896786611
 Transform:
   m_ObjectHideFlags: 0
@@ -10552,7 +10552,7 @@ Transform:
   m_GameObject: {fileID: 896786610}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -400.1874, y: -225.37082, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.4166666}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.4166666}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 338801274}
@@ -98719,6 +98719,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Inventory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7233798634797242270, guid: 34a988bf8e7207d40815205e5f718688,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7233798634797242271, guid: 34a988bf8e7207d40815205e5f718688,
         type: 3}

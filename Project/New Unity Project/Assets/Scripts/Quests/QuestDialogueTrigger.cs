@@ -33,7 +33,7 @@ public class QuestDialogueTrigger : DialogueTrigger
 
             Interact();
 
-            Time.timeScale = 0;
+            //Time.timeScale = 0;
         }
     }
 }
