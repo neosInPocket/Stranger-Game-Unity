@@ -5,6 +5,13 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
+
+public struct Attachments
+{
+    public AttachmentItem stock;
+    public AttachmentItem extendedMag;
+    public AttachmentItem laserSight;
+}
 public class Inventory : IInventory
 {
     public int capacity { get; set; }
@@ -14,6 +21,7 @@ public class Inventory : IInventory
     public Action OnInventoryChanged;
     public Action<IInventoryItem> OnDrop;
     public Action<IInventoryItem> OnRemove;
+    public Attachments attachmentItems;
 
     public Inventory(int capacity)
     {
@@ -82,6 +90,8 @@ public class Inventory : IInventory
         }
 
         var itemSlot = GetSlot(item.type);
+
+        
         if (itemSlot != null)
         {
             if (!itemSlot.isEmpty && item.type != InventoryItemType.Default && item.info.value > itemSlot.item.info.value)

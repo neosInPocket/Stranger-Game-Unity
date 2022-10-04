@@ -9,9 +9,17 @@ public abstract class GunWeapon : InventoryItem
     public float FireRate { get; private set; }
     public int MagazineCapacity { get; private set; }
     public float ReloadTime { get; private set; }
-    public int AmmoAmount { get; private set; }
+
+    public int AmmoAmount
+    {
+        get
+        {
+            return _ammoAmount + attachments.extendedMag.ammoAddition;
+        }
+    }
+
     public float Damage { get; private set; }
-    private List<AttachmentItem> attachments;
+    public Attachments attachments;
     public GunInfo gunInfo
     {
         get
@@ -23,12 +31,13 @@ public abstract class GunWeapon : InventoryItem
     private int magazine;
     private bool isReloading;
     private bool isFiring;
+    private int _ammoAmount;
 
     public event Action<object> OnFire; 
     public event Action<object> OnReload;
     void Awake()
     {
-        AmmoAmount = gunInfo.ammoAmount;
+        _ammoAmount = gunInfo.ammoAmount;
         MagazineCapacity = gunInfo.magazineCapacity;
         ReloadTime = gunInfo.reloadTime;
         FireRate = gunInfo.fireRate;
@@ -49,11 +58,11 @@ public abstract class GunWeapon : InventoryItem
             if (AmmoAmount - MagazineCapacity < 0)
             {
                 magazine = AmmoAmount;
-                AmmoAmount = 0;
+                _ammoAmount = 0;
             }
             else
             {
-                AmmoAmount -= MagazineCapacity - magazine;
+                _ammoAmount -= MagazineCapacity - magazine;
                 magazine = MagazineCapacity;
             }
             isReloading = false;

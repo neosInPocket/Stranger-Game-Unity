@@ -99,6 +99,12 @@ public class PickUpHandler : MonoBehaviour
                 {
                     parent.SetArmour(armorItem);
                 }
+
+                var gunItem = activeCollider.GetComponent<GunWeapon>();
+                if (gunItem)
+                {
+                    gunItem.attachments = parent.inventory.attachmentItems;
+                }
                 activeCollider.gameObject.SetActive(false);
             }
         }

@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class AttachmentItem : InventoryItem
 {
-    public ArmourInfo armourInfo
-    {
-        get
-        {
-            return this.itemInfo as ArmourInfo;
-        }
-    }
+    public int ammoAddition { get; }
     public override void Use()
     {
         throw new System.NotImplementedException();
