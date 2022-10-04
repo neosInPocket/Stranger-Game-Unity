@@ -20,12 +20,12 @@ public class PickUpHandler : MonoBehaviour
     private Collider2D activeCollider;
     [SerializeField] private GameObject pickUpPref;
     [SerializeField] private TMP_Text textItemInfo;
-    [SerializeField] private Image itemInfoSprite;
-    private Player parent;
+    [SerializeField] private Image itemInfoImage;
+    private Player player;
 
     void Awake()
     {
-        parent = GetComponentInParent<Player>();
+        player = GetComponentInParent<Player>();
         itemsInRange = new List<IInventoryItem>();
         colliders = new List<Collider2D>();
     }
@@ -41,6 +41,8 @@ public class PickUpHandler : MonoBehaviour
             itemsInRange.Add(itemInRange);
             pickUpPref.SetActive(true);
         }
+
+        textItemInfo.transform.parent.gameObject.SetActive(true);
     }
 
     void OnTriggerStay2D()
@@ -52,7 +54,7 @@ public class PickUpHandler : MonoBehaviour
         Dictionary<Collider2D, float> distances = new Dictionary<Collider2D, float>();
         foreach (var collider in colliders)
         {
-            distances.Add(collider, Vector2.Distance(parent.transform.position, collider.transform.position));
+            distances.Add(collider, Vector2.Distance(player.transform.position, collider.transform.position));
         }
 
         var closestCollider = distances
@@ -67,13 +69,11 @@ public class PickUpHandler : MonoBehaviour
         activeCollider = closestCollider.Key;
 
         textItemInfo.text = itemInRange.info.description;
-        itemInfoSprite.sprite = itemInRange.info.spriteIcon;
+        itemInfoImage.sprite = itemInRange.info.spriteIcon;
 
         var itemSprite = itemInRange.info.spriteIcon;
         var sizeMultiplier = itemSprite.bounds.size.x / itemSprite.bounds.size.y;
-        itemInfoSprite.GetComponent<RectTransform>().sizeDelta = new Vector2(100 * sizeMultiplier, 100);
-        Debug.Log(sizeMultiplier);
-        textItemInfo.transform.parent.gameObject.SetActive(true);
+        itemInfoImage.GetComponent<RectTransform>().sizeDelta = new Vector2(100 * sizeMultiplier, 100);
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -105,27 +105,28 @@ public class PickUpHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && itemInRange != null)
         {
-            bool result = parent.inventory.TryToAdd(itemInRange);
+            bool result = player.inventory.TryToAdd(itemInRange);
             
             if (result)
             {
                 var armorItem = activeCollider.GetComponent<ArmourItem>();
                 if (armorItem)
                 {
-                    parent.SetArmour(armorItem);
+                    player.SetArmour(armorItem);
                 }
 
                 var gunItem = activeCollider.GetComponent<GunWeapon>();
                 if (gunItem)
                 {
-                    parent.SetWeapon(gunItem);
-                    gunItem.attachments = parent.inventory.attachmentItems;
+                    player.SetWeapon(gunItem);
+                    gunItem.isEquiped = true;
+                    gunItem.attachments = player.inventory.attachmentItems;
                 }
 
                 var attachmentItem = activeCollider.GetComponent<AttachmentItem>();
-                if (attachmentItem && parent.weapon)
+                if (attachmentItem && player.weapon)
                 {
-                    parent.weapon.attachments = parent.inventory.attachmentItems;
+                    player.weapon.attachments = player.inventory.attachmentItems;
                 }
                 activeCollider.gameObject.SetActive(false);
             }

@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Rendering.UI;
 
 public abstract class GunWeapon : InventoryItem
 {
@@ -25,7 +27,7 @@ public abstract class GunWeapon : InventoryItem
     }
 
     public int AmmoAmount { get; set; }
-    
+    public int currentMagazineAmmo => magazine;
     public float Damage { get; private set; }
     public Attachments attachments;
     public GunInfo gunInfo
@@ -42,8 +44,8 @@ public abstract class GunWeapon : InventoryItem
     private int _magazineCapacity;
     private float _reloadTime;
 
-    public event Action<object> OnFire; 
-    public event Action<object> OnReload;
+    public event Action<GunWeapon> OnFire; 
+    public event Action<GunWeapon> OnReload;
     void Awake()
     {
         _magazineCapacity = gunInfo.magazineCapacity;
@@ -88,6 +90,7 @@ public abstract class GunWeapon : InventoryItem
         {
             isFiring = true;
             OnFire?.Invoke(this);
+            Debug.Log("123");
             yield return new WaitForSeconds(1 / FireRate);
             isFiring = false;
         }
@@ -99,7 +102,7 @@ public abstract class GunWeapon : InventoryItem
 
     void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject())
+        if (EventSystem.current.IsPointerOverGameObject() || !isEquiped)
         {
             return;
         }
@@ -108,7 +111,7 @@ public abstract class GunWeapon : InventoryItem
             StartCoroutine(Fire());
         }
 
-        if (Input.GetKey(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             StartCoroutine(Reload());
         }

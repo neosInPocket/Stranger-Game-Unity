@@ -41,7 +41,7 @@ public class Player : MonoBehaviour, ICharacter
     private float _health;
     private float _mana;
     private List<ArmourItem> _armour;
-    public Action OnGunSet;
+    public Action<GunWeapon> OnGunSet;
     public Inventory inventory { get; private set; }
     [SerializeField] private GameObject uiInventory;
 
@@ -140,7 +140,10 @@ public class Player : MonoBehaviour, ICharacter
     public void SetWeapon(GunWeapon weapon)
     {
         this.weapon = weapon;
-        OnGunSet?.Invoke();
+        this.weapon.info.handlingSpriteIcon.GetComponent<GunWeapon>().isEquiped = true;
+        this.weapon.prefab.GetComponent<GunWeapon>().isEquiped = true;
+        this.weapon.isEquiped = true;
+        OnGunSet?.Invoke(weapon);
     }
 
     private IEnumerator RegenerateArmor()

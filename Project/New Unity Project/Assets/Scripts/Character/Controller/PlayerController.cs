@@ -89,9 +89,8 @@ public class PlayerController : MonoBehaviour, ICharacterController
         Destroy(_rotatePoint.transform.GetChild(0).gameObject); 
     }
 
-    private void OnGunSet()
+    private void OnGunSet(GunWeapon gunItem)
     {
-        var gunItem = inventory.GetSlot(InventoryItemType.Gun).item;
         GetComponent<Animator>().runtimeAnimatorController = _playerWeaponAnimator;
 
         var rotatePos = _rotatePoint.transform.position;

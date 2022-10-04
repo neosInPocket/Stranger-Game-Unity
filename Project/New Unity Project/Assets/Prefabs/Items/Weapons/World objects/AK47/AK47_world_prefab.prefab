@@ -48,7 +48,7 @@ MonoBehaviour:
   firePoint: {fileID: 3525515473780552125}
   fireEffect: {fileID: 3806968522396846925, guid: ee75f6206c710ac4bbb15328593eea88,
     type: 3}
-  bullet: {fileID: 6337368540584731677, guid: 2a0d1d0034f349a4bbcb8a3aac577146, type: 3}
+  bullet: {fileID: 6337368540584731677, guid: 9bfa0ae1ba9b26b4b9a686bc757b0db4, type: 3}
 --- !u!1 &3525515473238233824
 GameObject:
   m_ObjectHideFlags: 0

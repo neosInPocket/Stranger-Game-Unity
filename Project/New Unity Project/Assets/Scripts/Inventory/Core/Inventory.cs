@@ -100,6 +100,7 @@ public class Inventory : IInventory
 
         if (item.type == InventoryItemType.Gun)
         {
+            item.isEquiped = false;
             OnGunRemove?.Invoke(item);
         }
 
@@ -217,7 +218,11 @@ public class Inventory : IInventory
         var item = slot.item;
         slot.Clear();
         OnInventoryChanged?.Invoke();
-        OnGunRemove?.Invoke(item);
+        if (item.type == InventoryItemType.Gun)
+        {
+            item.isEquiped = false;
+            OnGunRemove?.Invoke(item);
+        }
         OnDrop?.Invoke(item);
     }
 
