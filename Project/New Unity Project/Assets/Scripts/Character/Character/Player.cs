@@ -1,9 +1,6 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Assets.Scripts.Inventory;
-using Assets.Scripts.Inventory.Abstract;
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour, ICharacter
@@ -35,7 +32,7 @@ public class Player : MonoBehaviour, ICharacter
     }
 
     public float mana => _mana;
-    public GunWeapon weapon { get; set; }
+    public GunWeapon weapon { get; private set; }
     public List<ArmourItem> armour => _armour;
 
     private int _defence;
@@ -44,6 +41,7 @@ public class Player : MonoBehaviour, ICharacter
     private float _health;
     private float _mana;
     private List<ArmourItem> _armour;
+    public Action OnGunSet;
     public Inventory inventory { get; private set; }
     [SerializeField] private GameObject uiInventory;
 
@@ -86,7 +84,7 @@ public class Player : MonoBehaviour, ICharacter
             StartCoroutine(RegenerateArmor());
             return;
         }
-        
+
         if (_health - damage <= 0)
         {
             Die();
@@ -137,6 +135,12 @@ public class Player : MonoBehaviour, ICharacter
                 _defence = maxDefence;
             }
         }
+    }
+
+    public void SetWeapon(GunWeapon weapon)
+    {
+        this.weapon = weapon;
+        OnGunSet?.Invoke();
     }
 
     private IEnumerator RegenerateArmor()

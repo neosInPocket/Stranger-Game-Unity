@@ -5,8 +5,4 @@ using UnityEngine;
 
 public class HealthPotion : InventoryItem
 {
-    public override void Use()
-    {
-        throw new NotImplementedException();
-    }
 }

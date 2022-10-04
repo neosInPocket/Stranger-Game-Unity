@@ -6,18 +6,20 @@ using UnityEngine;
 public class GunRenderer : MonoBehaviour
 {
     [SerializeField] private GameObject parent;
-    [SerializeField] private Camera cam;
+    private Camera cam;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject fireEffect;
     [SerializeField] private GameObject bullet;
-    [SerializeField] private Transform rotatePoint;
+    private Transform rotatePoint;
     private bool isFlipped;
 
-    void Awake()
+    void Start()
     {
         GunWeapon gun = parent.gameObject.GetComponent<GunWeapon>();
         gun.OnFire += OnFire;
         gun.OnReload += OnReload;
+        rotatePoint = parent.transform.parent;
+        cam = Camera.main;
     }
 
     private void OnReload(object obj)

@@ -2,12 +2,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
+using System.Linq;
 using Mono.Cecil.Cil;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class UIInventory : MonoBehaviour
@@ -16,9 +18,12 @@ public class UIInventory : MonoBehaviour
     private UIInventorySlot[] uiSlots;
     [SerializeField] private GameObject textInfoHolder;
     [SerializeField] private GameObject textNameHolder;
+    [SerializeField] private GameObject _player;
     private TMP_Text tmpTextInfo;
     private TMP_Text tmpTextName;
     private GameObject _activeSlot;
+    public Player player => _player.GetComponent<Player>();
+
 
     public void AwakeInventory()
     {

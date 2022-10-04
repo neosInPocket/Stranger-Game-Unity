@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GunInfo_Shotgun
   m_EditorClassIdentifier: 
   _fireRate: 3
-  _magazineCapacity: 0
+  _magazineCapacity: 5
   _reloadTime: 0.3
-  _ammoAmount: 0
-  _damage: 0
+  _ammoAmount: 5
+  _damage: 10

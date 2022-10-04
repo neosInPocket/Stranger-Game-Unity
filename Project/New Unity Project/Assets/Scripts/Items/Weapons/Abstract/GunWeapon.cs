@@ -7,17 +7,25 @@ using UnityEngine.EventSystems;
 public abstract class GunWeapon : InventoryItem
 {
     public float FireRate { get; private set; }
-    public int MagazineCapacity { get; private set; }
-    public float ReloadTime { get; private set; }
 
-    public int AmmoAmount
+    public int MagazineCapacity
     {
         get
         {
-            return _ammoAmount + attachments.extendedMag.ammoAddition;
+            return attachments.extendedMag is null ? _magazineCapacity : _magazineCapacity + attachments.extendedMag.ammoAddition;
         }
     }
 
+    public float ReloadTime
+    {
+        get
+        {
+            return attachments.stock is null ? _reloadTime : _reloadTime - attachments.stock.reloadTimeDecrease;
+        }
+    }
+
+    public int AmmoAmount { get; set; }
+    
     public float Damage { get; private set; }
     public Attachments attachments;
     public GunInfo gunInfo
@@ -31,15 +39,16 @@ public abstract class GunWeapon : InventoryItem
     private int magazine;
     private bool isReloading;
     private bool isFiring;
-    private int _ammoAmount;
+    private int _magazineCapacity;
+    private float _reloadTime;
 
     public event Action<object> OnFire; 
     public event Action<object> OnReload;
     void Awake()
     {
-        _ammoAmount = gunInfo.ammoAmount;
-        MagazineCapacity = gunInfo.magazineCapacity;
-        ReloadTime = gunInfo.reloadTime;
+        _magazineCapacity = gunInfo.magazineCapacity;
+        AmmoAmount = gunInfo.ammoAmount;
+        _reloadTime = gunInfo.reloadTime;
         FireRate = gunInfo.fireRate;
         Damage = gunInfo.damage;
         magazine = MagazineCapacity;
@@ -58,11 +67,11 @@ public abstract class GunWeapon : InventoryItem
             if (AmmoAmount - MagazineCapacity < 0)
             {
                 magazine = AmmoAmount;
-                _ammoAmount = 0;
+                AmmoAmount = 0;
             }
             else
             {
-                _ammoAmount -= MagazineCapacity - magazine;
+                AmmoAmount -= MagazineCapacity - magazine;
                 magazine = MagazineCapacity;
             }
             isReloading = false;

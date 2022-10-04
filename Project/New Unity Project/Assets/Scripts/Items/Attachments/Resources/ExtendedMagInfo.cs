@@ -4,7 +4,7 @@ using UnityEngine;
 public class ExtendedMagInfo : ScriptableObject
 {
     [SerializeField]
-    private float _bulletsAddition;
+    private int _bulletsAddition;
 
-    public float bulletsAddition => this._bulletsAddition;
+    public int bulletsAddition => this._bulletsAddition;
 }

@@ -1,6 +1,10 @@
 using System;
+using System.Security.Cryptography;
 using Mono.CompilerServices.SymbolWriter;
 using TMPro.EditorUtilities;
+using TMPro.Examples;
+using UnityEditor;
+using UnityEditor.Animations;
 using UnityEngine.EventSystems;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
@@ -12,6 +16,9 @@ public class PlayerController : MonoBehaviour, ICharacterController
     private bool isInInventory;
 
     [SerializeField] private GameObject _uiInventory;
+    [SerializeField] private AnimatorController _playerWeaponAnimator;
+    [SerializeField] private AnimatorController _playerAnimator;
+    [SerializeField] private GameObject _rotatePoint;
     private Inventory inventory;
     public float Speed
     {
@@ -72,6 +79,30 @@ public class PlayerController : MonoBehaviour, ICharacterController
         animator = GetComponent<Animator>();
         inventory = _uiInventory.GetComponent<UIInventory>().inventory;
         inventory.OnDrop += OnDrop;
+        inventory.OnGunRemove += OnGunRemove;
+        gameObject.GetComponent<Player>().OnGunSet += OnGunSet;
+    }
+
+    private void OnGunRemove(IInventoryItem obj)
+    {
+        GetComponent<Animator>().runtimeAnimatorController = _playerAnimator;
+        Destroy(_rotatePoint.transform.GetChild(0).gameObject); 
+    }
+
+    private void OnGunSet()
+    {
+        var gunItem = inventory.GetSlot(InventoryItemType.Gun).item;
+        GetComponent<Animator>().runtimeAnimatorController = _playerWeaponAnimator;
+
+        var rotatePos = _rotatePoint.transform.position;
+        Debug.Log(rotatePos);
+        var shiftedPos = new Vector2(rotatePos.x + .7f, rotatePos.y);
+
+        var instance = Instantiate(gunItem.info.handlingSpriteIcon, shiftedPos, Quaternion.identity);
+        instance.transform.parent = _rotatePoint.transform;
+
+        instance.transform.rotation = Quaternion.identity;
+        instance.transform.localScale = Vector3.one;
     }
 
     private void OnDrop(IInventoryItem obj)
@@ -80,6 +111,8 @@ public class PlayerController : MonoBehaviour, ICharacterController
         {
             obj.prefab.gameObject.SetActive(true);
             obj.prefab.transform.position = transform.position;
+            _rotatePoint.transform.localScale = new Vector3(1f, 1f, 1f);
+            _rotatePoint.transform.rotation = Quaternion.identity;
         }
     }
 

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3200f9e8526c8464d940406fc83364f8, type: 3}
   m_Name: ExtendedMag_info
   m_EditorClassIdentifier: 
-  _bulletsAddition: 0
+  _bulletsAddition: 2

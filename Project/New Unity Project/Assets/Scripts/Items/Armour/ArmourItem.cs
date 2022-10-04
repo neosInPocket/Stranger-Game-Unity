@@ -9,9 +9,4 @@ public class ArmourItem : InventoryItem
             return this.itemInfo as ArmourInfo;
         }
     }
-
-    public override void Use()
-    {
-        throw new System.NotImplementedException();
-    }
 }

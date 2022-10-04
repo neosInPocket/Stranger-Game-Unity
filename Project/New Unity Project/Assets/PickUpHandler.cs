@@ -4,7 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
 using System.Security.Cryptography;
+using TMPro;
+using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Video;
 using Vector2 = UnityEngine.Vector2;
 
@@ -16,6 +19,8 @@ public class PickUpHandler : MonoBehaviour
     private List<Collider2D> colliders;
     private Collider2D activeCollider;
     [SerializeField] private GameObject pickUpPref;
+    [SerializeField] private TMP_Text textItemInfo;
+    [SerializeField] private Image itemInfoSprite;
     private Player parent;
 
     void Awake()
@@ -60,6 +65,15 @@ public class PickUpHandler : MonoBehaviour
         closestCollider.Key.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
         itemInRange = closestCollider.Key.gameObject.GetComponent<IInventoryItem>();
         activeCollider = closestCollider.Key;
+
+        textItemInfo.text = itemInRange.info.description;
+        itemInfoSprite.sprite = itemInRange.info.spriteIcon;
+
+        var itemSprite = itemInRange.info.spriteIcon;
+        var sizeMultiplier = itemSprite.bounds.size.x / itemSprite.bounds.size.y;
+        itemInfoSprite.GetComponent<RectTransform>().sizeDelta = new Vector2(100 * sizeMultiplier, 100);
+        Debug.Log(sizeMultiplier);
+        textItemInfo.transform.parent.gameObject.SetActive(true);
     }
 
     void OnTriggerExit2D(Collider2D collider)
@@ -81,6 +95,7 @@ public class PickUpHandler : MonoBehaviour
             pickUpPref.SetActive(false);
             itemInRange = null;
             activeCollider = null;
+            textItemInfo.transform.parent.gameObject.SetActive(false);
         }
         collider.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
 
@@ -103,7 +118,14 @@ public class PickUpHandler : MonoBehaviour
                 var gunItem = activeCollider.GetComponent<GunWeapon>();
                 if (gunItem)
                 {
+                    parent.SetWeapon(gunItem);
                     gunItem.attachments = parent.inventory.attachmentItems;
+                }
+
+                var attachmentItem = activeCollider.GetComponent<AttachmentItem>();
+                if (attachmentItem && parent.weapon)
+                {
+                    parent.weapon.attachments = parent.inventory.attachmentItems;
                 }
                 activeCollider.gameObject.SetActive(false);
             }

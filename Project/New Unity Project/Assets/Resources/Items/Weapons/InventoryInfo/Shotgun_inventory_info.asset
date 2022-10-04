@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 651d1df6f52a4c5459f17512009d2dfd, type: 3}
-  m_Name: Pistol_inventory_info
+  m_Name: Shotgun_inventory_info
   m_EditorClassIdentifier: 
-  _id: gun_pistol
-  _title: "\u0420\u0435\u0432\u043E\u043B\u044C\u0432\u0435\u0440"
-  _description: "\u0421\u0442\u0440\u0435\u043B\u044F\u0435\u0442 \u043D\u043E\u0440\u043C\u0430\u043B\u044C\u043D\u043E"
-  _spriteIcon: {fileID: 21300000, guid: ee58f2954ace48d4da5dd9f3edcb6722, type: 3}
+  _id: gun_shotgun
+  _title: "\u0414\u0440\u043E\u0431\u043E\u0432\u0438\u043A"
+  _description: "\u0421\u0442\u0440\u0435\u043B\u044F\u0435\u0442 \u0434\u0440\u043E\u0431\u044C\u044E"
+  _spriteIcon: {fileID: 21300000, guid: 8ad8bdeb2fa519f45b7adefa5cb4ef84, type: 3}
   _worldObject: {fileID: 3525515473251518338, guid: 174ffc3cf972ec84aad5d29d4a4c76f6,
     type: 3}
   _type: 4
