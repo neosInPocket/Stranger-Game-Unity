@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AnimScriptCut : MonoBehaviour
 {
-    
+    [SerializeField] float sec;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +15,6 @@ public class AnimScriptCut : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       Destroy(gameObject,20f); 
+       Destroy(gameObject,sec); 
     }
 }

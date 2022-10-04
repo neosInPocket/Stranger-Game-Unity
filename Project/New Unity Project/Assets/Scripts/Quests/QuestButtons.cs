@@ -12,13 +12,13 @@ public class QuestButtons : MonoBehaviour
 
         QuestManager.instance.questUI.SetActive(false);
 
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
 
     public void QuestDecline()
     {
         QuestManager.instance.questUI.SetActive(false);
 
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
 }
