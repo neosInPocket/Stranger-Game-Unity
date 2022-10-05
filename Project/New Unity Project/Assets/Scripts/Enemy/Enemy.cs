@@ -5,8 +5,8 @@ using UnityEngine;
 public class Enemy : AbstractEnemy
 {
     [SerializeField] private HealthBar _healthBar;
-    [SerializeField] private float defence = 0;
-    //private bool _isHitting = false;
+    [SerializeField] private float _defence = 0;
+    
 
     protected override void Start()
     {
@@ -29,7 +29,7 @@ public class Enemy : AbstractEnemy
 
     public override void TakeDamage(float damage)
     {
-        _currentHealth -= damage - defence;
+        _currentHealth -= damage - _defence;
         _healthBar.SetHealthValue(_currentHealth, MaxHealth);
         if (_currentHealth <= 0)
         {
