@@ -140,9 +140,6 @@ public class Player : MonoBehaviour, ICharacter
     public void SetWeapon(GunWeapon weapon)
     {
         this.weapon = weapon;
-        this.weapon.info.handlingSpriteIcon.GetComponent<GunWeapon>().isEquiped = true;
-        this.weapon.prefab.GetComponent<GunWeapon>().isEquiped = true;
-        this.weapon.isEquiped = true;
         OnGunSet?.Invoke(weapon);
     }
 

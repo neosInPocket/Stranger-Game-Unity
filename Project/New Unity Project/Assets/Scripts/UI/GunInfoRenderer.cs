@@ -9,30 +9,26 @@ public class GunInfoRenderer : MonoBehaviour
     [SerializeField] private TMP_Text magazineAmmoText;
     [SerializeField] private TMP_Text ammoText;
     [SerializeField] private Image gunSprite;
+    private GunWeapon currentWeapon;
 
-    void Start()
+    public void AwakeInfo(GunWeapon weapon)
     {
-        player.OnGunSet += OnGunSet;
-        player.inventory.OnGunRemove += OnGunRemove;
+        currentWeapon = weapon;
+        GunSetInfo(currentWeapon);
+        currentWeapon.OnFire += WeaponFireInfo;
     }
 
-    private void OnGunRemove(IInventoryItem obj)
+    private void WeaponFireInfo(GunWeapon weapon)
     {
-        (obj as GunWeapon).OnFire -= WeaponOnFire;
+        ammoText.text = currentWeapon.AmmoAmount.ToString();
+        magazineAmmoText.text = currentWeapon.currentMagazineAmmo.ToString();
+        Debug.Log(currentWeapon.currentMagazineAmmo);
     }
 
-    private void WeaponOnFire(GunWeapon weapon)
-    {
-        ammoText.text = weapon.AmmoAmount.ToString();
-        magazineAmmoText.text = weapon.currentMagazineAmmo.ToString();
-        Debug.Log(weapon.currentMagazineAmmo);
-    }
-
-    private void OnGunSet(GunWeapon weapon)
+    private void GunSetInfo(GunWeapon weapon)
     {
         gunSprite.sprite = weapon.info.spriteIcon;
         ammoText.text = weapon.AmmoAmount.ToString();
         magazineAmmoText.text = weapon.MagazineCapacity.ToString();
-        weapon.OnFire += WeaponOnFire;
     }
 }

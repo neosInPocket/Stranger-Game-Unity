@@ -27,7 +27,16 @@ public abstract class GunWeapon : InventoryItem
     }
 
     public int AmmoAmount { get; set; }
-    public int currentMagazineAmmo => magazine;
+
+    public int currentMagazineAmmo
+    {
+        get
+        {
+            Debug.Log(magazine);
+            return magazine;
+        }
+    }
+
     public float Damage { get; private set; }
     public Attachments attachments;
     public GunInfo gunInfo
@@ -62,6 +71,7 @@ public abstract class GunWeapon : InventoryItem
             yield break;
         }
         isReloading = true;
+        Debug.Log("reloading");
         if (magazine < MagazineCapacity && AmmoAmount != 0)
         {
             OnReload?.Invoke(this);
@@ -90,7 +100,7 @@ public abstract class GunWeapon : InventoryItem
         {
             isFiring = true;
             OnFire?.Invoke(this);
-            Debug.Log("123");
+            magazine -= 1;
             yield return new WaitForSeconds(1 / FireRate);
             isFiring = false;
         }
