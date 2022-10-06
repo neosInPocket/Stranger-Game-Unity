@@ -26,6 +26,7 @@ public class GunInfoRenderer : MonoBehaviour
     private void CurrentWeaponOnReload(GunWeapon obj)
     {
         isReloaded = false;
+        reloadScroll.gameObject.SetActive(true);
         StartCoroutine(ReloadScrollStart());
     }
 
@@ -52,10 +53,13 @@ public class GunInfoRenderer : MonoBehaviour
 
     private IEnumerator ReloadScrollStart()
     {
+        reloadScroll.fillAmount = 0f;
+        var step = 0.1f / currentWeapon.ReloadTime;
         while (!isReloaded)
         {
-            reloadScroll.fillAmount += 0.1f;
-            yield return new WaitForSeconds(1 / currentWeapon.ReloadTime);
+            reloadScroll.fillAmount += step;
+            yield return new WaitForSeconds(step);
         }
+        reloadScroll.gameObject.SetActive(false);
     }
 }
