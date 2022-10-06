@@ -7,6 +7,7 @@ using UnityEditor;
 using UnityEditor.Animations;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.Events;
 using Vector2 = UnityEngine.Vector2;
 
 public class PlayerController : MonoBehaviour, ICharacterController
@@ -14,6 +15,7 @@ public class PlayerController : MonoBehaviour, ICharacterController
     [SerializeField]  private float speed = 5;
     private Animator animator;
     private bool isInInventory;
+    public UnityEvent<bool> OnInventoryInteract;
 
     [SerializeField] private GameObject _uiInventory;
     [SerializeField] private AnimatorController _playerWeaponAnimator;
@@ -88,6 +90,11 @@ public class PlayerController : MonoBehaviour, ICharacterController
     private void OnGunRemove(IInventoryItem obj)
     {
         GetComponent<Animator>().runtimeAnimatorController = _playerAnimator;
+        var gun = obj as GunWeapon;
+        var gunInstance = _gunInstance.GetComponent<GunWeapon>();
+        gun.AmmoAmount = gunInstance.AmmoAmount;
+        gun.currentMagazineAmmo = gunInstance.currentMagazineAmmo;
+        _gunInfoRenderer.DestroyInfo();
         Destroy(_gunInstance); 
     }
 
@@ -96,13 +103,15 @@ public class PlayerController : MonoBehaviour, ICharacterController
         GetComponent<Animator>().runtimeAnimatorController = _playerWeaponAnimator;
 
         var rotatePos = _rotatePoint.transform.position;
-        Debug.Log(rotatePos);
         var shiftedPos = new Vector2(rotatePos.x + .7f, rotatePos.y);
 
         _gunInstance = Instantiate(gunItem.info.handlingSpriteIcon, shiftedPos, Quaternion.identity);
+        var gunWeapon = _gunInstance.GetComponent<GunWeapon>();
         GetComponent<Player>().weapon = _gunInstance.gameObject.GetComponent<GunWeapon>();
 
-        _gunInstance.GetComponent<GunWeapon>().isEquiped = true;
+        gunWeapon.GetComponent<GunWeapon>().isEquiped = true;
+        gunWeapon.AmmoAmount = gunItem.AmmoAmount;
+        gunWeapon.currentMagazineAmmo = gunItem.currentMagazineAmmo;
         _gunInstance.transform.parent = _rotatePoint.transform;
 
         _gunInstance.transform.rotation = Quaternion.identity;
@@ -130,11 +139,13 @@ public class PlayerController : MonoBehaviour, ICharacterController
             {
                 _uiInventory.SetActive(false);
                 isInInventory = false;
+                OnInventoryInteract?.Invoke(true);
             }
             else
             {
                 _uiInventory.SetActive(true);
                 isInInventory = true;
+                OnInventoryInteract?.Invoke(false);
             }
         }
 

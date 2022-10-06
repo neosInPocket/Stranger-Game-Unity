@@ -32,8 +32,12 @@ public abstract class GunWeapon : InventoryItem
     {
         get
         {
-            Debug.Log(magazine);
             return magazine;
+        }
+
+        set
+        {
+            magazine = value;
         }
     }
 
@@ -87,8 +91,8 @@ public abstract class GunWeapon : InventoryItem
                 magazine = MagazineCapacity;
             }
             OnReloaded?.Invoke(this);
-            isReloading = false;
         }
+        isReloading = false;
     }
     public IEnumerator Fire()
     {

@@ -23,6 +23,15 @@ public class GunInfoRenderer : MonoBehaviour
         currentWeapon.OnReload += CurrentWeaponOnReload;
     }
 
+    public void DestroyInfo()
+    {
+        currentWeapon.OnFire -= WeaponFireInfo;
+        currentWeapon.OnReloaded -= CurrentWeaponOnReloaded;
+        currentWeapon.OnReload -= CurrentWeaponOnReload;
+        currentWeapon = null;
+        gameObject.SetActive(false);
+    }
+
     private void CurrentWeaponOnReload(GunWeapon obj)
     {
         isReloaded = false;
@@ -48,18 +57,18 @@ public class GunInfoRenderer : MonoBehaviour
     {
         gunSprite.sprite = weapon.info.spriteIcon;
         ammoText.text = weapon.AmmoAmount.ToString();
-        magazineAmmoText.text = weapon.MagazineCapacity.ToString();
+        magazineAmmoText.text = weapon.currentMagazineAmmo.ToString();
     }
 
     private IEnumerator ReloadScrollStart()
     {
         reloadScroll.fillAmount = 0f;
-        var step = 0.1f / currentWeapon.ReloadTime;
         while (!isReloaded)
         {
-            reloadScroll.fillAmount += step;
-            yield return new WaitForSeconds(step);
+            reloadScroll.fillAmount += 0.05f / currentWeapon.ReloadTime;
+            yield return new WaitForSeconds(0.05f);
         }
+        Debug.Log(reloadScroll.fillAmount);
         reloadScroll.gameObject.SetActive(false);
     }
 }
