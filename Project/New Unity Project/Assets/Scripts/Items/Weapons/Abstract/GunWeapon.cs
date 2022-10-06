@@ -54,6 +54,7 @@ public abstract class GunWeapon : InventoryItem
     private float _reloadTime;
 
     public event Action<GunWeapon> OnFire; 
+    public event Action<GunWeapon> OnReloaded;
     public event Action<GunWeapon> OnReload;
     void Awake()
     {
@@ -71,7 +72,6 @@ public abstract class GunWeapon : InventoryItem
             yield break;
         }
         isReloading = true;
-        Debug.Log("reloading");
         if (magazine < MagazineCapacity && AmmoAmount != 0)
         {
             OnReload?.Invoke(this);
@@ -86,6 +86,7 @@ public abstract class GunWeapon : InventoryItem
                 AmmoAmount -= MagazineCapacity - magazine;
                 magazine = MagazineCapacity;
             }
+            OnReloaded?.Invoke(this);
             isReloading = false;
         }
     }
@@ -99,8 +100,8 @@ public abstract class GunWeapon : InventoryItem
         if (magazine != 0)
         {
             isFiring = true;
-            OnFire?.Invoke(this);
             magazine -= 1;
+            OnFire?.Invoke(this);
             yield return new WaitForSeconds(1 / FireRate);
             isFiring = false;
         }
@@ -116,12 +117,12 @@ public abstract class GunWeapon : InventoryItem
         {
             return;
         }
-        if (Input.GetButtonDown("Fire1"))
+        if ((Input.GetButtonDown("Fire1") && !gunInfo.isFullAuto) || (Input.GetButton("Fire1") && gunInfo.isFullAuto))
         {
             StartCoroutine(Fire());
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKey(KeyCode.R))
         {
             StartCoroutine(Reload());
         }

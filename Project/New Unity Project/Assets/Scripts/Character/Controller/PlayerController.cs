@@ -100,6 +100,8 @@ public class PlayerController : MonoBehaviour, ICharacterController
         var shiftedPos = new Vector2(rotatePos.x + .7f, rotatePos.y);
 
         _gunInstance = Instantiate(gunItem.info.handlingSpriteIcon, shiftedPos, Quaternion.identity);
+        GetComponent<Player>().weapon = _gunInstance.gameObject.GetComponent<GunWeapon>();
+
         _gunInstance.GetComponent<GunWeapon>().isEquiped = true;
         _gunInstance.transform.parent = _rotatePoint.transform;
 

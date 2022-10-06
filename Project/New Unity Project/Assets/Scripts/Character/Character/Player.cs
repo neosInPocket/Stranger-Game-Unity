@@ -32,7 +32,7 @@ public class Player : MonoBehaviour, ICharacter
     }
 
     public float mana => _mana;
-    public GunWeapon weapon { get; private set; }
+    public GunWeapon weapon { get; set; }
     public List<ArmourItem> armour => _armour;
 
     private int _defence;
