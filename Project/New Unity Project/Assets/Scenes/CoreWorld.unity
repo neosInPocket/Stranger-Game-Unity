@@ -1230,7 +1230,7 @@ MonoBehaviour:
   magazineAmmoText: {fileID: 1248229154}
   ammoText: {fileID: 493971246}
   gunSprite: {fileID: 44693134}
-  reloadScroll: {fileID: 0}
+  reloadScroll: {fileID: 221842586}
 --- !u!1001 &71901527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21659,11 +21659,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5dc7f3ba54f25a418f769cb1ca9a727, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 981117482}
-  speed: 3
-  positionOfPatrol: 5
-  point: {fileID: 1360036411}
-  stoppingDistance: 8
+  _spriteRenderer: {fileID: 0}
+  _speed: 0
+  _positionOfPatrol: 0
+  _point: {fileID: 0}
+  _player: {fileID: 0}
+  _stoppingDistance: 0
 --- !u!61 &981117480
 BoxCollider2D:
   m_ObjectHideFlags: 0
