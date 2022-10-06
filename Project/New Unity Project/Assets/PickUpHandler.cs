@@ -119,7 +119,6 @@ public class PickUpHandler : MonoBehaviour
                 if (gunItem)
                 {
                     player.SetWeapon(gunItem);
-                    gunItem.isEquiped = true;
                     gunItem.attachments = player.inventory.attachmentItems;
                 }
 

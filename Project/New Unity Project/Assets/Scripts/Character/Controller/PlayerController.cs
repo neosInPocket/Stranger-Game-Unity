@@ -19,6 +19,8 @@ public class PlayerController : MonoBehaviour, ICharacterController
     [SerializeField] private AnimatorController _playerWeaponAnimator;
     [SerializeField] private AnimatorController _playerAnimator;
     [SerializeField] private GameObject _rotatePoint;
+    [SerializeField] private GunInfoRenderer _gunInfoRenderer;
+    private GameObject _gunInstance;
     private Inventory inventory;
     public float Speed
     {
@@ -86,7 +88,7 @@ public class PlayerController : MonoBehaviour, ICharacterController
     private void OnGunRemove(IInventoryItem obj)
     {
         GetComponent<Animator>().runtimeAnimatorController = _playerAnimator;
-        Destroy(_rotatePoint.transform.GetChild(0).gameObject); 
+        Destroy(_gunInstance); 
     }
 
     private void OnGunSet(GunWeapon gunItem)
@@ -97,11 +99,16 @@ public class PlayerController : MonoBehaviour, ICharacterController
         Debug.Log(rotatePos);
         var shiftedPos = new Vector2(rotatePos.x + .7f, rotatePos.y);
 
-        var instance = Instantiate(gunItem.info.handlingSpriteIcon, shiftedPos, Quaternion.identity);
-        instance.transform.parent = _rotatePoint.transform;
+        _gunInstance = Instantiate(gunItem.info.handlingSpriteIcon, shiftedPos, Quaternion.identity);
+        GetComponent<Player>().weapon = _gunInstance.gameObject.GetComponent<GunWeapon>();
 
-        instance.transform.rotation = Quaternion.identity;
-        instance.transform.localScale = Vector3.one;
+        _gunInstance.GetComponent<GunWeapon>().isEquiped = true;
+        _gunInstance.transform.parent = _rotatePoint.transform;
+
+        _gunInstance.transform.rotation = Quaternion.identity;
+        _gunInstance.transform.localScale = Vector3.one;
+
+        _gunInfoRenderer.AwakeInfo(_gunInstance.GetComponent<GunWeapon>());
     }
 
     private void OnDrop(IInventoryItem obj)
