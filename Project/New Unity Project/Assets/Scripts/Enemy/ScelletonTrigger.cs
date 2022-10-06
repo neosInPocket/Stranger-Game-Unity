@@ -5,44 +5,48 @@ using UnityEngine.SceneManagement;
 
 public class ScelletonTrigger : MonoBehaviour
 {
-    public SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    public float speed;
+    [SerializeField] private float _speed;
 
-    public int positionOfPatrol;
-    public Transform point;  //точка возвращения врага
+    [SerializeField] private int _positionOfPatrol;
+
+    [SerializeField] private Transform _point; //точка возвращения врага
+
+    [SerializeField] private Transform _player;
+
+    [SerializeField] private float _stoppingDistance;
 
     bool moovingRight = false;
 
-    Transform player;
-    public float stoppingDistance;
-
     bool chill = false;
+
     bool angry = false;
+
     bool goBack = false;
 
     void Start()
     {
-        player = GameObject.FindObjectOfType<Player>().transform;
+        _player = GameObject.FindObjectOfType<Player>().transform;
     }
 
     void Update()
     {
-        if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && angry == false)
+        if (Vector2.Distance(transform.position, _point.position) < _positionOfPatrol && angry == false)
         {
             chill = true;
         }
 
-        if (Vector2.Distance(transform.position, player.position) < stoppingDistance)
+        if (Vector2.Distance(transform.position, _player.position) < _stoppingDistance)
         {
             angry = true;
             chill = false;
             goBack = false;
 
-            speed = 4;
+            _speed = 4;
         }
 
-        if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
+        if (Vector2.Distance(transform.position, _player.position) > _stoppingDistance)
         {
             goBack = true;
             angry = false;
@@ -64,37 +68,37 @@ public class ScelletonTrigger : MonoBehaviour
 
     void Chill()
     {
-        if (transform.position.x > point.position.x + positionOfPatrol)
+        if (transform.position.x > _point.position.x + _positionOfPatrol)
         {
             moovingRight = false;
-            spriteRenderer.flipX = true;
+            _spriteRenderer.flipX = true;
 
         }
-        if (transform.position.x < point.position.x - positionOfPatrol)
+        if (transform.position.x < _point.position.x - _positionOfPatrol)
         {
             moovingRight = true;
-            spriteRenderer.flipX = false;
+            _spriteRenderer.flipX = false;
         }
 
         if (moovingRight)
         {
             
-            transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
+            transform.position = new Vector2(transform.position.x + _speed * Time.deltaTime, transform.position.y);
         }
         else
         {
             
-            transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
+            transform.position = new Vector2(transform.position.x - _speed * Time.deltaTime, transform.position.y);
         }
     }
 
     void Angry()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
     }
 
     void GoBack()
     {
-        transform.position = Vector2.MoveTowards(transform.position, point.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, _point.position, _speed * Time.deltaTime);
     }
 }
