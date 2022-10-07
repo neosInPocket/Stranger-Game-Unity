@@ -15,19 +15,21 @@ public class HealthManaBar : MonoBehaviour
 
     public Player player;
 
-    // Start is called before the first frame update
+    [SerializeField] private Image defenceBarImage;
+    
     void Start()
     {
         healthFill = 1f;
 
         manaFill = 1f;
     }
-
-    // Update is called once per frame
     void Update()
     {
-        healthFill =  player.health / player.maxHealth;
+        healthFill = player.health / player.maxHealth;
 
         healthBar.fillAmount = healthFill;
+
+        defenceBarImage.fillAmount = player.defence / 8f;
+        Debug.Log(player.defence);
     }
 }

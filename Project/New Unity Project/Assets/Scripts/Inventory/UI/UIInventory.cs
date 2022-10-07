@@ -18,11 +18,9 @@ public class UIInventory : MonoBehaviour
     private UIInventorySlot[] uiSlots;
     [SerializeField] private GameObject textInfoHolder;
     [SerializeField] private GameObject textNameHolder;
-    [SerializeField] private GameObject _player;
     private TMP_Text tmpTextInfo;
     private TMP_Text tmpTextName;
     private GameObject _activeSlot;
-    public Player player => _player.GetComponent<Player>();
 
 
     public void AwakeInventory()

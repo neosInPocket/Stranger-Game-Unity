@@ -15,7 +15,6 @@ public class PlayerController : MonoBehaviour, ICharacterController
     [SerializeField]  private float speed = 5;
     private Animator animator;
     private bool isInInventory;
-    public UnityEvent<bool> OnInventoryInteract;
 
     [SerializeField] private GameObject _uiInventory;
     [SerializeField] private AnimatorController _playerWeaponAnimator;
@@ -138,14 +137,12 @@ public class PlayerController : MonoBehaviour, ICharacterController
             if (_uiInventory.activeSelf)
             {
                 _uiInventory.SetActive(false);
-                isInInventory = false;
-                OnInventoryInteract?.Invoke(true);
+                _gunInstance?.GetComponent<GunWeapon>().BlockFire(false);
             }
             else
             {
                 _uiInventory.SetActive(true);
-                isInInventory = true;
-                OnInventoryInteract?.Invoke(false);
+                _gunInstance?.GetComponent<GunWeapon>().BlockFire(true);
             }
         }
 

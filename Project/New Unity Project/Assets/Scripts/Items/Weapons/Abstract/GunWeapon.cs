@@ -54,6 +54,7 @@ public abstract class GunWeapon : InventoryItem
     private int magazine;
     private bool isReloading;
     private bool isFiring;
+    private bool blockFire;
     private int _magazineCapacity;
     private float _reloadTime;
 
@@ -117,7 +118,7 @@ public abstract class GunWeapon : InventoryItem
 
     void Update()
     {
-        if (EventSystem.current.IsPointerOverGameObject() || !isEquiped)
+        if (blockFire || !isEquiped)
         {
             return;
         }
@@ -130,5 +131,10 @@ public abstract class GunWeapon : InventoryItem
         {
             StartCoroutine(Reload());
         }
+    }
+
+    public void BlockFire(bool action)
+    {
+        blockFire = action;
     }
 }
