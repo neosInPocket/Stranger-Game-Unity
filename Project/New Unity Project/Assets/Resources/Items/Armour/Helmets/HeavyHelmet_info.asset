@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27b6971bce4aa024f832d1af6e9aa733, type: 3}
-  m_Name: LightHemlet_info
+  m_Name: HeavyHelmet_info
   m_EditorClassIdentifier: 
-  _armorPoints: 1
+  _armorPoints: 2

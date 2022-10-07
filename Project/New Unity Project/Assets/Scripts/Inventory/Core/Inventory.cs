@@ -14,7 +14,6 @@ public struct Attachments
     public GunStock stock;
     public ExtendedMag extendedMag;
     public LaserSight laserSight;
-    public Skullpiercer skullPiercer;
 }
 public class Inventory : IInventory
 {
@@ -31,6 +30,8 @@ public class Inventory : IInventory
             _attachmentItems = value;
         }
     }
+
+    public GunWeapon playerGun { get; set; }
 
     private List<IInventorySlot> _slots;
     private List<IInventorySlot> _charSlots;
@@ -100,7 +101,6 @@ public class Inventory : IInventory
 
         if (item.type == InventoryItemType.Gun)
         {
-            item.isEquiped = false;
             OnGunRemove?.Invoke(item);
         }
 
@@ -111,28 +111,7 @@ public class Inventory : IInventory
         OnInventoryChanged?.Invoke();
     }
 
-    private void RemoveAttachment(IInventoryItem item)
-    {
-        switch (item.type)
-        {
-            case InventoryItemType.GunStock:
-                _attachmentItems.stock = null;
-                break;
-
-            case InventoryItemType.ExtendedMag:
-                _attachmentItems.extendedMag = null;
-                break;
-
-            case InventoryItemType.LaserSight:
-                _attachmentItems.laserSight = null;
-                var gunItem = GetSlot(InventoryItemType.Gun).item as GunWeapon;
-                if (gunItem)
-                {
-                    _attachmentItems.laserSight.Attach(gunItem, false);
-                }
-                break;
-        }
-    }
+    
 
     public bool TryToAdd(IInventoryItem item)
     {
@@ -142,25 +121,8 @@ public class Inventory : IInventory
         }
 
         var itemSlot = GetSlot(item.type);
-        switch (item.type)
-        {
-            case InventoryItemType.GunStock: _attachmentItems.stock = item.prefab.GetComponent<GunStock>();
-                break;
+        AddAttachment(item);
 
-            case InventoryItemType.ExtendedMag: _attachmentItems.extendedMag = item.prefab.GetComponent<ExtendedMag>();
-                break;
-
-            case InventoryItemType.LaserSight: 
-                _attachmentItems.laserSight = item.prefab.GetComponent<LaserSight>();
-                var gunItem = GetSlot(InventoryItemType.Gun).item as GunWeapon;
-                if (gunItem)
-                {
-                    _attachmentItems.laserSight.Attach(GetSlot(InventoryItemType.Gun).item as GunWeapon, true);
-                }
-                Debug.Log("attached");
-                break;
-        }
-        
         if (itemSlot != null)
         {
             if (!itemSlot.isEmpty && item.type != InventoryItemType.Default && item.info.value > itemSlot.item.info.value)
@@ -220,8 +182,12 @@ public class Inventory : IInventory
         OnInventoryChanged?.Invoke();
         if (item.type == InventoryItemType.Gun)
         {
-            item.isEquiped = false;
             OnGunRemove?.Invoke(item);
+        }
+
+        if (item.GetType().IsSubclassOf(typeof(AttachmentItem)))
+        {
+            RemoveAttachment(item);
         }
         OnDrop?.Invoke(item);
     }
@@ -229,5 +195,75 @@ public class Inventory : IInventory
     public IInventorySlot GetSlot(InventoryItemType itemType)
     {
         return _slots.Find(slot => slot.itemType == itemType);
+    }
+
+    public void RefreshAttachments()
+    {
+        playerGun.attachments = _attachmentItems;
+        if (_attachmentItems.laserSight)
+        {
+            _attachmentItems.laserSight.Attach(playerGun, true);
+        }
+    }
+    private void RemoveAttachment(IInventoryItem item)
+    {
+        switch (item.type)
+        {
+            case InventoryItemType.GunStock:
+                _attachmentItems.stock = null;
+                break;
+
+            case InventoryItemType.ExtendedMag:
+                var gunInfo = (playerGun.itemInfo as GunInfo);
+                if (playerGun && playerGun.currentMagazineAmmo > gunInfo.magazineCapacity)
+                {
+                    var leftAmmo = playerGun.currentMagazineAmmo - gunInfo.magazineCapacity;
+                    playerGun.currentMagazineAmmo = gunInfo.magazineCapacity;
+                    playerGun.AmmoAmount += leftAmmo;
+                }
+                _attachmentItems.extendedMag = null;
+                break;
+
+            case InventoryItemType.LaserSight:
+                if (playerGun)
+                {
+                    _attachmentItems.laserSight.Attach(playerGun, false);
+                }
+                _attachmentItems.laserSight = null;
+                break;
+        }
+
+        if (playerGun)
+        {
+            playerGun.attachments = _attachmentItems;
+        }
+
+    }
+
+    public void AddAttachment(IInventoryItem item)
+    {
+        switch (item.type)
+        {
+            case InventoryItemType.GunStock:
+                _attachmentItems.stock = item.prefab.GetComponent<GunStock>();
+                break;
+
+            case InventoryItemType.ExtendedMag:
+                _attachmentItems.extendedMag = item.prefab.GetComponent<ExtendedMag>();
+                break;
+
+            case InventoryItemType.LaserSight:
+                _attachmentItems.laserSight = item.prefab.GetComponent<LaserSight>();
+                if (playerGun)
+                {
+                    _attachmentItems.laserSight.Attach(playerGun, true);
+                }
+                break;
+        }
+
+        if (playerGun)
+        {
+            playerGun.attachments = _attachmentItems;
+        }
     }
 }

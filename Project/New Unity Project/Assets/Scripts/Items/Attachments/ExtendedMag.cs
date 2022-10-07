@@ -1,10 +1,10 @@
 ﻿public class ExtendedMag : AttachmentItem
 {
-    public int ammoAddition
+    public float ammoMultiplier
     {
         get
         {
-            return (itemInfo as ExtendedMagInfo).bulletsAddition;
+            return (itemInfo as ExtendedMagInfo).ammoMultiplier;
         }
     }
 

@@ -94,7 +94,9 @@ public class PlayerController : MonoBehaviour, ICharacterController
         gun.AmmoAmount = gunInstance.AmmoAmount;
         gun.currentMagazineAmmo = gunInstance.currentMagazineAmmo;
         _gunInfoRenderer.DestroyInfo();
-        Destroy(_gunInstance); 
+        Destroy(_gunInstance);
+
+        inventory.playerGun = null;
     }
 
     private void OnGunSet(GunWeapon gunItem)
@@ -117,6 +119,9 @@ public class PlayerController : MonoBehaviour, ICharacterController
         _gunInstance.transform.localScale = Vector3.one;
 
         _gunInfoRenderer.AwakeInfo(_gunInstance.GetComponent<GunWeapon>());
+
+        inventory.playerGun = _gunInstance.GetComponent<GunWeapon>();
+        inventory.RefreshAttachments();
     }
 
     private void OnDrop(IInventoryItem obj)
@@ -137,12 +142,26 @@ public class PlayerController : MonoBehaviour, ICharacterController
             if (_uiInventory.activeSelf)
             {
                 _uiInventory.SetActive(false);
-                _gunInstance?.GetComponent<GunWeapon>().BlockFire(false);
+                try
+                {
+                    _gunInstance?.GetComponent<GunWeapon>().BlockFire(false);
+                }
+                catch
+                {
+
+                }
             }
             else
             {
                 _uiInventory.SetActive(true);
-                _gunInstance?.GetComponent<GunWeapon>().BlockFire(true);
+                try
+                {
+                    _gunInstance?.GetComponent<GunWeapon>().BlockFire(true);
+                }
+                catch
+                {
+
+                }
             }
         }
 

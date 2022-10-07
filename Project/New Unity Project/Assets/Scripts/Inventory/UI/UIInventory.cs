@@ -25,7 +25,7 @@ public class UIInventory : MonoBehaviour
 
     public void AwakeInventory()
     {
-        inventory = new Inventory(20);
+        inventory = new Inventory(19);
         inventory.OnInventoryChanged += OnInventoryChanged;
         uiSlots = GetComponentsInChildren<UIInventorySlot>();
         SetupInventory();

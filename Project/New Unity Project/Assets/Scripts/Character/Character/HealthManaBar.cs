@@ -30,6 +30,5 @@ public class HealthManaBar : MonoBehaviour
         healthBar.fillAmount = healthFill;
 
         defenceBarImage.fillAmount = player.defence / 8f;
-        Debug.Log(player.defence);
     }
 }

@@ -14,7 +14,7 @@ public abstract class GunWeapon : InventoryItem
     {
         get
         {
-            return attachments.extendedMag is null ? _magazineCapacity : _magazineCapacity + attachments.extendedMag.ammoAddition;
+            return attachments.extendedMag is null ? _magazineCapacity : (int)(_magazineCapacity * attachments.extendedMag.ammoMultiplier);
         }
     }
 
@@ -22,7 +22,7 @@ public abstract class GunWeapon : InventoryItem
     {
         get
         {
-            return attachments.stock is null ? _reloadTime : _reloadTime - attachments.stock.reloadTimeDecrease;
+            return attachments.stock is null ? _reloadTime : _reloadTime * attachments.stock.reloadTimeDecrease;
         }
     }
 

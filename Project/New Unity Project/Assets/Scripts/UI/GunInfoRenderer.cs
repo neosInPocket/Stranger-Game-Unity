@@ -50,7 +50,6 @@ public class GunInfoRenderer : MonoBehaviour
     {
         ammoText.text = currentWeapon.AmmoAmount.ToString();
         magazineAmmoText.text = currentWeapon.currentMagazineAmmo.ToString();
-        Debug.Log(currentWeapon.currentMagazineAmmo);
     }
 
     private void GunSetInfo(GunWeapon weapon)
@@ -68,7 +67,6 @@ public class GunInfoRenderer : MonoBehaviour
             reloadScroll.fillAmount += 0.05f / currentWeapon.ReloadTime;
             yield return new WaitForSeconds(0.05f);
         }
-        Debug.Log(reloadScroll.fillAmount);
         reloadScroll.gameObject.SetActive(false);
     }
 }

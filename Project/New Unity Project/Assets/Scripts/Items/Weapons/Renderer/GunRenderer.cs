@@ -17,20 +17,16 @@ public class GunRenderer : MonoBehaviour
     {
         GunWeapon gun = parent.gameObject.GetComponent<GunWeapon>();
         gun.OnFire += OnFire;
-        gun.OnReload += OnReload;
         rotatePoint = parent.transform.parent;
         cam = Camera.main;
     }
 
-    private void OnReload(object obj)
-    {
-        
-    }
-
     private void OnFire(object obj)
     {
-        var bulletInst = Instantiate(bullet, firePoint.position, firePoint.rotation);
+        var randomRotation = Quaternion.Lerp(firePoint.rotation, new Quaternion(Random.Range(-3, 3), Random.Range(-3, 3), 0, 0), 0.1f);
+        var bulletInst = Instantiate(bullet, firePoint.position, randomRotation);
         var effectInst = Instantiate(fireEffect, firePoint.position, firePoint.rotation);
+        CinemachineShake.instance.ShakeCamera(2f, .1f); 
 
         Destroy(bulletInst, 1f);
         Destroy(effectInst, .4f);

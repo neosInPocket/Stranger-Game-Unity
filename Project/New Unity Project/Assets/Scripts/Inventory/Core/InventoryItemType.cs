@@ -7,8 +7,7 @@
     Gun,
     GunStock,
     ExtendedMag,
-    LaserSight,
-    Popup
+    LaserSight
 }
 
 

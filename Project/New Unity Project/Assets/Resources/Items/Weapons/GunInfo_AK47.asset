@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GunInfo_AK47
   m_EditorClassIdentifier: 
   _fireRate: 8
-  _magazineCapacity: 30
+  _magazineCapacity: 20
   _reloadTime: 2
   _ammoAmount: 200
   _damage: 10
