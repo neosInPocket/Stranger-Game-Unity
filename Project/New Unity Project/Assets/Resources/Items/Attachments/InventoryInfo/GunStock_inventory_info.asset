@@ -15,8 +15,9 @@ MonoBehaviour:
   _id: gun_stock
   _title: "\u041F\u0440\u0438\u043A\u043B\u0430\u0434"
   _description: "\u0423\u043C\u0435\u043D\u044C\u0448\u0430\u0435\u0442 \u0432\u0440\u0435\u043C\u044F
-    \u043F\u0435\u0440\u0435\u0437\u0430\u0440\u044F\u0434\u043A\u0438 \u043E\u0440\u0443\u0436\u0438\u044F"
+    \u043F\u0435\u0440\u0435\u0437\u0430\u0440\u044F\u0434\u043A\u0438 \u043E\u0440\u0443\u0436\u0438\u044F
+    \u0438 \u0440\u0430\u0437\u0431\u0440\u043E\u0441"
   _spriteIcon: {fileID: 21300000, guid: 7d7924433411e1e49850d564e1aa3cc4, type: 3}
+  _worldObject: {fileID: 0}
   _type: 5
-  _genericType: 3
   _value: 0
