@@ -26,6 +26,14 @@ public abstract class GunWeapon : InventoryItem
         }
     }
 
+    public float Accuracy
+    {
+        get
+        {
+            return attachments.stock is null ? gunInfo.accuracy : gunInfo.accuracy * attachments.stock.accuracyIncrease;
+        }
+    }
+
     public int AmmoAmount { get; set; }
 
     public int currentMagazineAmmo

@@ -29,16 +29,18 @@ public class PistolBullet : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (hitInfo.name != "Player")
+        if (!hitInfo.isTrigger && !hitInfo.gameObject.GetComponentInParent<Player>())
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
-
+        
         Enemy enemy;
         if (hitInfo.transform.gameObject.GetComponent<Enemy>() != null)
         {
             enemy = hitInfo.transform.gameObject.GetComponent<Enemy>();
             enemy.TakeDamage(Damage);
         }
+
+        Debug.Log(hitInfo.name);
     }
 }

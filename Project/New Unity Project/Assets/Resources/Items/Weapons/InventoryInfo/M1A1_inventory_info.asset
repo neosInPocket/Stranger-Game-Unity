@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 651d1df6f52a4c5459f17512009d2dfd, type: 3}
+  m_Name: M1A1_inventory_info
+  m_EditorClassIdentifier: 
+  _id: gun_m1a1
+  _title: M1A1
+  _description: "\u041E\u0431\u043B\u0430\u0434\u0430\u0435\u0442 \u0432\u044B\u0441\u043E\u043A\u043E\u0439
+    \u0441\u043A\u043E\u0440\u043E\u0441\u0442\u0440\u0435\u043B\u044C\u043D\u043E\u0441\u0442\u044C\u044E"
+  _spriteIcon: {fileID: 21300000, guid: 996a1a3eff8fcfd4399c090f3b678446, type: 3}
+  _worldObject: {fileID: 3525515473251518338, guid: 8389adc265673c447aa92aeaf74a6202,
+    type: 3}
+  _type: 4
+  _value: 0

@@ -11,6 +11,7 @@ public class GunInfo : ScriptableObject
     [SerializeField] private int _ammoAmount;
     [SerializeField] private float _damage;
     [SerializeField] private bool _isFullAuto;
+    [SerializeField] private float _accuracy;
 
     public float fireRate => this._fireRate;
     public int magazineCapacity => this._magazineCapacity;
@@ -18,4 +19,5 @@ public class GunInfo : ScriptableObject
     public int ammoAmount => this._ammoAmount;
     public float damage => this._damage;
     public bool isFullAuto => this._isFullAuto;
+    public float accuracy => this._accuracy;
 }

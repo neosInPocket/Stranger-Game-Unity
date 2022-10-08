@@ -32,8 +32,6 @@ public class PickUpHandler : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         itemInRange = collider.GetComponent<IInventoryItem>();
-        activeCollider = collider;
-
 
         if (itemInRange != null)
         {
@@ -41,6 +39,14 @@ public class PickUpHandler : MonoBehaviour
             itemsInRange.Add(itemInRange);
             pickUpPref.SetActive(true);
         }
+        else
+        {
+            return;
+        }
+        activeCollider = collider;
+
+
+        
 
         textItemInfo.transform.parent.gameObject.SetActive(true);
     }
@@ -78,7 +84,7 @@ public class PickUpHandler : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (itemsInRange == null)
+        if (itemsInRange == null || itemInRange == null)
         {
             return;
         }

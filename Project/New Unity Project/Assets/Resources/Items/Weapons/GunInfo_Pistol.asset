@@ -17,3 +17,5 @@ MonoBehaviour:
   _reloadTime: 1.5
   _ammoAmount: 50
   _damage: 0
+  _isFullAuto: 0
+  _accuracy: 1.5

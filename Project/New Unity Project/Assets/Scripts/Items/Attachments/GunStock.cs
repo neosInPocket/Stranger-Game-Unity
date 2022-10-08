@@ -2,11 +2,7 @@
 
 public class GunStock : AttachmentItem
 {
-    public float reloadTimeDecrease
-    {
-        get
-        {
-            return (itemInfo as GunStockInfo).reloadTimeDecrease;
-        }
-    }
+    public float reloadTimeDecrease => (itemInfo as GunStockInfo).reloadTimeDecrease;
+
+    public float accuracyIncrease => (itemInfo as GunStockInfo).accuracyIncrease;
 }

@@ -18,3 +18,4 @@ MonoBehaviour:
   _ammoAmount: 200
   _damage: 10
   _isFullAuto: 1
+  _accuracy: 3
