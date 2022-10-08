@@ -5,16 +5,22 @@ using UnityEngine;
 public abstract class AbstractEnemy : MonoBehaviour
 {
     [Header("Здоровье врага")]
-    [SerializeField] public float MaxHealth;
+    public float MaxHealth;
 
     [Header("Защита врага")]
-    [SerializeField] public float _defence;
+    public float _defence;
 
     [Header("Полоса здоровья врага")]
-    [SerializeField] public HealthBar _healthBar;
+    public HealthBar _healthBar;
 
     [Header("Профайл врага")]
     public EnemyProfile enemyProfile;
+
+    [Header("Аниматор врага")]
+    public Animator enemyAnimator;
+
+    [Header("Collider2D для отключения")]
+    public new Collider2D collider2D;
 
     protected float _currentHealth;
 

@@ -7,6 +7,7 @@ public class SetActiveNPC1 : MonoBehaviour
     [SerializeField] private GameObject _nps1;
     
     [SerializeField] private GameObject _nps1_1;
+
     [SerializeField] private GameObject _sceleton;
 
     void Update()
