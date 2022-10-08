@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PistolBullet : MonoBehaviour
 {
@@ -23,13 +24,12 @@ public class PistolBullet : MonoBehaviour
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
-        Damage = 25;
     }
 
 
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
-        if (!hitInfo.isTrigger && !hitInfo.gameObject.GetComponentInParent<Player>())
+        if (!hitInfo.isTrigger && !hitInfo.gameObject.GetComponentInParent<Player>() && !hitInfo.gameObject.GetComponent<TilemapCollider2D>())
         {
             Destroy(this.gameObject);
         }

@@ -24,10 +24,15 @@ public class GunRenderer : MonoBehaviour
     private void OnFire(object obj)
     {
         GunWeapon gun = GetComponentInParent<Player>().weapon;
-        float gunAccuracy = gun.gunInfo.accuracy;
+        float gunAccuracy = gun.Accuracy;
 
-        var randomRotation = Quaternion.Lerp(firePoint.rotation, new Quaternion(Random.Range(-gunAccuracy, gunAccuracy), Random.Range(-gunAccuracy, 3), 0, 0), 0.1f);
+        var randomRotation = Quaternion.Lerp(
+            firePoint.rotation, 
+            new Quaternion(Random.Range(-gunAccuracy, gunAccuracy), Random.Range(-gunAccuracy, gunAccuracy), 0, 0), 0.1f);
+
         var bulletInst = Instantiate(bullet, firePoint.position, randomRotation);
+        bulletInst.gameObject.GetComponent<PistolBullet>().Damage = gun.Damage;
+
         var effectInst = Instantiate(fireEffect, firePoint.position, firePoint.rotation);
         CinemachineShake.instance.ShakeCamera(gun.gunInfo.damage / 7.5f, .1f); 
 

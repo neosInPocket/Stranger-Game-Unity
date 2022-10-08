@@ -29,6 +29,6 @@ public class HealthManaBar : MonoBehaviour
 
         healthBar.fillAmount = healthFill;
 
-        defenceBarImage.fillAmount = player.defence / 8f;
+        defenceBarImage.fillAmount = player.defence / 9f;
     }
 }

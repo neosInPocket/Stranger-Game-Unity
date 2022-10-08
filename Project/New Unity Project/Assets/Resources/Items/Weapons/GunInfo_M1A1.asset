@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c585d15a4698f449f127ad1a1e65ab, type: 3}
   m_Name: GunInfo_M1A1
   m_EditorClassIdentifier: 
-  _fireRate: 10
+  _fireRate: 15
   _magazineCapacity: 30
   _reloadTime: 2
   _ammoAmount: 200
-  _damage: 10
+  _damage: 8
   _isFullAuto: 1
-  _accuracy: 5
+  _accuracy: 4
