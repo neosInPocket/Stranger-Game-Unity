@@ -2,6 +2,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
+[Serializable]
 public abstract class InventoryItem : MonoBehaviour, IInventoryItem
 {
     public bool isEquiped { get; set; }

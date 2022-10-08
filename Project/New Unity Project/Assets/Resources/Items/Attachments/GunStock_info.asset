@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: GunStock_info
   m_EditorClassIdentifier: 
   _reloadTimeDecrease: 0.7
+  _accuracyIncrease: 0.7

@@ -9,13 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 07c585d15a4698f449f127ad1a1e65ab, type: 3}
-  m_Name: GunInfo_M1A1
+  m_Script: {fileID: 11500000, guid: 288f1ab1f10ed8a4fbdc196391b425c6, type: 3}
+  m_Name: CommonChestInfo
   m_EditorClassIdentifier: 
-  _fireRate: 15
-  _magazineCapacity: 30
-  _reloadTime: 2
-  _ammoAmount: 200
-  _damage: 8
-  _isFullAuto: 1
-  _accuracy: 4
+  items:
+  - {fileID: 4584453189348547780, guid: f72193b99eca9914781e0f0e5b6cdee6, type: 3}

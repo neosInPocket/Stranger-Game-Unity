@@ -16,6 +16,6 @@ MonoBehaviour:
   _magazineCapacity: 10
   _reloadTime: 3
   _ammoAmount: 50
-  _damage: 10
+  _damage: 60
   _isFullAuto: 0
   _accuracy: 1

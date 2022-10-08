@@ -1,8 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public class HealthPotion : InventoryItem
 {
+    public PotionInfo potionInfo => itemInfo as PotionInfo;
+    public void Use(Player handler)
+    {
+        handler.GetHealth(potionInfo.healthAmount);
+    }
 }

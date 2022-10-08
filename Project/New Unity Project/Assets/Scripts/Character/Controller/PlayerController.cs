@@ -154,6 +154,7 @@ public class PlayerController : MonoBehaviour, ICharacterController
             else
             {
                 _uiInventory.SetActive(true);
+                _uiInventory.gameObject.GetComponent<UIInventory>().Refresh();
                 try
                 {
                     _gunInstance?.GetComponent<GunWeapon>().BlockFire(true);
