@@ -78,6 +78,15 @@ public class UIInventory : MonoBehaviour
         tmpTextName.text = "название";
         _activeSlot = null;
     }
+
+    public void Refresh()
+    {
+        for (int i = 0; i < inventory.capacity; i++)
+        {
+
+            uiSlots[i].Refresh();
+        }
+    }
     
 }
 

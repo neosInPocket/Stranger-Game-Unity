@@ -48,6 +48,7 @@ public class UIInventorySlot : UISlot, IPointerClickHandler
         if (slot != null)
         {
             _uiItem.Refresh(slot);
+            _uiItem.GetComponent<CanvasGroup>().blocksRaycasts = true;
             _uiItem.transform.localPosition = Vector2.zero;
         }
     }
@@ -58,6 +59,11 @@ public class UIInventorySlot : UISlot, IPointerClickHandler
         {
             _uiInventory.ShowItemInfo(_uiItem.item, eventData.pointerClick.gameObject);
             eventData.pointerClick.GetComponent<Image>().color = new Color(0, 255, 255);
+        }
+
+        if (DoubleClickInput.DoubleClick())
+        {
+            Debug.Log("double clicked");
         }
     }
 }

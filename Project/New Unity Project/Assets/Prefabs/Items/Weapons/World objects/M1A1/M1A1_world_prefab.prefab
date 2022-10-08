@@ -190,7 +190,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3525515473251518339}
   - component: {fileID: 3525515473251518337}
-  - component: {fileID: 2154915841818587298}
+  - component: {fileID: 7395146480172518774}
   m_Layer: 0
   m_Name: M1A1_world_prefab
   m_TagString: Untagged
@@ -268,7 +268,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2154915841818587298
+--- !u!114 &7395146480172518774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3525515473251518338}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 970bb384b6c290c459cf56d0670bba3d, type: 3}
+  m_Script: {fileID: 11500000, guid: d6ade12a318c90740b8fc9ea60ecd8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _itemInfo: {fileID: 11400000, guid: 7ce9509b283721a42b2f98e2424d9a58, type: 2}
