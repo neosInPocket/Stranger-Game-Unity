@@ -13,6 +13,9 @@ public class Player : MonoBehaviour, ICharacter
     [Header("Collider2D для отключения")]
     public new Collider2D collider2D;
 
+    [Header("Обьект RestartAndExitGame")]
+    public GameObject canvasDiePlayer;
+
     public float maxHealth => _maxHealth;
     public float maxMana => _maxMana;
     public float health => _health;
@@ -166,6 +169,8 @@ public class Player : MonoBehaviour, ICharacter
         collider2D.GetComponent<Collider2D>().enabled = false;
 
         _animator.SetTrigger("diePlayer");
+
+        canvasDiePlayer.SetActive(true);
     }
 
     public void Resurrect()
