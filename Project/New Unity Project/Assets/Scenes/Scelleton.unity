@@ -8349,7 +8349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  _defence: 20
+  _defence: 0
   _healthBar: {fileID: 537243403}
   enemyProfile: {fileID: 11400000, guid: 84719a969f1157a418d7a602b123c11e, type: 2}
   enemyAnimator: {fileID: 2059093873}
