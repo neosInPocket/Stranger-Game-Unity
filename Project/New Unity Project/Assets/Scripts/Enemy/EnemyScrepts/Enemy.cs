@@ -98,6 +98,16 @@ public class Enemy : AbstractEnemy
             GoBack();
         }
 
+        if (_playerHealht.collider2D.GetComponent<Collider2D>().enabled == false)
+        {
+            //goBack = true;
+
+            //angry = false;
+
+            _speed = 0;
+
+            enemyAnimator.SetTrigger("die");
+        }
     }
 
     public override IEnumerator Die()
@@ -133,7 +143,7 @@ public class Enemy : AbstractEnemy
         }
     }
 
-    void Chill()
+    public void Chill()
     {
         if (transform.position.x > _point.position.x + _positionOfPatrol)
         {
@@ -164,7 +174,7 @@ public class Enemy : AbstractEnemy
         transform.position = Vector2.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
     }
 
-    void GoBack()
+    public void GoBack()
     {
         transform.position = Vector2.MoveTowards(transform.position, _point.position, _speed * Time.deltaTime);
     }

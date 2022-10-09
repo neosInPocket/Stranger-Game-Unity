@@ -6,6 +6,13 @@ using UnityEngine.Events;
 
 public class Player : MonoBehaviour, ICharacter
 {
+    [SerializeField] private Animator _animator;
+
+    [SerializeField] private Enemy _enemy;
+
+    [Header("Collider2D для отключения")]
+    public new Collider2D collider2D;
+
     public float maxHealth => _maxHealth;
     public float maxMana => _maxMana;
     public float health => _health;
@@ -156,7 +163,9 @@ public class Player : MonoBehaviour, ICharacter
 
     public void Die()
     {
-        throw new System.NotImplementedException();
+        collider2D.GetComponent<Collider2D>().enabled = false;
+
+        _animator.SetTrigger("diePlayer");
     }
 
     public void Resurrect()
