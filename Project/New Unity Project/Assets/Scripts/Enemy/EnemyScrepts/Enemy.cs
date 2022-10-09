@@ -22,8 +22,14 @@ public class Enemy : AbstractEnemy
     [Header("Обьект игрока")]
     [SerializeField] private Transform _player;
 
+    [Header("Обьект игрока")]
+    [SerializeField] private Player _playerHealht;
+
     [Header("Растояние на котором агртится и отстает враг")]
     [SerializeField] private float _stoppingDistance;
+
+    [Header("Урон врага")]
+    [SerializeField] private float _damage;
 
     private Transform _target;
 
@@ -161,5 +167,10 @@ public class Enemy : AbstractEnemy
     void GoBack()
     {
         transform.position = Vector2.MoveTowards(transform.position, _point.position, _speed * Time.deltaTime);
+    }
+
+    public void DamagePlayer()
+    {
+        _playerHealht.GetDamage(_damage);
     }
 }
