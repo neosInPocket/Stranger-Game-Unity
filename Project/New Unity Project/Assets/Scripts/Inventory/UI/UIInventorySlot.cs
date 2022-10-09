@@ -55,15 +55,23 @@ public class UIInventorySlot : UISlot, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (eventData.clickCount == 2)
+        {
+            try
+            {
+                _uiItem.item.Use(_uiInventory.handler);
+            }
+            catch (NotImplementedException ex)
+            {
+
+            }
+        }
+        
         if (_uiItem.item != null)
         {
             _uiInventory.ShowItemInfo(_uiItem.item, eventData.pointerClick.gameObject);
             eventData.pointerClick.GetComponent<Image>().color = new Color(0, 255, 255);
         }
-
-        if (DoubleClickInput.DoubleClick())
-        {
-            Debug.Log("double clicked");
-        }
+        
     }
 }

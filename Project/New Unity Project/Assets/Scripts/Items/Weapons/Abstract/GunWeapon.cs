@@ -145,4 +145,9 @@ public abstract class GunWeapon : InventoryItem
     {
         blockFire = action;
     }
+
+    public override void Use(Player player)
+    {
+        throw new NotImplementedException();
+    }
 }

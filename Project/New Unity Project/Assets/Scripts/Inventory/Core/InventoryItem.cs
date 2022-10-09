@@ -10,8 +10,10 @@ public abstract class InventoryItem : MonoBehaviour, IInventoryItem
     public ScriptableObject itemInfo => _itemInfo;
     public InventoryItemInfo info => _info;
     public GameObject prefab => _prefab;
+
     [SerializeField] private ScriptableObject _itemInfo;
     [SerializeField] private InventoryItemInfo _info;
     [SerializeField] private GameObject _prefab;
     [SerializeField] private InventoryItemType _type;
+    public abstract void Use(Player player);
 }

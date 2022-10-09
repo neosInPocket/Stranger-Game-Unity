@@ -4,4 +4,8 @@ using UnityEngine;
 
 public class AttachmentItem : InventoryItem
 {
+    public override void Use(Player player)
+    {
+        throw new System.NotImplementedException();
+    }
 }
