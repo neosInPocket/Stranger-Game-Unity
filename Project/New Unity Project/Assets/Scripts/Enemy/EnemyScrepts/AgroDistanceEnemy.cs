@@ -7,13 +7,6 @@ public class AgroDistanceEnemy : MonoBehaviour
     [Header("Аниматор врага")]
     [SerializeField] private Animator enemyAnimator;
 
-    private Enemy _parent;
-
-    private void Start()
-    {
-        _parent = GetComponentInParent<Enemy>();
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.TryGetComponent<Player>(out _))
