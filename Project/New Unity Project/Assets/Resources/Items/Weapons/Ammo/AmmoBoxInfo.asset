@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e5c4c74b9ba33b4b8f8bad7e58db5db, type: 3}
   m_Name: AmmoBoxInfo
   m_EditorClassIdentifier: 
-  _ammoAmount: 0
+  _ammoAmount: 20

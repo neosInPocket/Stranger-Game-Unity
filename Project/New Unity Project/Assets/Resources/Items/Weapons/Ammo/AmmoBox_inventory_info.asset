@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 651d1df6f52a4c5459f17512009d2dfd, type: 3}
   m_Name: AmmoBox_inventory_info
   m_EditorClassIdentifier: 
-  _id: 
-  _title: 
-  _description: 
-  _spriteIcon: {fileID: 0}
+  _id: ammo_item
+  _title: "\u041F\u0430\u0442\u0440\u043E\u043D\u044B"
+  _description: "\u041F\u0430\u0442\u0440\u043E\u043D\u044B \u0432 \u043A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u0435
+    20 \u0448\u0442\u0443\u043A"
+  _spriteIcon: {fileID: 1698464470, guid: 1b05b11010859e54e82865853894cb7c, type: 3}
   _worldObject: {fileID: 0}
-  _type: 0
+  _type: 8
   _value: 0
-  _dropChance: 0
+  _dropChance: 0.9

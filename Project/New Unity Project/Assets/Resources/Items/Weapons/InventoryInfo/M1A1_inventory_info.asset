@@ -21,3 +21,4 @@ MonoBehaviour:
     type: 3}
   _type: 4
   _value: 0
+  _dropChance: 0.3
