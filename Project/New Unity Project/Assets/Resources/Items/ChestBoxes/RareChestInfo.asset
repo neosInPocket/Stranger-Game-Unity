@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 288f1ab1f10ed8a4fbdc196391b425c6, type: 3}
+  m_Name: RareChestInfo
+  m_EditorClassIdentifier: 
+  _items:
+  - {fileID: 390680822064443667, guid: c1be1d6ae6c98ea4894dfc57fa2b39fd, type: 3}
+  - {fileID: 390680822064443667, guid: 2686111ff7e16474fbc51e6122f67aee, type: 3}
+  - {fileID: 390680822064443667, guid: 28c2d8684db4c274995a7ba68d796484, type: 3}
+  - {fileID: 5661463040981164520, guid: 1b4661d3b63ae5c4d89148fd9f0f88f0, type: 3}
+  - {fileID: 1467439849969199863, guid: cf9ba0350550c334bae4e4c00bab3754, type: 3}
+  - {fileID: 6427164108789257854, guid: 1d7b6f836836d7047965a6611d810a9c, type: 3}
+  - {fileID: 8665196830826296752, guid: e57a6f1934cbf9c45aef755568c5153c, type: 3}
+  - {fileID: 4584453189348547780, guid: f72193b99eca9914781e0f0e5b6cdee6, type: 3}
+  - {fileID: 8323134056579161253, guid: d09526718bc23d24487e907236e7d748, type: 3}

@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 288f1ab1f10ed8a4fbdc196391b425c6, type: 3}
   m_Name: CommonChestInfo
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 8336547194471095540, guid: 8e5cc3e319fe8d348bb2d46a4754a46c, type: 3}
+  _items:
   - {fileID: 390680822064443667, guid: c1be1d6ae6c98ea4894dfc57fa2b39fd, type: 3}
+  - {fileID: 390680822064443667, guid: 2686111ff7e16474fbc51e6122f67aee, type: 3}
+  - {fileID: 390680822064443667, guid: 28c2d8684db4c274995a7ba68d796484, type: 3}
+  - {fileID: 3406842506861284787, guid: 9f63b94f7a7763b4fa3057460b308f71, type: 3}
+  - {fileID: 6952977637413837536, guid: 1e193295f7d16614b81aab1c88f9ce6e, type: 3}
+  - {fileID: 1456089779423548364, guid: 150a75c480e76bb4f944ea0cdc866394, type: 3}

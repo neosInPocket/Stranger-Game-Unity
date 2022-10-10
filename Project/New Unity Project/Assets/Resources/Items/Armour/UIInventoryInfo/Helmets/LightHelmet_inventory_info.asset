@@ -18,6 +18,7 @@ MonoBehaviour:
     \u0437\u043D\u0430\u0447\u0435\u043D\u0438\u0435 \u0437\u0430\u0449\u0438\u0442\u044B
     \u043F\u0435\u0440\u0441\u043E\u043D\u0430\u0436\u0430"
   _spriteIcon: {fileID: 21300000, guid: 5ff9b869a12e70b4db7a137f84ed920b, type: 3}
+  _worldObject: {fileID: 0}
   _type: 1
-  _genericType: 1
   _value: 0
+  _dropChance: 0.5

@@ -7,6 +7,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "ChestBoxInfo", menuName = "Gameplay/New ChestBoxInfo")]
 public class ChestBoxInfo : ScriptableObject
 {
-    [SerializeField] private GameObject[] _items;
-    public GameObject[] items => _items;
+    [SerializeField] private List<GameObject> _items;
+    public List<GameObject> items => _items;
 }

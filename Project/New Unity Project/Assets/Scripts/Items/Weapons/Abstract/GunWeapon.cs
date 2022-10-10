@@ -34,7 +34,18 @@ public abstract class GunWeapon : InventoryItem
         }
     }
 
-    public int AmmoAmount { get; set; }
+    public int AmmoAmount
+    {
+        get
+        {
+            return _ammoAmount;
+        }
+        set
+        {
+            _ammoAmount = value;
+            OnAmmoSet?.Invoke(this);
+        }
+    }
 
     public int currentMagazineAmmo
     {
@@ -65,10 +76,12 @@ public abstract class GunWeapon : InventoryItem
     private bool blockFire;
     private int _magazineCapacity;
     private float _reloadTime;
+    private int _ammoAmount;
 
     public event Action<GunWeapon> OnFire; 
     public event Action<GunWeapon> OnReloaded;
     public event Action<GunWeapon> OnReload;
+    public event Action<GunWeapon> OnAmmoSet;
     void Awake()
     {
         _magazineCapacity = gunInfo.magazineCapacity;

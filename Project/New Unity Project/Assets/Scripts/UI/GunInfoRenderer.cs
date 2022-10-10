@@ -21,6 +21,7 @@ public class GunInfoRenderer : MonoBehaviour
         currentWeapon.OnFire += WeaponFireInfo;
         currentWeapon.OnReloaded += CurrentWeaponOnReloaded;
         currentWeapon.OnReload += CurrentWeaponOnReload;
+        currentWeapon.OnAmmoSet += GunSetInfo;
     }
 
     public void DestroyInfo()

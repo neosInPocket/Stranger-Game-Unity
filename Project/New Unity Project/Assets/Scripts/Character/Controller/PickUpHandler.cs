@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using TMPro;
 using UnityEditor.Rendering;
@@ -60,7 +61,14 @@ public class PickUpHandler : MonoBehaviour
         Dictionary<Collider2D, float> distances = new Dictionary<Collider2D, float>();
         foreach (var collider in colliders)
         {
-            distances.Add(collider, Vector2.Distance(player.transform.position, collider.transform.position));
+            try
+            {
+                distances.Add(collider, Vector2.Distance(player.transform.position, collider.transform.position));
+            }
+            catch
+            {
+
+            }
         }
 
         var closestCollider = distances
@@ -111,6 +119,13 @@ public class PickUpHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && itemInRange != null)
         {
+            var ammoItem = activeCollider.GetComponent<AmmoBox>();
+            if (ammoItem && player.weapon)
+            {
+                player.weapon.AmmoAmount += ammoItem.ammoAmount;
+                ammoItem.gameObject.SetActive(false);
+            }
+
             bool result = player.inventory.TryToAdd(itemInRange);
             
             if (result)

@@ -8,7 +8,6 @@ public interface IInventoryItem
     ScriptableObject itemInfo { get; }
     InventoryItemInfo info { get; }
     GameObject prefab { get; }
-    public float dropChance { get; }
     public void Use(Player player);
 }
 
