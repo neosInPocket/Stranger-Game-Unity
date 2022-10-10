@@ -18,11 +18,12 @@ public class UIInventory : MonoBehaviour
     private UIInventorySlot[] uiSlots;
     [SerializeField] private GameObject textInfoHolder;
     [SerializeField] private GameObject textNameHolder;
+    [SerializeField] private Player _handler;
     private TMP_Text tmpTextInfo;
     private TMP_Text tmpTextName;
     private GameObject _activeSlot;
-
-
+    
+    public Player handler => _handler;
     public void AwakeInventory()
     {
         inventory = new Inventory(19);

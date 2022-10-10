@@ -2,9 +2,9 @@ using UnityEngine;
 
 public static class DoubleClickInput
 {
-    static float clicked = 0;
-    static float clicktime = 0;
-    static float clickdelay = 0.5f;
+    public static float clicked = 0;
+    public static float clicktime = 0;
+    public static float clickdelay = 0.5f;
 
     public static bool DoubleClick()
     {
