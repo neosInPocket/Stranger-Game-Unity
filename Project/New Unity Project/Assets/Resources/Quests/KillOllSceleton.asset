@@ -18,4 +18,4 @@ MonoBehaviour:
     \u0438 \u0438\u0445 \u0411\u043E\u0441\u0441\u0430 !"
   objectives:
   - requiredEnemy: {fileID: 11400000, guid: d84a40f8687589e4ba34a5d3265a1809, type: 2}
-    requiredAmount: 10
+    requiredAmount: 5
