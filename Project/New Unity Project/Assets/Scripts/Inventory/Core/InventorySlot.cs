@@ -12,7 +12,7 @@ using System;
             if (isEmpty)
                 return;
             
-            item = null;
+            this.item = null;
         }
 
         public void SetItem(IInventoryItem item)

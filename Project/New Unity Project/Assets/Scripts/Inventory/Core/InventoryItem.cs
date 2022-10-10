@@ -10,6 +10,7 @@ public abstract class InventoryItem : MonoBehaviour, IInventoryItem
     public ScriptableObject itemInfo => _itemInfo;
     public InventoryItemInfo info => _info;
     public GameObject prefab => _prefab;
+    public float dropChance { get; }
 
     [SerializeField] private ScriptableObject _itemInfo;
     [SerializeField] private InventoryItemInfo _info;

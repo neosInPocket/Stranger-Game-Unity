@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: CommonChestInfo
   m_EditorClassIdentifier: 
   items:
-  - {fileID: 4584453189348547780, guid: f72193b99eca9914781e0f0e5b6cdee6, type: 3}
+  - {fileID: 8336547194471095540, guid: 8e5cc3e319fe8d348bb2d46a4754a46c, type: 3}
+  - {fileID: 390680822064443667, guid: c1be1d6ae6c98ea4894dfc57fa2b39fd, type: 3}

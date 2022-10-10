@@ -10,6 +10,7 @@ public class InventoryItemInfo : ScriptableObject
     [SerializeField] private GameObject _worldObject;
     [SerializeField] private InventoryItemType _type;
     [SerializeField] private int _value;
+    [SerializeField] private float _dropChance;
 
     public string id => _id;
     public string title => _title;
@@ -18,4 +19,5 @@ public class InventoryItemInfo : ScriptableObject
     public GameObject handlingSpriteIcon => _worldObject;
     public InventoryItemType type => _type;
     public int value => _value;
+    public float dropChance => _dropChance;
 }

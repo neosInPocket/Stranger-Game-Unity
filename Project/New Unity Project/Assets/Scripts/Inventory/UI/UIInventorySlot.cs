@@ -55,19 +55,20 @@ public class UIInventorySlot : UISlot, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.clickCount == 2)
+        if (eventData.clickCount == 2 && slot.item is not null)
         {
             try
             {
                 _uiItem.item.Use(_uiInventory.handler);
+                _uiInventory.inventory.Remove(_uiItem.item);
             }
-            catch (NotImplementedException ex)
+            catch
             {
-
+                StartCoroutine(_uiInventory.ShowNotification("вы не можете использовать этот предмет"));
             }
         }
         
-        if (_uiItem.item != null)
+        if (slot.item is not null)
         {
             _uiInventory.ShowItemInfo(_uiItem.item, eventData.pointerClick.gameObject);
             eventData.pointerClick.GetComponent<Image>().color = new Color(0, 255, 255);

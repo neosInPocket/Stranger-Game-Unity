@@ -18,6 +18,7 @@ public class UIInventory : MonoBehaviour
     private UIInventorySlot[] uiSlots;
     [SerializeField] private GameObject textInfoHolder;
     [SerializeField] private GameObject textNameHolder;
+    [SerializeField] private GameObject textNotification;
     [SerializeField] private Player _handler;
     private TMP_Text tmpTextInfo;
     private TMP_Text tmpTextName;
@@ -87,6 +88,14 @@ public class UIInventory : MonoBehaviour
 
             uiSlots[i].Refresh();
         }
+    }
+
+    public IEnumerator ShowNotification(string text)
+    {
+        textNotification.GetComponentInChildren<TMP_Text>().text = text;
+        textNotification.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1);
+        textNotification.gameObject.SetActive(false);
     }
     
 }
