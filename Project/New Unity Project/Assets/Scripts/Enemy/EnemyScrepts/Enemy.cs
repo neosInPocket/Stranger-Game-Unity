@@ -100,10 +100,6 @@ public class Enemy : AbstractEnemy
 
         if (_playerHealht.collider2D.GetComponent<Collider2D>().enabled == false)
         {
-            //goBack = true;
-
-            //angry = false;
-
             _speed = 0;
 
             enemyAnimator.SetTrigger("die");
