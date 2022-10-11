@@ -123,7 +123,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &7800620314483769430
 MonoBehaviour:
@@ -137,6 +137,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42d43759793322439d43ae501da221b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _explosionEffect: {fileID: 7678638919974647711, guid: feb386179af62714a9e092aca732dbcc,
+    type: 3}
   speed: 50
 --- !u!96 &-7834256664845551276
 TrailRenderer:

@@ -45,10 +45,6 @@ public class PickUpHandler : MonoBehaviour
             return;
         }
         activeCollider = collider;
-
-
-        
-
         textItemInfo.transform.parent.gameObject.SetActive(true);
     }
 

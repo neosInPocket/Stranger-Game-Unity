@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class PistolBullet : MonoBehaviour
 {
     private float _damage;
+    [SerializeField] private GameObject _explosionEffect;
     public float Damage 
     {
         get
@@ -32,6 +34,8 @@ public class PistolBullet : MonoBehaviour
         if (!hitInfo.isTrigger && !hitInfo.gameObject.GetComponentInParent<Player>() && !hitInfo.gameObject.GetComponent<TilemapCollider2D>())
         {
             Destroy(this.gameObject);
+            var instance = Instantiate(_explosionEffect, transform.position - new Vector3(0.01f, 0.01f), transform.rotation);
+            Destroy(instance, .2f);
         }
         
         Enemy enemy;
