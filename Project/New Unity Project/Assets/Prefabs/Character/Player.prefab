@@ -82,7 +82,7 @@ SpriteRenderer:
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
+  m_MaskInteraction: 2
   m_SpriteSortPoint: 1
 --- !u!1 &810544949437821816
 GameObject:
@@ -255,7 +255,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
-  _inventory: {fileID: 0}
+  _uiInventory: {fileID: 0}
+  _playerWeaponAnimator: {fileID: 0}
+  _playerAnimator: {fileID: 0}
+  _rotatePoint: {fileID: 0}
+  _gunInfoRenderer: {fileID: 0}
 --- !u!114 &810544948329493190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +277,7 @@ MonoBehaviour:
   healthFill: 0
   manaFill: 0
   player: {fileID: 810544948329493189}
+  defenceBarImage: {fileID: 0}
 --- !u!114 &810544948329493189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,3 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b28f6e53b7e37346a63868bebd2d1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _animator: {fileID: 0}
+  _enemy: {fileID: 0}
+  collider2D: {fileID: 0}
+  canvasDiePlayer: {fileID: 0}
+  uiInventory: {fileID: 0}
