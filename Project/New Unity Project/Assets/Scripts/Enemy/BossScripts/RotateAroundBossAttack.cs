@@ -4,19 +4,16 @@ using UnityEngine;
 
 public class RotateAroundBossAttack : MonoBehaviour
 {
-    [Header("Центр вращения обьекта")]
-    [SerializeField] private GameObject _center;
+    Quaternion rotationZ;
 
-    [Header("Ось вращения")]
-    [SerializeField] private Vector3 _axis;
-
-    private void Update()
+    private void FixedUpdate()
     {
         RotateBossAround();
     }
 
     public void RotateBossAround()
     {
-        transform.RotateAround(_center.transform.position, _axis, 0.1f);
+        rotationZ = Quaternion.AngleAxis(1, new Vector3(0, 0, 1));
+        transform.rotation *= rotationZ;
     }
 }

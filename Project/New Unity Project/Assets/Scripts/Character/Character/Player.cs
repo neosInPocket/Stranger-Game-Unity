@@ -8,7 +8,7 @@ public class Player : MonoBehaviour, ICharacter
 {
     [SerializeField] private Animator _animator;
 
-    [SerializeField] private Enemy _enemy;
+    //[SerializeField] private Enemy _enemy;
 
     [Header("Collider2D для отключения")]
     public new Collider2D collider2D;

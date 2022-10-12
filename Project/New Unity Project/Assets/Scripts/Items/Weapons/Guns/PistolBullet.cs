@@ -38,10 +38,10 @@ public class PistolBullet : MonoBehaviour
             Destroy(instance, .2f);
         }
         
-        Enemy enemy;
-        if (hitInfo.transform.gameObject.GetComponent<Enemy>() != null)
+        AbstractEnemy enemy;
+        if (hitInfo.transform.gameObject.GetComponent<AbstractEnemy>() != null)
         {
-            enemy = hitInfo.transform.gameObject.GetComponent<Enemy>();
+            enemy = hitInfo.transform.gameObject.GetComponent<AbstractEnemy>();
             enemy.TakeDamage(Damage);
         }
 
