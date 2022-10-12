@@ -31,6 +31,8 @@ public class Enemy : AbstractEnemy
     [Header("Урон врага")]
     [SerializeField] private float _damage;
 
+    
+
     private Transform _target;
 
     bool moovingRight = false;
