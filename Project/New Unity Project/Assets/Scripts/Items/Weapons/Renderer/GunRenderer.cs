@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEditor.Build.Content;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class GunRenderer : MonoBehaviour
 {
@@ -9,6 +11,7 @@ public class GunRenderer : MonoBehaviour
     private Camera cam;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject fireEffect;
+    [SerializeField] private GameObject muzzleFlash;
     [SerializeField] private GameObject bullet;
     private Transform rotatePoint;
     private bool isFlipped;
@@ -34,7 +37,9 @@ public class GunRenderer : MonoBehaviour
         bulletInst.gameObject.GetComponent<PistolBullet>().Damage = gun.Damage;
 
         var effectInst = Instantiate(fireEffect, firePoint.position, firePoint.rotation);
-        CinemachineShake.instance.ShakeCamera(gun.gunInfo.damage / 7.5f, .1f); 
+        
+        CinemachineShake.instance.ShakeCamera(gun.gunInfo.damage / 7.5f, .1f);
+        Destroy(Instantiate(muzzleFlash, firePoint.position, Quaternion.identity), 0.1f);
 
         Destroy(bulletInst, 1f);
         Destroy(effectInst, .4f);
