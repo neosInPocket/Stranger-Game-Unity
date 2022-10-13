@@ -32,8 +32,6 @@ public class QuestDialogueTrigger : DialogueTrigger
             Debug.Log(collision.name);
 
             Interact();
-
-            //Time.timeScale = 0;
         }
     }
 }
