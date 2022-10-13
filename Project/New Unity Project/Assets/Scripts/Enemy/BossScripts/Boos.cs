@@ -42,54 +42,6 @@ public class Boos : AbstractEnemy
             StartCoroutine(Die());
         }
     }
-    
-    void FixedUpdate()
-    {
-        if (_currentHealth == 99)
-        {
-            SetScriptTrue();
-        }
-        else if (_currentHealth == 80)
-        {
-            SetScriptFalse();
-        }
-        else if (_currentHealth == 79)
-        {
-            StartSceleton1True();
-        }
-        else if (_currentHealth == 60)
-        {
-            StartSceleton1False();
-        }
-        else if (_currentHealth == 59)
-        {
-            SetScriptTrue();
-
-            StartRedLineTrue();
-        }
-        else if (_currentHealth == 40)
-        {
-            SetScriptFalse();
-
-            StartRedLineFalse();
-        }
-        else if (_currentHealth == 39)
-        {
-            StartSceleton2True();
-
-            SetScriptTrue();
-
-            StartRedLineTrue();
-        }
-        else if (_currentHealth == 20)
-        {
-            StartSceleton2False();
-
-            SetScriptFalse();
-
-            StartRedLineFalse();
-        }
-    }
 
     void SetScriptTrue()
     {
