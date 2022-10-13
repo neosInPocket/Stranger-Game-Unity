@@ -29,7 +29,6 @@ public class QuestDialogueTrigger : DialogueTrigger
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log(collision.name);
 
             Interact();
         }

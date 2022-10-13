@@ -32,9 +32,7 @@ public class ChestBox : MonoBehaviour
         }
 
         var spriteRenderer = GetComponent<SpriteRenderer>().sprite;
-        Debug.Log(spriteRenderer.rect);
         GetComponent<SpriteRenderer>().sprite = openedChestSprite;
-        Debug.Log(spriteRenderer.rect);
         isOpened = true;
     }
 }

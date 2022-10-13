@@ -44,7 +44,5 @@ public class PistolBullet : MonoBehaviour
             enemy = hitInfo.transform.gameObject.GetComponent<AbstractEnemy>();
             enemy.TakeDamage(Damage);
         }
-
-        Debug.Log(hitInfo.name);
     }
 }
