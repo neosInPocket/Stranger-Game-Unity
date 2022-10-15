@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BossEnemy : MonoBehaviour
 {
-    [Header("��������� ������ �����")]
+    [Header("Что-то там")]
     [SerializeField] private GameObject _bossFinal;
 
     void StartFinalyBoss()
