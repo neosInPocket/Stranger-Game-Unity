@@ -37,7 +37,7 @@ public class UIItem : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHa
         if (!EventSystem.current.IsPointerOverGameObject())
         {
             var slot = eventData.pointerDrag.GetComponentInParent<UIInventorySlot>().slot;
-            eventData.pointerDrag.GetComponentInParent<UIInventory>().inventory.Drop(slot);
+                eventData.pointerDrag.GetComponentInParent<UIInventory>().inventory.Drop(slot);
         }
         _rectTransform.parent.gameObject.GetComponent<Image>().color = new Color(255,255,255);
     }

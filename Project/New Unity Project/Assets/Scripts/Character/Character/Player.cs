@@ -45,6 +45,7 @@ public class Player : MonoBehaviour, ICharacter
     public float health => _health;
     public int defence => _defence;
 
+    public bool isGettingDamage;
     public int maxDefence
     {
         get
@@ -117,6 +118,7 @@ public class Player : MonoBehaviour, ICharacter
         if (_defence != 0)
         {
             _defence -= 1;
+            isGettingDamage = true;
             StartCoroutine(RegenerateArmor());
             return;
         }
@@ -184,6 +186,11 @@ public class Player : MonoBehaviour, ICharacter
         yield return new WaitForSeconds(3);
         while (_defence < maxDefence)
         {
+            if (isGettingDamage)
+            {
+                isGettingDamage = false;
+                yield break;
+            }
             _defence += 1;
             yield return new WaitForSeconds(1);
         }

@@ -63,7 +63,8 @@ public class PickUpHandler : MonoBehaviour
             }
             catch
             {
-
+                itemInRange = null;
+                return;
             }
         }
 
@@ -90,6 +91,7 @@ public class PickUpHandler : MonoBehaviour
     {
         if (itemsInRange == null || itemInRange == null)
         {
+            textItemInfo.transform.parent.gameObject.SetActive(false);
             return;
         }
         var itemExited = collider.GetComponent<IInventoryItem>();
@@ -107,8 +109,15 @@ public class PickUpHandler : MonoBehaviour
             activeCollider = null;
             textItemInfo.transform.parent.gameObject.SetActive(false);
         }
-        collider.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
 
+        try
+        {
+            collider.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+        }
+        catch
+        {
+
+        }
     }
 
     void Update()
@@ -146,6 +155,11 @@ public class PickUpHandler : MonoBehaviour
                 }
                 activeCollider.gameObject.SetActive(false);
             }
+        }
+
+        if (activeCollider is null)
+        {
+            textItemInfo.transform.parent.gameObject.SetActive(false);
         }
     }
 }

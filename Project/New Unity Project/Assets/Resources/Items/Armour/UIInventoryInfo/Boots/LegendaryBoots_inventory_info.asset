@@ -20,5 +20,5 @@ MonoBehaviour:
   _spriteIcon: {fileID: 1097713060, guid: a9ad0ac00c0ecfc45b760598c801cd14, type: 3}
   _worldObject: {fileID: 0}
   _type: 3
-  _value: 1
-  _dropChance: 0.5
+  _value: 2
+  _dropChance: 0.1
