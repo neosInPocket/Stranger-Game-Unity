@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class BossEnemy : MonoBehaviour
 {
-    [Header("Финальная стадия босса")]
-    [SerializeField] private GameObject _bоssFinal;
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")]
+    [SerializeField] private GameObject _bossFinal;
 
     void StartFinalyBoss()
     {
-        _bоssFinal.SetActive(true);
+        _bossFinal.SetActive(true);
     }
     
 }
