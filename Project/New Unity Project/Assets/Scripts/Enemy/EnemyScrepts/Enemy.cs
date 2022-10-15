@@ -31,6 +31,9 @@ public class Enemy : AbstractEnemy
     [Header("Урон врага")]
     [SerializeField] private float _damage;
 
+    [Header("Обьект для отключения HealsBar")]
+    [SerializeField] private GameObject _healsBar;
+
     private Transform _target;
 
     bool moovingRight = false;
@@ -103,6 +106,8 @@ public class Enemy : AbstractEnemy
             _speed = 0;
 
             enemyAnimator.SetTrigger("die");
+
+            _healsBar.SetActive(false);
         }
     }
 
@@ -127,6 +132,8 @@ public class Enemy : AbstractEnemy
         if (_currentHealth <= 0)
         {
             enemyAnimator.SetTrigger("die");
+
+            _healsBar.SetActive(false);
 
             collider2D.GetComponent<Collider2D>().enabled = false;
 

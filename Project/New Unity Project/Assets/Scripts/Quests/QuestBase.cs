@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class QuestBase : ScriptableObject
 {
     public string questName;
+
+    public Action onQuestComplite;
 
     [TextArea(5, 10)] public string questDiscription;
 
@@ -28,6 +31,8 @@ public class QuestBase : ScriptableObject
             }
 
             Debug.Log("йбщяр бшонкмем !!! ");
+
+            onQuestComplite?.Invoke();
         }
     }
 

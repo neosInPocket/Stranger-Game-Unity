@@ -1,14 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
+using Quaternion = UnityEngine.Quaternion;
 
 public class Player : MonoBehaviour, ICharacter
 {
     [SerializeField] private Animator _animator;
-
-    //[SerializeField] private Enemy _enemy;
 
     [Header("Collider2D для отключения")]
     public new Collider2D collider2D;
@@ -16,10 +17,34 @@ public class Player : MonoBehaviour, ICharacter
     [Header("Обьект RestartAndExitGame")]
     public GameObject canvasDiePlayer;
 
+    private QuestKill _questKill;
+
+    private QuestManager _questManager;
+
+    public QuestKill questKill
+    {
+        get
+        {
+            return _questKill;
+        }
+
+        set 
+        {
+            _questKill = value;
+
+            if (_questKill != null)
+            {
+                questKill.onQuestComplite += FirstQuest;
+            }
+        }
+
+    }
+
     public float maxHealth => _maxHealth;
     public float maxMana => _maxMana;
     public float health => _health;
     public int defence => _defence;
+
     public int maxDefence
     {
         get
@@ -176,5 +201,16 @@ public class Player : MonoBehaviour, ICharacter
     public void Resurrect()
     {
         throw new System.NotImplementedException();
+    }
+
+    void FirstQuest()
+    {
+        Instantiate(QuestManager.instance.chestBox.gameObject, transform.position,Quaternion.identity);
+
+        QuestManager.instance.questCompleted.SetActive(true);
+
+        questKill.onQuestComplite -= FirstQuest;
+
+        questKill = null;
     }
 }

@@ -17,4 +17,9 @@ public class QuestButtons : MonoBehaviour
     {
         QuestManager.instance.questUI.SetActive(false);
     }
+
+    public void QuestCompleted()
+    {
+        QuestManager.instance.questCompleted.SetActive(false);
+    }
 }

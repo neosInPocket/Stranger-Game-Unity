@@ -7,6 +7,12 @@ public class QuestManager : MonoBehaviour
 {
     public static QuestManager instance;
 
+    public Player player;
+
+    public ChestBox chestBox;
+
+    public GameObject questCompleted;
+
     private void Awake()
     {
         if (instance == null)

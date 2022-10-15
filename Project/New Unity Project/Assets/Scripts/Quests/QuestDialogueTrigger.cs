@@ -29,6 +29,7 @@ public class QuestDialogueTrigger : DialogueTrigger
     {
         if (collision.gameObject.tag == "Player")
         {
+            QuestManager.instance.player = collision.gameObject.GetComponent<Player>();
 
             Interact();
         }

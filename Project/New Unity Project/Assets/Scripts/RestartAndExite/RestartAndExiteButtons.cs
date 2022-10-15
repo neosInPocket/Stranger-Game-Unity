@@ -7,7 +7,7 @@ public class RestartAndExiteButtons : MonoBehaviour
 {
     public void RestartGame()
     {
-        SceneManager.LoadScene("CoreWorld");
+        SceneManager.LoadScene("Caves");
     }
 
     public void ExitGame()

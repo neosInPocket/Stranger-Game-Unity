@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bf77831b5c4bf746a64fd6f61ad3b55, type: 3}
+  m_Name: KillScelleton
+  m_EditorClassIdentifier: 
+  dialogueInfo:
+  - myCharacterName: "\u0412\u0430\u0441\u044F"
+    myName: "\u041D\u0443\u0436\u043D\u0430 \u0435\u0449\u0435 \u043F\u043E\u043C\u043E\u0449\u044C"
+    portrait: {fileID: 6991849013916550155, guid: 4055dc142136ebe4c837144fc23419d3,
+      type: 3}
+    myText: "\u041D\u0443\u0436\u043D\u0430 \u0435\u0449\u0435 \u043F\u043E\u043C\u043E\u0449\u044C!
+      \u0423\u0431\u0435\u0439 15 \u0441\u043A\u0435\u043B\u0435\u0442\u043E\u0432!"
+  quest: {fileID: 11400000, guid: ea152714af22e7945b7445c22fb8d06f, type: 2}

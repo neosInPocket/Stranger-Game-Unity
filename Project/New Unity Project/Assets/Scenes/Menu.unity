@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6af44beddf3f02479c3a921b6c376b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadLevel: CoreWorld
+  loadLevel: MainMap
   loadingScreen: {fileID: 1773068360}
   bar: {fileID: 491761339}
   textPressAnnyKey: {fileID: 1709758080}
