@@ -9,5 +9,4 @@ public interface ICharacter
     public void GetHealth(float health);
     public void GetMana(float mana);
     public void Die();
-    public void Resurrect();
 }

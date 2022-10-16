@@ -20,7 +20,7 @@ public class ChestBox : MonoBehaviour
                 var item = itemGO.GetComponent<IInventoryItem>();
                 if (Random.Range(0, 1f) <= item.info.dropChance)
                 {
-                    Instantiate(itemGO, transform.position + new Vector3(-1.4f + (counter + 1) * 0.7f, -0.5f, 0), Quaternion.identity);
+                    Instantiate(itemGO, transform.position + new Vector3(-1.8f + (counter + 1), -1f, 0), Quaternion.identity);
                     counter++;
                 }
 

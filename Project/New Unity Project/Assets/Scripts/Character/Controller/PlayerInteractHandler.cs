@@ -27,6 +27,7 @@ public class PlayerInteractHandler : MonoBehaviour
     {
         if (collider.GetComponent<ChestBox>())
         {
+            pickUpPref.gameObject.SetActive(false);
             pickUpPref.gameObject.GetComponentInChildren<TMP_Text>().text = "Pick up";
             _activeChest = null;
         }

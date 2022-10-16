@@ -166,7 +166,7 @@ public class PlayerController : MonoBehaviour, ICharacterController
             }
         }
 
-        if (isInInventory)
+        if (isInInventory || transform.GetComponent<Player>().isDead)
         {
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             return;

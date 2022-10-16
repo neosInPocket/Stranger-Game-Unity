@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Events;
 using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
 
 public class Player : MonoBehaviour, ICharacter
 {
@@ -77,6 +78,7 @@ public class Player : MonoBehaviour, ICharacter
     private float _maxMana;
     private float _health;
     private float _mana;
+    public bool isDead { get; private set; }
     private List<ArmourItem> _armour;
     public Action<GunWeapon> OnGunSet;
     public Inventory inventory { get; private set; }
@@ -203,11 +205,8 @@ public class Player : MonoBehaviour, ICharacter
         _animator.SetTrigger("diePlayer");
 
         canvasDiePlayer.SetActive(true);
-    }
-
-    public void Resurrect()
-    {
-        throw new System.NotImplementedException();
+        transform.GetComponent<SpriteRenderer>().size = new Vector2(1.6f, 0.8f);
+        isDead = true;
     }
 
     void FirstQuest()
