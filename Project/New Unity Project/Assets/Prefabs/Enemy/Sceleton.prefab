@@ -495,11 +495,12 @@ MonoBehaviour:
   collider2D: {fileID: 4473153286314138852}
   _secondDestroyObject: 10
   _speed: 4
-  _point: {fileID: 0}
+  _point: {fileID: 3758907233549500710, guid: 649ee2be55524be41b6ede5cbe5447df, type: 3}
   _positionOfPatrol: 5
   _spriteRenderer: {fileID: 161579168615391105}
-  _player: {fileID: 0}
-  _playerHealht: {fileID: 0}
+  _player: {fileID: 810544948329493188, guid: 45f3324d9c2d19440b1defd138d62de1, type: 3}
+  _playerHealht: {fileID: 810544948329493189, guid: 45f3324d9c2d19440b1defd138d62de1,
+    type: 3}
   _stoppingDistance: 10
   _damage: 10
   _healsBar: {fileID: 603413389389848688}

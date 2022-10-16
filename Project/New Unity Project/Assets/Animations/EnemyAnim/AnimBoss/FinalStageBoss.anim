@@ -59,6 +59,8 @@ AnimationClip:
       value: {fileID: 1164284610, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
     - time: 12.083333
       value: {fileID: -801473815, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
+    - time: 16
+      value: {fileID: 864407015, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
     - time: 20
       value: {fileID: -801473815, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
     - time: 20.25
@@ -146,6 +148,7 @@ AnimationClip:
     - {fileID: 729203798, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
     - {fileID: 1164284610, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
     - {fileID: -801473815, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
+    - {fileID: 864407015, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
     - {fileID: -801473815, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
     - {fileID: 403250878, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
     - {fileID: 864407015, guid: e6588ec6ff4c80549b501729d12a9a3e, type: 3}
@@ -210,7 +213,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 11.833333
-    functionName: StartSceleton1True
+    functionName: SpawnEnemyTrue
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 16
+    functionName: SpawnEnemyFalse
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
@@ -223,8 +233,8 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 31.166666
-    functionName: StartSceleton2True
+  - time: 32.083332
+    functionName: StartRedLineFalse
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

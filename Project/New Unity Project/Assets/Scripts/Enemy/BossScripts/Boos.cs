@@ -10,11 +10,8 @@ public class Boos : AbstractEnemy
     [Header("Секунды до удаления обьекта")]
     [SerializeField] private float _secondDestroyObject;
 
-    [Header("Обьект скелетов 1")]
-    [SerializeField] private GameObject _sceletonObject_1;
-
-    [Header("Обьект скелетов 1")]
-    [SerializeField] private GameObject _sceletonObject_2;
+    [Header("Спаун врагов")]
+    [SerializeField] private GameObject _spawnEnemy;
 
     [Header("Красные линии")]
     [SerializeField] private GameObject _redLine;
@@ -43,6 +40,16 @@ public class Boos : AbstractEnemy
         }
     }
 
+    void SpawnEnemyTrue()
+    {
+        _spawnEnemy.SetActive(true);
+    }
+
+    void SpawnEnemyFalse()
+    {
+        _spawnEnemy.SetActive(false);
+    }
+
     void SetScriptTrue()
     {
         _object.GetComponent<RotateAroundBossAttack>().enabled = true;
@@ -51,16 +58,6 @@ public class Boos : AbstractEnemy
     void SetScriptFalse()
     {
         _object.GetComponent<RotateAroundBossAttack>().enabled = false;
-    }
-
-    void StartSceleton1True()
-    {
-        _sceletonObject_1.SetActive(true);
-    }
-
-    void StartSceleton1False()
-    {
-        _sceletonObject_1.SetActive(false);
     }
 
     void StartRedLineTrue()
@@ -73,13 +70,4 @@ public class Boos : AbstractEnemy
         _redLine.SetActive(false);
     }
 
-    void StartSceleton2True()
-    {
-        _sceletonObject_2.SetActive(true);
-    }
-
-    void StartSceleton2False()
-    {
-        _sceletonObject_2.SetActive(false);
-    }
 }
