@@ -47,9 +47,9 @@ public class PickUpHandler : MonoBehaviour
         textItemInfo.transform.parent.gameObject.SetActive(true);
     }
 
-    void OnTriggerStay2D()
+    void OnTriggerStay2D(Collider2D collider2D)
     {
-        if (itemInRange is null)
+        if (itemInRange is null || collider2D.GetComponent<IInventoryItem>() is null)
         {
             return;
         }
@@ -155,6 +155,7 @@ public class PickUpHandler : MonoBehaviour
         if (activeCollider is null)
         {
             textItemInfo.transform.parent.gameObject.SetActive(false);
+            pickUpPref.gameObject.SetActive(false);
         }
     }
 }
