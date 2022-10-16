@@ -33,7 +33,6 @@ public class PickUpHandler : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         itemInRange = collider.GetComponent<IInventoryItem>();
-        Debug.Log(itemInRange);
         if (itemInRange != null)
         {
             colliders.Add(collider);
@@ -89,7 +88,6 @@ public class PickUpHandler : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        Debug.Log(itemsInRange.Count);
         if (itemsInRange == null || itemInRange == null)
         {
             textItemInfo.transform.parent.gameObject.SetActive(false);
@@ -102,6 +100,10 @@ public class PickUpHandler : MonoBehaviour
             colliders.Remove(collider);
             itemsInRange.Remove(itemExited);
             collider.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+        }
+        else
+        {
+            return;
         }
 
         if (itemsInRange.Count == 0)
