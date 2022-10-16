@@ -21,4 +21,4 @@ MonoBehaviour:
   _worldObject: {fileID: 0}
   _type: 2
   _value: 1
-  _dropChance: 0.3
+  _dropChance: 0.2
