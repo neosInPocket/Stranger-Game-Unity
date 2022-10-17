@@ -19,8 +19,7 @@ public class BossEnemy : MonoBehaviour
     {
         audioSource.Play();
         _bossFinal.SetActive(true);
-
-      
+        CinemachineShake.instance.ShakeCamera(10f, 3f);
     }
    
 

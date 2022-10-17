@@ -31,6 +31,7 @@ public class BossStage : MonoBehaviour
 
                 Destroy(_bossTrigger, 3f);
             }
+
         }
     }
 
@@ -43,6 +44,8 @@ public class BossStage : MonoBehaviour
             _wall.SetActive(true);
 
             Destroy(_bossComet, 2f);
+            
+            CinemachineShake.instance.ShakeCamera(15f, 3f);
         }
     }
 }
