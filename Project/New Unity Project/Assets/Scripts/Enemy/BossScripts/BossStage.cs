@@ -5,18 +5,18 @@ using UnityEngine;
 
 public class BossStage : MonoBehaviour
 {
-    [Header("Прилет кометы")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private GameObject _bossComet;
 
-    [Header("Появление босса")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private GameObject _bossApearanse;
 
     
 
-    [Header("Обьект Босс тригер")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private GameObject _bossTrigger;
 
-    [Header("Стена чтобы игрок не вышел")]
+    [Header("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private GameObject _wall;
 
     void Update()
