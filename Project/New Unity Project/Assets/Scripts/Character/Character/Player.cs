@@ -12,15 +12,16 @@ public class Player : MonoBehaviour, ICharacter
 {
     [SerializeField] private Animator _animator;
 
-    [Header("Collider2D для отключения")]
+    [Header("Collider2D пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     public new Collider2D collider2D;
 
-    [Header("Обьект RestartAndExitGame")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅ RestartAndExitGame")]
     public GameObject canvasDiePlayer;
 
     private QuestKill _questKill;
 
     private QuestManager _questManager;
+    [SerializeField] private AudioSource audioSource;
 
     public QuestKill questKill
     {
@@ -86,6 +87,7 @@ public class Player : MonoBehaviour, ICharacter
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
         uiInventory.GetComponent<UIInventory>().AwakeInventory();
         inventory = uiInventory.GetComponent<UIInventory>().inventory;
         inventory.OnRemove += OnInventoryRemove;
@@ -200,6 +202,7 @@ public class Player : MonoBehaviour, ICharacter
 
     public void Die()
     {
+        audioSource.Play();
         collider2D.GetComponent<Collider2D>().enabled = false;
 
         _animator.SetTrigger("diePlayer");
