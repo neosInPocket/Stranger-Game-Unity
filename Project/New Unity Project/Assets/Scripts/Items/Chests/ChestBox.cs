@@ -7,9 +7,14 @@ public class ChestBox : MonoBehaviour
     [SerializeField] private ChestBoxInfo chestInfo;
     [SerializeField] private Sprite openedChestSprite;
     public bool isOpened { get; private set; }
-
+    public AudioSource audioSource;
+    public void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     public void Open()
     {
+        audioSource.Play();
         var counter = 0;
         var firstItemPosition = transform;
 
