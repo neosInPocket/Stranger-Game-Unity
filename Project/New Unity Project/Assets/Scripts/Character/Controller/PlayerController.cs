@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour, ICharacterController
     [SerializeField] private GameObject _uiInventory;
     [SerializeField] private AnimatorController _playerWeaponAnimator;
     [SerializeField] private AnimatorController _playerAnimator;
+    [SerializeField] private AnimatorController _reloadingAnimator;
     [SerializeField] private GameObject _rotatePoint;
     [SerializeField] private GunInfoRenderer _gunInfoRenderer;
     private GameObject _gunInstance;
@@ -122,6 +123,18 @@ public class PlayerController : MonoBehaviour, ICharacterController
 
         inventory.playerGun = _gunInstance.GetComponent<GunWeapon>();
         inventory.RefreshAttachments();
+
+        inventory.playerGun.OnReload += WeaponOnReload;
+        inventory.playerGun.OnReloaded += WeaponOnReloaded;
+    }
+
+    private void WeaponOnReloaded(GunWeapon weapon)
+    {
+        GetComponent<Animator>().runtimeAnimatorController = _playerWeaponAnimator;
+    }
+    private void WeaponOnReload(GunWeapon weapon)
+    {
+        GetComponent<Animator>().runtimeAnimatorController = _reloadingAnimator;
     }
 
     private void OnDrop(IInventoryItem obj)

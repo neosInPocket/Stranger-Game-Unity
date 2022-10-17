@@ -47,9 +47,9 @@ public class PickUpHandler : MonoBehaviour
         textItemInfo.transform.parent.gameObject.SetActive(true);
     }
 
-    void OnTriggerStay2D(Collider2D collider2D)
+    void OnTriggerStay2D()
     {
-        if (itemInRange is null || collider2D.GetComponent<IInventoryItem>() is null)
+        if (itemInRange is null)
         {
             return;
         }
@@ -88,11 +88,7 @@ public class PickUpHandler : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if (itemsInRange == null || itemInRange == null)
-        {
-            textItemInfo.transform.parent.gameObject.SetActive(false);
-            return;
-        }
+        
         var itemExited = collider.GetComponent<IInventoryItem>();
 
         if (itemExited != null)
@@ -100,18 +96,23 @@ public class PickUpHandler : MonoBehaviour
             colliders.Remove(collider);
             itemsInRange.Remove(itemExited);
             collider.gameObject.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255, 255);
+            if (itemsInRange.Count == 0)
+            {
+                pickUpPref.SetActive(false);
+                itemInRange = null;
+                activeCollider = null;
+                textItemInfo.transform.parent.gameObject.SetActive(false);
+            }
+
+            if (itemsInRange == null || itemInRange == null)
+            {
+                textItemInfo.transform.parent.gameObject.SetActive(false);
+                return;
+            }
         }
         else
         {
             return;
-        }
-
-        if (itemsInRange.Count == 0)
-        {
-            pickUpPref.SetActive(false);
-            itemInRange = null;
-            activeCollider = null;
-            textItemInfo.transform.parent.gameObject.SetActive(false);
         }
     }
 
