@@ -11,6 +11,10 @@ public class Environment : MonoBehaviour
         {
             return;
         }
+        var audio = GetComponent<AudioSource>();
+        audio.pitch = Random.Range(1f, 3f);
+        audio.Play();
+
         GetComponent<Animator>().enabled = true;
         Destroy(this.gameObject, 5f);
 
