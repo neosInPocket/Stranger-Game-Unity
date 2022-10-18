@@ -15,6 +15,8 @@ public class GunRenderer : MonoBehaviour
     [SerializeField] private GameObject bullet;
     private Transform rotatePoint;
     private bool isFlipped;
+    [SerializeField] private AudioSource audiopistol;
+    
 
     void Start()
     {
@@ -22,6 +24,8 @@ public class GunRenderer : MonoBehaviour
         gun.OnFire += OnFire;
         rotatePoint = parent.transform.parent;
         cam = Camera.main;
+        audiopistol = GetComponent<AudioSource>();
+        
     }
 
     private void OnFire(object obj)
@@ -37,7 +41,10 @@ public class GunRenderer : MonoBehaviour
         bulletInst.gameObject.GetComponent<PistolBullet>().Damage = gun.Damage;
 
         var effectInst = Instantiate(fireEffect, firePoint.position, firePoint.rotation);
+
+        audiopistol.Play();
         
+
         CinemachineShake.instance.ShakeCamera(gun.gunInfo.damage / 7.5f, .1f);
         Destroy(Instantiate(muzzleFlash, firePoint.position, Quaternion.identity), 0.1f);
 

@@ -26,13 +26,13 @@ public class PistolBullet : MonoBehaviour
         }
     }
 
-    public AudioSource audiosource;
+ 
     public float speed;
     void Start()
     {
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         rb.velocity = transform.right * speed;
-        audiosource = GetComponent<AudioSource>();
+    
     }
    
 
@@ -40,7 +40,7 @@ public class PistolBullet : MonoBehaviour
     {
         if (!hitInfo.isTrigger && !hitInfo.gameObject.GetComponentInParent<Player>() && !hitInfo.gameObject.GetComponent<TilemapCollider2D>())
         {
-            audiosource.Play();
+          
             Destroy(this.gameObject);
             var instance = Instantiate(_explosionEffect, transform.position - new Vector3(0.01f, 0.01f), transform.rotation);
             Destroy(instance, .2f);
