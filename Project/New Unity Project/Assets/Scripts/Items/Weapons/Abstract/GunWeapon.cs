@@ -84,6 +84,7 @@ public abstract class GunWeapon : InventoryItem
     public event Action<GunWeapon> OnAmmoSet;
     void Awake()
     {
+
         _magazineCapacity = gunInfo.magazineCapacity;
         AmmoAmount = gunInfo.ammoAmount;
         _reloadTime = gunInfo.reloadTime;
@@ -136,7 +137,7 @@ public abstract class GunWeapon : InventoryItem
             StartCoroutine(Reload());
         }
     }
-
+    
     void Update()
     {
         if (blockFire || !isEquiped)

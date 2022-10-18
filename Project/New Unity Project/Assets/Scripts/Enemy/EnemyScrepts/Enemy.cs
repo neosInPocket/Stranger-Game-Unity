@@ -4,35 +4,37 @@ using UnityEngine;
 
 public class Enemy : AbstractEnemy
 {
-    [Header("Секунды до удаления обьекта")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private float _secondDestroyObject;
 
-    [Header("Скорость врага")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private float _speed;
 
-    [Header("Точка патрулирования врага")]
+    [Header("пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private Transform _point;
 
-    [Header("Растояние на которое враг будет отдаляться от точки патрулирования")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private int _positionOfPatrol;
 
-    [Header("Sprite врага")]
+    [Header("Sprite пїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    [Header("Обьект игрока")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private Transform _player;
 
-    [Header("Обьект игрока")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private Player _playerHealht;
 
-    [Header("Растояние на котором агртится и отстает враг")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ")]
     [SerializeField] private float _stoppingDistance;
 
-    [Header("Урон врага")]
+    [Header("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ")]
     [SerializeField] private float _damage;
 
-    [Header("Обьект для отключения HealsBar")]
+    [Header("пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ HealsBar")]
     [SerializeField] private GameObject _healsBar;
+
+    public AudioSource audiosource;
 
     private Transform _target;
 
@@ -66,6 +68,8 @@ public class Enemy : AbstractEnemy
         _healthBar.SetHealthValue(_currentHealth, MaxHealth);
 
         collider2D = GetComponent<Collider2D>();
+
+        audiosource = GetComponent<AudioSource>();
     }
 
     protected void Update()
@@ -174,6 +178,7 @@ public class Enemy : AbstractEnemy
 
     void Angry()
     {
+        audiosource.Play();
         transform.position = Vector2.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
     }
 

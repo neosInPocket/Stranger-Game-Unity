@@ -101938,6 +101938,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3333727034036651164, guid: 6c78269ed4bf95a428a3c093db2c36ec,
         type: 3}
+      propertyPath: audiosource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3333727034036651164, guid: 6c78269ed4bf95a428a3c093db2c36ec,
+        type: 3}
       propertyPath: _genericType
       value: 1
       objectReference: {fileID: 0}
