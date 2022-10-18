@@ -506,8 +506,8 @@ MonoBehaviour:
   _stoppingDistance: 10
   _damage: 10
   _healsBar: {fileID: 603413389389848688}
-  _particleSystem: {fileID: 0}
-  _bones: {fileID: 0}
+  _particleSystem: {fileID: 7741252206952112635}
+  _bones: {fileID: 7741252206952112633}
   audiosource: {fileID: -4741940004888397275}
 --- !u!95 &8731372846503248711
 Animator:
@@ -1031,7 +1031,7 @@ PrefabInstance:
     - target: {fileID: 4904442594748698286, guid: 4b5506ec4a9bca449a643537a2d581c0,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4904442594748698286, guid: 4b5506ec4a9bca449a643537a2d581c0,
         type: 3}
@@ -1190,9 +1190,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b5506ec4a9bca449a643537a2d581c0, type: 3}
+--- !u!1 &7741252206952112633 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4904442594748698285, guid: 4b5506ec4a9bca449a643537a2d581c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3422286360434470740}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7741252206952112634 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4904442594748698286, guid: 4b5506ec4a9bca449a643537a2d581c0,
+    type: 3}
+  m_PrefabInstance: {fileID: 3422286360434470740}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &7741252206952112635 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4904442594748698287, guid: 4b5506ec4a9bca449a643537a2d581c0,
     type: 3}
   m_PrefabInstance: {fileID: 3422286360434470740}
   m_PrefabAsset: {fileID: 0}
