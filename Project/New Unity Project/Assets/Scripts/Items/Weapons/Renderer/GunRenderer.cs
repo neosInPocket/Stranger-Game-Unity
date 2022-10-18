@@ -42,7 +42,7 @@ public class GunRenderer : MonoBehaviour
 
         var effectInst = Instantiate(fireEffect, firePoint.position, firePoint.rotation);
 
-        audiopistol.Play();
+        audiopistol.PlayOneShot(audiopistol.clip);
         
 
         CinemachineShake.instance.ShakeCamera(gun.gunInfo.damage / 7.5f, .1f);

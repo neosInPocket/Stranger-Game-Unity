@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Security.Cryptography;
 using Mono.CompilerServices.SymbolWriter;
 using TMPro.EditorUtilities;
@@ -125,16 +126,20 @@ public class PlayerController : MonoBehaviour, ICharacterController
         inventory.RefreshAttachments();
 
         inventory.playerGun.OnReload += WeaponOnReload;
-        inventory.playerGun.OnReloaded += WeaponOnReloaded;
-    }
-
-    private void WeaponOnReloaded(GunWeapon weapon)
-    {
-        GetComponent<Animator>().runtimeAnimatorController = _playerWeaponAnimator;
     }
     private void WeaponOnReload(GunWeapon weapon)
     {
+        StartCoroutine(ReloadCoroutine());
+    }
+
+    private IEnumerator ReloadCoroutine()
+    {
+        var weapon = GetComponentInChildren<GunWeapon>().gameObject;
+        weapon.SetActive(false);
         GetComponent<Animator>().runtimeAnimatorController = _reloadingAnimator;
+        yield return new WaitForSeconds(_gunInstance.GetComponent<GunWeapon>().ReloadTime);
+        weapon.SetActive(true);
+        GetComponent<Animator>().runtimeAnimatorController = _playerWeaponAnimator;
     }
 
     private void OnDrop(IInventoryItem obj)

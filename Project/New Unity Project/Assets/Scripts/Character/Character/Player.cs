@@ -137,9 +137,8 @@ public class Player : MonoBehaviour, ICharacter
         }
         else
         {
-            _particleSystem.Play();
-
             _health -= damage;
+            _particleSystem?.Play();
         }
     }
 
