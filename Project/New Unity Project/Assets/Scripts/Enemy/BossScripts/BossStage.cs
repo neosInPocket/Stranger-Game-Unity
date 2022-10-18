@@ -44,7 +44,7 @@ public class BossStage : MonoBehaviour
         if (player)
         {
             onBossAppear?.Invoke();
-            player.gameObject.GetComponentInChildren<Light2D>().enabled = false;
+            player.GetComponent<Light2D>().enabled = false;
             _bossComet.SetActive(true);
 
             _wall.SetActive(true);
