@@ -32,7 +32,7 @@ public class FinalSceneHandler : MonoBehaviour
     private IEnumerator EnablePlayerFlash(Player player)
     {
         yield return new WaitForSeconds(2);
-        player.gameObject.GetComponentInChildren<Light2D>().enabled = true;
+        player.gameObject.GetComponent<Light2D>().enabled = true;
         flashClickSource.Play();
     }
 }
