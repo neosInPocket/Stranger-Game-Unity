@@ -134,11 +134,11 @@ public class Enemy : AbstractEnemy
 
     public override void TakeDamage(float damage)
     {
-        _particleSystem.Play();
 
         _currentHealth -= damage - _defence;
 
         _healthBar.SetHealthValue(_currentHealth, MaxHealth);
+        _particleSystem.Play();
 
         if (_currentHealth <= 0)
         {
