@@ -23,6 +23,10 @@ public class Player : MonoBehaviour, ICharacter
     private QuestManager _questManager;
     [SerializeField] private AudioSource audioSource;
 
+    [SerializeField] private ParticleSystem _particleSystem;
+
+    public GameObject _bones;
+
     public QuestKill questKill
     {
         get
@@ -133,6 +137,8 @@ public class Player : MonoBehaviour, ICharacter
         }
         else
         {
+            _particleSystem.Play();
+
             _health -= damage;
         }
     }
