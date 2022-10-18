@@ -56,9 +56,6 @@ MonoBehaviour:
     type: 3}
   bullet: {fileID: 6337368540584731677, guid: 2a0d1d0034f349a4bbcb8a3aac577146, type: 3}
   audiopistol: {fileID: 4962987228214087339}
-  audioak47: {fileID: 5583489560237487707}
-  audioawp: {fileID: 7150101082110972311}
-  audiom1a1: {fileID: 781535316815401300}
 --- !u!82 &4962987228214087339
 AudioSource:
   m_ObjectHideFlags: 0
@@ -69,9 +66,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 135106f6000c74c74963081472499190, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c0824bd4c83d9438e9a7e0943714cc77, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.65
+  m_Volume: 0.528
   m_Pitch: 1
   Loop: 0
   Mute: 0
