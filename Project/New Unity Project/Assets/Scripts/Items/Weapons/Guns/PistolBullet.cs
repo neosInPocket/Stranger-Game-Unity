@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.Tilemaps;
+using UnityEngine.XR;
 
 public class PistolBullet : MonoBehaviour
 {
     private float _damage;
     [SerializeField] private GameObject _explosionEffect;
+
+    
 
     public float Damage 
     {
@@ -43,8 +47,10 @@ public class PistolBullet : MonoBehaviour
         }
         
         AbstractEnemy enemy;
+
         if (hitInfo.transform.gameObject.GetComponent<AbstractEnemy>() != null)
         {
+            
             enemy = hitInfo.transform.gameObject.GetComponent<AbstractEnemy>();
             enemy.TakeDamage(Damage);
         }

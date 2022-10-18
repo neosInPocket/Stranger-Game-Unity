@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Enemy : AbstractEnemy
 {
@@ -33,6 +34,10 @@ public class Enemy : AbstractEnemy
 
     [Header("������ ��� ���������� HealsBar")]
     [SerializeField] private GameObject _healsBar;
+
+    [SerializeField] private ParticleSystem _particleSystem;
+
+    public GameObject _bones;
 
     public AudioSource audiosource;
 
@@ -129,6 +134,8 @@ public class Enemy : AbstractEnemy
 
     public override void TakeDamage(float damage)
     {
+        _particleSystem.Play();
+
         _currentHealth -= damage - _defence;
 
         _healthBar.SetHealthValue(_currentHealth, MaxHealth);
