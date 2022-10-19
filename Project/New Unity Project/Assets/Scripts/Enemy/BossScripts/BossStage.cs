@@ -13,8 +13,6 @@ public class BossStage : MonoBehaviour
 
     [SerializeField] private GameObject _bossTrigger;
 
-    [SerializeField] private GameObject _wall;
-
     public UnityEvent onBossAppear;
 
     void Update()
@@ -44,8 +42,6 @@ public class BossStage : MonoBehaviour
             player.GetComponent<Light2D>().enabled = false;
 
             _bossComet.SetActive(true);
-
-            _wall.SetActive(true);
 
             Destroy(_bossComet, 2f);
             

@@ -7,6 +7,7 @@ public class FPSCounter : MonoBehaviour
 {
     private int avgFrameRate;
     private TMP_Text displayText;
+    private bool showFPS;
 
     void Start()
     {
@@ -14,6 +15,16 @@ public class FPSCounter : MonoBehaviour
     }
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            showFPS = !showFPS;
+        }
+
+        if (!showFPS)
+        {
+            displayText.text = null;
+            return;
+        }
         float current = 0;
         current = Time.frameCount / Time.time;
         avgFrameRate = (int)current;

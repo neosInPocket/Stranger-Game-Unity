@@ -13,8 +13,6 @@ public class QuestManager : MonoBehaviour
 
     public GameObject questCompleted;
 
-    public GameObject boss;
-
     public GameObject finalGame;
 
     private void Awake()
@@ -44,14 +42,6 @@ public class QuestManager : MonoBehaviour
         questName.text = newQuest.questName;
 
         questDescription.text = newQuest.questDiscription;
-    }
-
-    private void Update()
-    {
-        if (boss == null)
-        {
-            finalGame.SetActive(true);
-        }
     }
 }
 

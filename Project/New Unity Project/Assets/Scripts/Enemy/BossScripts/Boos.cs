@@ -1,8 +1,9 @@
     using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+    using UnityEngine.Events;
 
-public class Boos : AbstractEnemy
+    public class Boos : AbstractEnemy
 {
     [Header("Вращающийся обьект")]
     [SerializeField] private GameObject _object;
@@ -16,6 +17,8 @@ public class Boos : AbstractEnemy
     [Header("Красные линии")]
     [SerializeField] private GameObject _redLine;
 
+    public UnityEvent OnBossDie;
+
     public override IEnumerator Die()
     {
         if (GameManager.instance.onEnemyDeathCollBack != null)
@@ -26,6 +29,7 @@ public class Boos : AbstractEnemy
         yield return new WaitForSeconds(_secondDestroyObject);
 
         Destroy(gameObject);
+        OnBossDie?.Invoke();
     }
 
     public override void TakeDamage(float damage)
