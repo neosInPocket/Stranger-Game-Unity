@@ -102,6 +102,7 @@ public class DialogueManager : MonoBehaviour
         foreach (char item in info.myText.ToCharArray())
         {
             yield return new WaitForSeconds(delay);
+
             diallogueText.text += item;
         }
 

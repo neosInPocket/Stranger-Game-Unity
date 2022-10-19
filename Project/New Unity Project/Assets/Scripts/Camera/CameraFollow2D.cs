@@ -6,8 +6,8 @@ using static UnityEngine.GraphicsBuffer;
 public class CameraFollow2D : MonoBehaviour
 {
     [SerializeField] private Transform playerTransform;
-    [SerializeField] private float moovingSpeed;
 
+    [SerializeField] private float moovingSpeed;
 
     private void Awake()
     {

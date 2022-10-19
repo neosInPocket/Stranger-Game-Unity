@@ -7,21 +7,16 @@ using UnityEngine.Rendering.Universal;
 
 public class BossStage : MonoBehaviour
 {
-    [Header("������ ������")]
     [SerializeField] private GameObject _bossComet;
 
-    [Header("��������� �����")]
     [SerializeField] private GameObject _bossApearanse;
 
-    
-
-    [Header("������ ���� ������")]
     [SerializeField] private GameObject _bossTrigger;
 
-    [Header("����� ����� ����� �� �����")]
     [SerializeField] private GameObject _wall;
 
     public UnityEvent onBossAppear;
+
     void Update()
     {
         if (_bossApearanse != null)
@@ -41,10 +36,13 @@ public class BossStage : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Player player = collision.GetComponent<Player>();
+
         if (player)
         {
             onBossAppear?.Invoke();
+
             player.GetComponent<Light2D>().enabled = false;
+
             _bossComet.SetActive(true);
 
             _wall.SetActive(true);
