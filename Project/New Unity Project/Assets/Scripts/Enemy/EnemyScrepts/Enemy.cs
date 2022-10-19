@@ -5,41 +5,29 @@ using UnityEngine.Rendering.Universal;
 
 public class Enemy : AbstractEnemy
 {
-    [Header("������� �� �������� �������")]
     [SerializeField] private float _secondDestroyObject;
 
-    [Header("�������� �����")]
     [SerializeField] private float _speed;
 
-    [Header("����� �������������� �����")]
     [SerializeField] private Transform _point;
 
-    [Header("��������� �� ������� ���� ����� ���������� �� ����� ��������������")]
     [SerializeField] private int _positionOfPatrol;
 
-    [Header("Sprite �����")]
     [SerializeField] private SpriteRenderer _spriteRenderer;
 
-    [Header("������ ������")]
     [SerializeField] private Transform _player;
 
-    [Header("������ ������")]
     [SerializeField] private Player _playerHealht;
 
-    [Header("��������� �� ������� �������� � ������� ����")]
     [SerializeField] private float _stoppingDistance;
 
-    [Header("���� �����")]
     [SerializeField] private float _damage;
 
-    [Header("������ ��� ���������� HealsBar")]
     [SerializeField] private GameObject _healsBar;
 
     [SerializeField] private ParticleSystem _particleSystem;
 
-    public GameObject _bones;
-
-    public AudioSource audiosource;
+    private AudioSource _audiosource;
 
     private Transform _target;
 
@@ -74,7 +62,7 @@ public class Enemy : AbstractEnemy
 
         collider2D = GetComponent<Collider2D>();
 
-        audiosource = GetComponent<AudioSource>();
+        _audiosource = GetComponent<AudioSource>();
     }
 
     protected void Update()
@@ -87,13 +75,16 @@ public class Enemy : AbstractEnemy
         if (Vector2.Distance(transform.position, _player.position) < _stoppingDistance)
         {
             angry = true;
+
             chill = false;
+
             goBack = false;
         }
 
         if (Vector2.Distance(transform.position, _player.position) > _stoppingDistance)
         {
             goBack = true;
+
             angry = false;
         }
 
@@ -138,6 +129,7 @@ public class Enemy : AbstractEnemy
         _currentHealth -= damage - _defence;
 
         _healthBar.SetHealthValue(_currentHealth, MaxHealth);
+
         _particleSystem.Play();
 
         if (_currentHealth <= 0)
@@ -162,12 +154,14 @@ public class Enemy : AbstractEnemy
         if (transform.position.x > _point.position.x + _positionOfPatrol)
         {
             moovingRight = false;
+
             _spriteRenderer.flipX = true;
 
         }
         if (transform.position.x < _point.position.x - _positionOfPatrol)
         {
             moovingRight = true;
+
             _spriteRenderer.flipX = false;
         }
 
@@ -185,7 +179,8 @@ public class Enemy : AbstractEnemy
 
     void Angry()
     {
-        audiosource.Play();
+        _audiosource.Play();
+
         transform.position = Vector2.MoveTowards(transform.position, _player.position, _speed * Time.deltaTime);
     }
 
