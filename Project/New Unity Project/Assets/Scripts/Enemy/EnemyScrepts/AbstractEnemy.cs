@@ -4,22 +4,16 @@ using UnityEngine;
 
 public abstract class AbstractEnemy : MonoBehaviour
 {
-    [Header("Здоровье врага")]
     public float MaxHealth;
 
-    [Header("Защита врага")]
     public float _defence;
 
-    [Header("Полоса здоровья врага")]
     public HealthBar _healthBar;
 
-    [Header("Профайл врага")]
     public EnemyProfile enemyProfile;
 
-    [Header("Аниматор врага")]
     public Animator enemyAnimator;
 
-    [Header("Collider2D для отключения")]
     public new Collider2D collider2D;
 
     protected float _currentHealth;
