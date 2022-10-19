@@ -7,11 +7,7 @@ public class HealthManaBar : MonoBehaviour
 {
     public Image healthBar;
 
-    public Image manaBar;
-
     public float healthFill;
-
-    public float manaFill;
 
     public Player player;
 
@@ -20,8 +16,6 @@ public class HealthManaBar : MonoBehaviour
     void Start()
     {
         healthFill = 1f;
-
-        manaFill = 1f;
     }
     void Update()
     {
