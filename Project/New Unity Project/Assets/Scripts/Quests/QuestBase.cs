@@ -30,8 +30,6 @@ public class QuestBase : ScriptableObject
                 return;
             }
 
-            Debug.Log("йбщяр бшонкмем !!! ");
-
             onQuestComplite?.Invoke();
         }
     }

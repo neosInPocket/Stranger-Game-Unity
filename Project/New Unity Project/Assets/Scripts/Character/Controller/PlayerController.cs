@@ -85,9 +85,7 @@ public class PlayerController : MonoBehaviour, ICharacterController
     public void AnimateMovement(Vector2 direction)
     {
         _animator.SetLayerWeight(1, 1);
-
         _animator.SetFloat("x", direction.x);
-
         _animator.SetFloat("y", direction.y);
     }
 
@@ -96,9 +94,7 @@ public class PlayerController : MonoBehaviour, ICharacterController
         _animator = GetComponent<Animator>();
 
         _inventory = _uiInventory.GetComponent<UIInventory>().inventory;
-
         _inventory.OnDrop += OnDrop;
-
         _inventory.OnGunRemove += OnGunRemove;
 
         gameObject.GetComponent<Player>().OnGunSet += OnGunSet;
@@ -109,15 +105,11 @@ public class PlayerController : MonoBehaviour, ICharacterController
         GetComponent<Animator>().runtimeAnimatorController = _playerAnimator;
 
         var gun = obj as GunWeapon;
-
         var gunInstance = _gunInstance.GetComponent<GunWeapon>();
-
         gun.AmmoAmount = gunInstance.AmmoAmount;
-
         gun.currentMagazineAmmo = gunInstance.currentMagazineAmmo;
 
         _gunInfoRenderer.DestroyInfo();
-
         Destroy(_gunInstance);
 
         _inventory.playerGun = null;
@@ -128,53 +120,39 @@ public class PlayerController : MonoBehaviour, ICharacterController
         GetComponent<Animator>().runtimeAnimatorController = _playerWeaponAnimator;
 
         var rotatePos = _rotatePoint.transform.position;
-
         var shiftedPos = new Vector2(rotatePos.x + .7f, rotatePos.y);
 
         _gunInstance = Instantiate(gunItem.info.handlingSpriteIcon, shiftedPos, Quaternion.identity);
 
         var gunWeapon = _gunInstance.GetComponent<GunWeapon>();
-
         GetComponent<Player>().weapon = _gunInstance.gameObject.GetComponent<GunWeapon>();
 
         gunWeapon.GetComponent<GunWeapon>().isEquiped = true;
-
         gunWeapon.AmmoAmount = gunItem.AmmoAmount;
-
         gunWeapon.currentMagazineAmmo = gunItem.currentMagazineAmmo;
 
         _gunInstance.transform.parent = _rotatePoint.transform;
-
         _gunInstance.transform.rotation = Quaternion.identity;
-
         _gunInstance.transform.localScale = Vector3.one;
-
         _gunInfoRenderer.AwakeInfo(_gunInstance.GetComponent<GunWeapon>());
 
         _inventory.playerGun = _gunInstance.GetComponent<GunWeapon>();
-
         _inventory.RefreshAttachments();
-
         _inventory.playerGun.OnReload += WeaponOnReload;
+        _inventory.playerGun.OnReloaded += WeaponOnReloaded;
     }
+    private void WeaponOnReloaded(GunWeapon weapon)
+    {
+        weapon.HideGun(false);
+        weapon.BlockFire(false);
+        GetComponent<Animator>().runtimeAnimatorController = _playerWeaponAnimator;
+    }
+
     private void WeaponOnReload(GunWeapon weapon)
     {
-        StartCoroutine(ReloadCoroutine());
-    }
-
-    private IEnumerator ReloadCoroutine()
-    {
-        var weapon = GetComponentInChildren<GunWeapon>().gameObject;
-
-        weapon.SetActive(false);
-
+        weapon.HideGun(true);
+        weapon.BlockFire(true);
         GetComponent<Animator>().runtimeAnimatorController = _reloadingAnimator;
-
-        yield return new WaitForSeconds(_gunInstance.GetComponent<GunWeapon>().ReloadTime);
-
-        weapon.SetActive(true);
-
-        GetComponent<Animator>().runtimeAnimatorController = _playerWeaponAnimator;
     }
 
     private void OnDrop(IInventoryItem obj)
@@ -202,7 +180,6 @@ public class PlayerController : MonoBehaviour, ICharacterController
                 }
                 catch
                 {
-                    Debug.Log("Нет компонента GunWeapon");
                 }
             }
             else
@@ -217,7 +194,6 @@ public class PlayerController : MonoBehaviour, ICharacterController
                 }
                 catch
                 {
-                    Debug.Log("Нет компонента GunWeapon");
                 }
             }
         }

@@ -5,6 +5,7 @@ using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Rendering.UI;
+using UnityEngine.Rendering.Universal;
 
 public abstract class GunWeapon : InventoryItem
 {
@@ -158,6 +159,13 @@ public abstract class GunWeapon : InventoryItem
     public void BlockFire(bool action)
     {
         blockFire = action;
+    }
+
+    public void HideGun(bool isVisible)
+    {
+        GetComponent<SpriteRenderer>().enabled = !isVisible;
+        GetComponentInChildren<LineRenderer>().enabled = attachments.laserSight is null ? default : !isVisible;
+        GetComponentInChildren<Light2D>().enabled = attachments.laserSight is null ? default : !isVisible;
     }
 
     public override void Use(Player player)
