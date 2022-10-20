@@ -13,9 +13,6 @@ MonoBehaviour:
   m_Name: RareChestInfo
   m_EditorClassIdentifier: 
   _items:
-  - {fileID: 390680822064443667, guid: c1be1d6ae6c98ea4894dfc57fa2b39fd, type: 3}
-  - {fileID: 390680822064443667, guid: 2686111ff7e16474fbc51e6122f67aee, type: 3}
-  - {fileID: 390680822064443667, guid: 28c2d8684db4c274995a7ba68d796484, type: 3}
   - {fileID: 5661463040981164520, guid: 1b4661d3b63ae5c4d89148fd9f0f88f0, type: 3}
   - {fileID: 1467439849969199863, guid: cf9ba0350550c334bae4e4c00bab3754, type: 3}
   - {fileID: 6427164108789257854, guid: 1d7b6f836836d7047965a6611d810a9c, type: 3}
